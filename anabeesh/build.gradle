@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+
     // UI
     implementation deps.support.design
     implementation deps.support.recyclerview

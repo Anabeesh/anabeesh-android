@@ -19,7 +19,7 @@ public class UiUtil {
     private ProgressDialog progressDialog;
 
     @Inject
-    public UiUtil(Context context) {
+    UiUtil(Context context) {
         Preconditions.checkNonNull(context, "should not pass null context reference");
         this.context = context;
     }

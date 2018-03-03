@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/Android/Workspace/Sayes-Provider-Android
+    working_directory: ~/Android/Workspace/anabeesh-android
 
     docker:
       - image: circleci/android:api-25-alpha

@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
-public interface BaseScreen {
+public interface BaseScreen extends UIHostComponentProvider {
 
     void showDefaultMessage(String message);
 
