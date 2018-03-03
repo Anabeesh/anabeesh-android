@@ -20,7 +20,7 @@ import timber.log.Timber;
 
 public abstract class BaseActivity extends AppCompatActivity implements LifecycleOwner, BaseScreen {
 
-    private LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
+    private final LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
 
     @Inject
     UiUtil uiUtil;
