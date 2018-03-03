@@ -2,9 +2,12 @@ package com.rxmuhammadyoussef.core.di;
 
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 
-public class CoreActivityInjector {
+public final class CoreActivityInjector {
 
     private static CoreActivityComponent component;
+
+    private CoreActivityInjector() {
+    }
 
     public static CoreActivityComponent getComponent(BaseActivity baseActivity) {
         if (component != null) {
