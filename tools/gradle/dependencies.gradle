@@ -1,7 +1,7 @@
 def build = [
         buildToolsVersion: '27.0.2',
         compileSdkVersion: 27,
-        minSdkVersion    : 19,
+        minSdkVersion    : 21,
         targetSdkVersion : 27,
         versionCode      : 1,
         versionName      : "1.0"
@@ -10,7 +10,7 @@ def build = [
 def versions = [
         support    : '27.0.2',
         dagger     : '2.11',
-        butterknife: '8.6.0',
+        butterKnife: '8.6.0',
         glide      : '4.3.0',
         timber     : '4.5.1',
         retrofit   : '2.2.0'
@@ -32,24 +32,24 @@ def rx = [
         Paparazzo: "com.github.miguelbcr:RxPaparazzo:0.6.0-2.x",
 ]
 
-def retrofit = [
-        lib          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
-        gsonconverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+def network = [
+        retrofit             : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
 ]
 
-def dagger = [
-        lib     : "com.google.dagger:dagger:${versions.dagger}",
-        compiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
+def dependencyInjection = [
+        dagger        : "com.google.dagger:dagger:${versions.dagger}",
+        daggerCompiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
 ]
 
-def butterknife = [
-        lib     : "com.jakewharton:butterknife:${versions.butterknife}",
-        compiler: "com.jakewharton:butterknife-compiler:${versions.butterknife}"
+def viewBinding = [
+        butterknife        : "com.jakewharton:butterknife:${versions.butterKnife}",
+        butterknifeCompiler: "com.jakewharton:butterknife-compiler:${versions.butterKnife}"
 ]
 
-def glide = [
-        lib     : "com.github.bumptech.glide:glide:${versions.glide}",
-        compiler: "com.github.bumptech.glide:compiler:${versions.glide}"
+def image = [
+        glide        : "com.github.bumptech.glide:glide:${versions.glide}",
+        glideCompiler: "com.github.bumptech.glide:compiler:${versions.glide}"
 ]
 
 def test = [
@@ -58,22 +58,19 @@ def test = [
         espresso: "com.android.support.test.espresso:espresso-core:3.0.1",
 ]
 
-def timber = [
-        lib: "com.jakewharton.timber:timber:${versions.timber}"
+def log = [
+        timber: "com.jakewharton.timber:timber:${versions.timber}"
 ]
 
-def pinview = [
-        lib: "com.alimuzaffar.lib:pinentryedittext:1.3.1"
-]
-
-def circleImageView = [
-        lib: "de.hdodenhof:circleimageview:2.2.0"
+def view = [
+        pinview        : "com.alimuzaffar.lib:pinentryedittext:1.3.1",
+        circleimageview: "de.hdodenhof:circleimageview:2.2.0"
 ]
 
 def social = [
-        facebook    : 'com.facebook.android:facebook-login:4.30.0',
-        twitter     : 'com.twitter.sdk.android:twitter-core:3.1.1',
-        googleauth: 'com.google.firebase:firebase-auth:11.8.0',
+        facebook         : 'com.facebook.android:facebook-login:4.30.0',
+        twitter          : 'com.twitter.sdk.android:twitter-core:3.1.1',
+        googleauth       : 'com.google.firebase:firebase-auth:11.8.0',
         googleauthservice: 'com.google.android.gms:play-services-auth:11.8.0',
 ]
 
@@ -84,15 +81,14 @@ ext.deps = [
         versions              : versions,
         build                 : build,
         support               : support,
-        pinview               : pinview,
-        dagger                : dagger,
-        butterknife           : butterknife,
-        glide                 : glide,
+        view                  : view,
+        dependencyInjection   : dependencyInjection,
+        viewBinding           : viewBinding,
+        image                 : image,
         rx                    : rx,
-        retrofit              : retrofit,
-        timber                : timber,
+        network               : network,
+        log                   : log,
         test                  : test,
-        circleimageview       : circleImageView,
         social                : social,
         architecturecomponents: architecturecomponents,
 ]
