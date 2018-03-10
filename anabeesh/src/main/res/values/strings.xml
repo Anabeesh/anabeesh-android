@@ -1,3 +1,44 @@
 <resources>
+    <!--Main-->
     <string name="app_name">Anabeesh</string>
+
+    <!--Landing page-->
+    <string name="continue_with_facebook">تابع بواسطة فيسبوك</string>
+    <string name="continue_with_google_plus">تابع بواسطة جوجل بلس</string>
+    <string name="or">أو</string>
+    <string name="create_new_account">انشئ حساب جديد</string>
+    <string name="already_a_user">لديك حسـاب؟</string>
+    <string name="sign_in">سجـل دخـول</string>
+    <string name="anabeesh_logo_content_description">لوجو أنابيـش</string>
+
+    <!--Login-->
+    <string name="email">البريد الالكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forgot_password"><u>نسيت كلمة المرور؟</u></string>
+    <string name="login">تسجيل الدخول</string>
+
+    <!--Registration-->
+    <string name="first_name">الإسم الأول</string>
+    <string name="last_name">إسم العائلة</string>
+    <string name="create_account">إنشاء حساب</string>
+    <string name="register">تسجيل</string>
+    <string name="what_is_your_email">ما هو بريدك الالكتروني؟</string>
+    <string name="confirm_email">ستحتاج الي ان تأكد هذا البريد الاكتروني لاحقا</string>
+    <string name="pick_password">اختر كلمة مرور</string>
+    <string name="use_eight_characters">استخدم ثمانية احرف علي الاقل</string>
+    <string name="next">التالـي</string>
+
+    <!--Home-->
+    <string name="ask_or_search_for_any_question">اسأل او ابحث عن اي سؤال…</string>
+    <string name="good_morning">Good morning,</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="notification">الاشعارات</string>
+
+    <!--Login-->
+    <string name="loading">جاري التحميل..</string>
+    <string name="incorrect_inputs">البيانات غير صحيحة</string>
+    <string name="incorrect_email">البريد الالكتروني غير صحيح</string>
+    <string name="incorrect_password">كلمة المرور غير صحيحة</string>
+    <string name="done">تم بنجاح</string>
+    <string name="network_error">خطأ بالشبكة</string>
 </resources>

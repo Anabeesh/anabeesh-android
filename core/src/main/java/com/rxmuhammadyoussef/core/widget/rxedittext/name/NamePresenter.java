@@ -18,6 +18,7 @@ class NamePresenter extends RxEditTextPresenter {
     private final TextUtil textUtil;
 
     NamePresenter(Context context) {
+        super(context);
         textUtil = new TextUtil(context);
     }
 

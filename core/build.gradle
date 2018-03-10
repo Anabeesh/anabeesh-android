@@ -42,12 +42,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Android
-    implementation deps.support.design \
+    implementation deps.support.design
+    implementation deps.support.cardview
+    implementation deps.support.constraintLayout
 
     // Arch Component
     implementation deps.architecturecomponents.lifecycles
 
-    // RxJava
+    // Rx
     implementation deps.rx.java
     implementation deps.rx.relay
     implementation deps.rx.android
@@ -55,7 +57,9 @@ dependencies {
 
     // Dependency Injection
     implementation deps.dependencyInjection.dagger
+    implementation deps.dependencyInjection.daggerSupportAndroid
     annotationProcessor deps.dependencyInjection.daggerCompiler
+    annotationProcessor deps.dependencyInjection.daggerAndroidCompiler
 
     // Log
     implementation deps.log.timber

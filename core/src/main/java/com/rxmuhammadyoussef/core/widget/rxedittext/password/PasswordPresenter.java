@@ -19,6 +19,7 @@ class PasswordPresenter extends RxEditTextPresenter {
     private final TextUtil textUtil;
 
     PasswordPresenter(Context context) {
+        super(context);
         textUtil = new TextUtil(context);
     }
 

@@ -19,6 +19,7 @@ class PhonePresenter extends RxEditTextPresenter {
     private final TextUtil textUtil;
 
     PhonePresenter(Context context) {
+        super(context);
         textUtil = new TextUtil(context);
     }
 

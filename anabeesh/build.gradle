@@ -40,7 +40,7 @@ android {
 dependencies {
     implementation project(":core")
 
-    // UI
+    //UI
     implementation deps.support.design
     implementation deps.support.recyclerview
     implementation deps.support.constraintLayout
@@ -57,7 +57,9 @@ dependencies {
 
     // Dependency Injection
     implementation deps.dependencyInjection.dagger
+    implementation deps.dependencyInjection.daggerSupportAndroid
     kapt deps.dependencyInjection.daggerCompiler
+    kapt deps.dependencyInjection.daggerAndroidCompiler
 
     // View Binding
     implementation deps.viewBinding.butterknife
@@ -73,6 +75,8 @@ dependencies {
 
     // Log
     implementation deps.log.timber
+    debugImplementation deps.log.leakCanaryDebug
+    releaseImplementation deps.log.leakCanaryRelease
 
     // Testing
     testImplementation deps.test.junit
@@ -80,8 +84,6 @@ dependencies {
     androidTestImplementation deps.test.espresso
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     configurations.all {
         resolutionStrategy {
             force deps.support.annotations

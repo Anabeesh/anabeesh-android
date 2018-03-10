@@ -1,4 +1,6 @@
-package com.rxmuhammadyoussef.anabeesh.schedulers;
+package com.rxmuhammadyoussef.anabeesh.schedulers.qualifires;
+
+import com.rxmuhammadyoussef.anabeesh.schedulers.ThreadSchedulers;
 
 import javax.inject.Qualifier;
 
@@ -7,5 +9,5 @@ import javax.inject.Qualifier;
  */
 
 @Qualifier
-public @interface ComputationalThread {
+public @interface MainThread {
 }

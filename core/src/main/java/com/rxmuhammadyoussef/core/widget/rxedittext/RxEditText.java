@@ -2,13 +2,14 @@ package com.rxmuhammadyoussef.core.widget.rxedittext;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.InputType;
 import android.util.AttributeSet;
 
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
-public abstract class RxEditText extends AppCompatEditText {
+public class RxEditText extends AppCompatEditText {
 
-    private final RxEditTextPresenter presenter = new RxEditTextPresenter();
+    private RxEditTextPresenter presenter;
 
     public RxEditText(Context context) {
         super(context);
@@ -25,11 +26,16 @@ public abstract class RxEditText extends AppCompatEditText {
         init(context);
     }
 
-    protected abstract void init(Context context);
+    protected void init(Context context) {
+        presenter = new RxEditTextPresenter(context);
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+    }
 
     @Override
     protected void onDetachedFromWindow() {
-        presenter.onDetachedFromWindow();
+        if (presenter != null) {
+            presenter.onDetachedFromWindow();
+        }
         super.onDetachedFromWindow();
     }
 
@@ -37,5 +43,7 @@ public abstract class RxEditText extends AppCompatEditText {
         presenter.setTextChangesListener(RxTextView.afterTextChangeEvents(this), textChangesListener);
     }
 
-    public abstract void setValidityListener(ValidityListener validityListener);
+    public void setValidityListener(ValidityListener validityListener) {
+        presenter.listenIfValid(RxTextView.afterTextChangeEvents(this), validityListener);
+    }
 }

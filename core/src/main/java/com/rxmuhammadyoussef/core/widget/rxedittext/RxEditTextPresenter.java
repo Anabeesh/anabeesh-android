@@ -1,8 +1,11 @@
 package com.rxmuhammadyoussef.core.widget.rxedittext;
 
+import android.content.Context;
+
 import com.jakewharton.rxbinding2.InitialValueObservable;
 import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
 import com.rxmuhammadyoussef.core.util.Preconditions;
+import com.rxmuhammadyoussef.core.util.TextUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -11,10 +14,12 @@ import timber.log.Timber;
 
 public class RxEditTextPresenter {
 
+    protected final TextUtil textUtil;
     protected final CompositeDisposable disposable;
 
-    protected RxEditTextPresenter() {
+    protected RxEditTextPresenter(Context context) {
         disposable = new CompositeDisposable();
+        textUtil = new TextUtil(context);
     }
 
     void setTextChangesListener(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener textChangesListener) {
@@ -28,6 +33,20 @@ public class RxEditTextPresenter {
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(textChangesListener::onAfterTextChange, Timber::e));
+    }
+
+    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, ValidityListener validityListener) {
+        Preconditions.checkNonNull(validityListener, "validityListener cannot be null");
+        disposable.add(
+                afterTextChangeObservable
+                        .filter(et -> et.view() != null)
+                        .map(TextViewAfterTextChangeEvent::editable)
+                        .map(CharSequence::toString)
+                        .map(String::trim)
+                        .map(textUtil::getIfNotEmptyStringResult)
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(validityListener::onAfterTextChange, Timber::e));
     }
 
     void onDetachedFromWindow() {

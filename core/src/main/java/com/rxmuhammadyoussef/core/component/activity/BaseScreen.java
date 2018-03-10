@@ -3,9 +3,10 @@ package com.rxmuhammadyoussef.core.component.activity;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Intent;
 
+import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
-public interface BaseScreen extends UIHostComponentProvider {
+public interface BaseScreen {
 
     void showDefaultMessage(String message);
 
@@ -26,4 +27,6 @@ public interface BaseScreen extends UIHostComponentProvider {
     Lifecycle getLifecycle();
 
     ResourcesUtil getResourcesUtil();
+
+    PermissionUtil getPermissionUtil();
 }

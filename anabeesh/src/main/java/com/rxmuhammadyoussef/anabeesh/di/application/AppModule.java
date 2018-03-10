@@ -3,6 +3,10 @@ package com.rxmuhammadyoussef.anabeesh.di.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.rxmuhammadyoussef.core.util.PreferencesUtil;
+import com.rxmuhammadyoussef.core.util.ResourcesUtil;
+import com.rxmuhammadyoussef.core.util.TextUtil;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -28,5 +32,23 @@ public class AppModule {
     @ForApplication
     Context providesApplicationContext() {
         return application;
+    }
+
+    @ApplicationScope
+    @Provides
+    TextUtil providesTextUtil() {
+        return new TextUtil(application);
+    }
+
+    @ApplicationScope
+    @Provides
+    PreferencesUtil providesPreferencesUtil() {
+        return new PreferencesUtil(application);
+    }
+
+    @ApplicationScope
+    @Provides
+    ResourcesUtil providesResourcesUtil() {
+        return new ResourcesUtil(application);
     }
 }

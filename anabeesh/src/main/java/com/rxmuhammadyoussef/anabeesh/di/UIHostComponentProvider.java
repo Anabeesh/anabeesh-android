@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.core.component.activity;
+package com.rxmuhammadyoussef.anabeesh.di;
 
 public interface UIHostComponentProvider<T> {
 

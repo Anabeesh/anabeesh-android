@@ -8,9 +8,12 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.rxmuhammadyoussef.core.R;
 import com.rxmuhammadyoussef.core.di.CoreActivityInjector;
+import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 import com.rxmuhammadyoussef.core.util.UiUtil;
 
@@ -26,6 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
     UiUtil uiUtil;
     @Inject
     ResourcesUtil resourcesUtil;
+    @Inject
+    PermissionUtil permissionUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +49,17 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
     protected abstract int getLayout();
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         lifecycleRegistry.markState(Lifecycle.State.STARTED);
@@ -55,6 +71,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
         super.onResume();
         lifecycleRegistry.markState(Lifecycle.State.RESUMED);
         Timber.tag("Muhammad").d("Lifecycle activity: RESUMED");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        lifecycleRegistry.markState(Lifecycle.State.DESTROYED);
+        Timber.tag("Muhammad").d("Lifecycle activity: DESTROYED");
     }
 
     @Override
@@ -88,7 +111,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
 
     @Override
     public void showLoadingAnimation() {
-        uiUtil.getProgressDialog()
+        uiUtil.getProgressDialog(getString(R.string.please_wait))
                 .show();
     }
 
@@ -109,14 +132,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
         return resourcesUtil;
     }
 
-    public UiUtil getUiUtil() {
-        return uiUtil;
+    @Override
+    public PermissionUtil getPermissionUtil() {
+        return permissionUtil;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        lifecycleRegistry.markState(Lifecycle.State.DESTROYED);
-        Timber.tag("Muhammad").d("Lifecycle activity: DESTROYED");
+    public UiUtil getUiUtil() {
+        return uiUtil;
     }
 }
