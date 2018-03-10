@@ -1,6 +1,8 @@
 package com.rxmuhammadyoussef.anabeesh.di.activity;
 
+import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
+import android.content.Intent;
 
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 
@@ -30,6 +32,12 @@ public class ActivityModule {
     @ForActivity
     Context provideActivityContext() {
         return activity;
+    }
+
+    @ActivityScope
+    @Provides
+    Lifecycle provideLifCycle() {
+        return activity.getLifecycle();
     }
 
     @ActivityScope

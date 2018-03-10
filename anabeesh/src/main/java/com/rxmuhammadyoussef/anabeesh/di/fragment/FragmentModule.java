@@ -27,13 +27,14 @@ public class FragmentModule {
     }
 
     @FragmentScope
-    @Provides
     @ForFragment
+    @Provides
     Context provideFragmentContext() {
         return fragment.getContext();
     }
 
     @FragmentScope
+    @ForFragment
     @Provides
     Activity provideActivity() {
         return fragment.getActivity();

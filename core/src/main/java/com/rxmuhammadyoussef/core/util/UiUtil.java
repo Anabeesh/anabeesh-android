@@ -2,6 +2,7 @@ package com.rxmuhammadyoussef.core.util;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,7 +20,7 @@ public class UiUtil {
     private ProgressDialog progressDialog;
 
     @Inject
-    UiUtil(Context context) {
+    public UiUtil(Context context) {
         Preconditions.checkNonNull(context, "should not pass null context reference");
         this.context = context;
     }
@@ -66,6 +67,58 @@ public class UiUtil {
 
     public Toast getAnnouncementToast(String message) {
         return createToast(getLayoutInflater().inflate(R.layout.layout_announcement_toast, new FrameLayout(context)), message);
+    }
+
+    public Snackbar getSuccessSnackBar(View view, String content) {
+        Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG);
+        Snackbar.SnackbarLayout snackBarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackBarLayout.setBackgroundColor(0x00000000);
+        snackBarLayout.setPadding(0, 0, 0, 0);
+        snackBarLayout.findViewById(android.support.design.R.id.snackbar_text).setVisibility(View.INVISIBLE);
+        View snackContainer = LayoutInflater.from(context).inflate(R.layout.view_snackbar, null, false);
+        TextView contentView = snackContainer.findViewById(R.id.snackbar_content);
+        contentView.setText(content);
+        snackBarLayout.addView(snackContainer, 0);
+        return snackbar;
+    }
+
+    public Snackbar getErrorSnackBar(View view, String content) {
+        Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG);
+        Snackbar.SnackbarLayout snackBarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackBarLayout.setBackgroundColor(0x00000000);
+        snackBarLayout.setPadding(0, 0, 0, 0);
+        snackBarLayout.findViewById(android.support.design.R.id.snackbar_text).setVisibility(View.INVISIBLE);
+        View snackContainer = LayoutInflater.from(context).inflate(R.layout.view_snackbar, null, false);
+        TextView contentView = snackContainer.findViewById(R.id.snackbar_content);
+        contentView.setText(content);
+        snackBarLayout.addView(snackContainer, 0);
+        return snackbar;
+    }
+
+    public Snackbar getWarningSnackBar(View view, String content) {
+        Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG);
+        Snackbar.SnackbarLayout snackBarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackBarLayout.setBackgroundColor(0x00000000);
+        snackBarLayout.setPadding(0, 0, 0, 0);
+        snackBarLayout.findViewById(android.support.design.R.id.snackbar_text).setVisibility(View.INVISIBLE);
+        View snackContainer = LayoutInflater.from(context).inflate(R.layout.view_snackbar, null, false);
+        TextView contentView = snackContainer.findViewById(R.id.snackbar_content);
+        contentView.setText(content);
+        snackBarLayout.addView(snackContainer, 0);
+        return snackbar;
+    }
+
+    public Snackbar getAnnouncementSnackBar(View view, String content) {
+        Snackbar snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG);
+        Snackbar.SnackbarLayout snackBarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        snackBarLayout.setBackgroundColor(0x00000000);
+        snackBarLayout.setPadding(0, 0, 0, 0);
+        snackBarLayout.findViewById(android.support.design.R.id.snackbar_text).setVisibility(View.INVISIBLE);
+        View snackContainer = LayoutInflater.from(context).inflate(R.layout.view_snackbar, null, false);
+        TextView contentView = snackContainer.findViewById(R.id.snackbar_content);
+        contentView.setText(content);
+        snackBarLayout.addView(snackContainer, 0);
+        return snackbar;
     }
 
     public void hideKeyboard(View view) {

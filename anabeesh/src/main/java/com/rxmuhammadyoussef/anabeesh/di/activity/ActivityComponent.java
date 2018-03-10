@@ -1,8 +1,5 @@
 package com.rxmuhammadyoussef.anabeesh.di.activity;
 
-import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentComponent;
-import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
-
 import dagger.Subcomponent;
 
 /**
@@ -13,6 +10,4 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = {ActivityModule.class})
 public interface ActivityComponent {
-
-    FragmentComponent plus(FragmentModule fragmentModule);
 }

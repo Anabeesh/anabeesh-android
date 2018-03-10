@@ -5,6 +5,7 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 
+import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
 import javax.inject.Inject;
@@ -27,13 +28,23 @@ public class BasePresenter implements LifecycleObserver {
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    public void onStart() {
+    protected void onStart() {
         Timber.tag("Muhammad").d("Lifecycle presenter: ON_START");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     protected void onResume() {
         Timber.tag("Muhammad").d("Lifecycle presenter: ON_RESUME");
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    protected void onPause() {
+        Timber.tag("Muhammad").d("Lifecycle presenter: ON_PAUSE");
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    protected void onStop() {
+        Timber.tag("Muhammad").d("Lifecycle presenter: ON_STOP");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -51,5 +62,9 @@ public class BasePresenter implements LifecycleObserver {
 
     protected ResourcesUtil getResourcesUtil() {
         return baseScreen.getResourcesUtil();
+    }
+
+    protected PermissionUtil getPermissionUtil() {
+        return baseScreen.getPermissionUtil();
     }
 }

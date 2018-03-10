@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 
-import javax.inject.Singleton;
+import java.lang.ref.WeakReference;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,17 +15,17 @@ class CoreActivityModule {
     private final BaseActivity baseActivity;
 
     CoreActivityModule(BaseActivity baseActivity) {
-        this.baseActivity = baseActivity;
+        this.baseActivity = new WeakReference<>(baseActivity).get();
     }
 
-    @Singleton
     @Provides
+    @CoreComponentScope
     BaseActivity providesBaseActivity() {
         return baseActivity;
     }
 
-    @Singleton
     @Provides
+    @CoreComponentScope
     Context provideBaseActivityContext() {
         return baseActivity;
     }

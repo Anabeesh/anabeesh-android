@@ -5,13 +5,25 @@ import android.content.Context;
 import android.os.StrictMode;
 
 import com.rxmuhammadyoussef.anabeesh.di.application.AppComponent;
+import com.rxmuhammadyoussef.anabeesh.di.application.AppModule;
 import com.rxmuhammadyoussef.anabeesh.di.application.DaggerAppComponent;
+import com.rxmuhammadyoussef.core.util.FontUtil;
+import com.squareup.leakcanary.LeakCanary;
 
 import timber.log.Timber;
 
 public class AnabeeshApplication extends Application {
 
-    private final AppComponent appComponent = DaggerAppComponent.create();
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        FontUtil.overrideDefaultMonoSpaceFont(getAssets(), "NeoSansArabic.ttf");
+        setStrictModeEnabledForDebug();
+        setupTimberTree();
+        installLeakCanary();
+    }
+
+    private final AppComponent appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     public static AppComponent getComponent(Context context) {
         return getApp(context).appComponent;
@@ -20,25 +32,6 @@ public class AnabeeshApplication extends Application {
     //This is a hack to get a non-static field from a static method (i.e. appComponent)
     private static AnabeeshApplication getApp(Context context) {
         return (AnabeeshApplication) context.getApplicationContext();
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        setStrictModeEnabledForDebug();
-        setupTimberTree();
-        appComponent.inject(this);
-    }
-
-    /*
-   * When enabled we should start logging using Timber class.
-   * learn more at https://medium.com/@caueferreira/timber-enhancing-your-logging-experience-330e8af97341
-   */
-    private void setupTimberTree() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
-        //TODO setup different tree for release (if needed)
     }
 
     /*
@@ -57,5 +50,21 @@ public class AnabeeshApplication extends Application {
                     .penaltyLog()
                     .build());
         }
+    }
+
+    private void setupTimberTree() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
+        //TODO setup different tree for release (if needed)
+    }
+
+    private void installLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
     }
 }

@@ -18,7 +18,7 @@ class EmailPresenter extends RxEditTextPresenter {
     private final TextUtil textUtil;
 
     EmailPresenter(Context context) {
-        super();
+        super(context);
         textUtil = new TextUtil(context);
     }
 

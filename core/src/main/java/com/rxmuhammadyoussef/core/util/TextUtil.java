@@ -44,7 +44,7 @@ public class TextUtil {
      */
     public boolean isValidName(String name) {
         Preconditions.checkNonNull(name);
-        String acceptableChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ةؤلاىيوهـشسقفغعضصنملكظطزرذدخحجثتبا";
+        String acceptableChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ةؤلاىيوهـشسقفغعضصنملكظطزرذدخحجثتبا1234567890";
         if (name.length() >= 3) {
             for (int i = 0; i < name.length(); i++) {
                 if (!acceptableChars.contains(String.valueOf(name.charAt(i)))) {
