@@ -1,44 +1,37 @@
 <resources>
     <!--Main-->
     <string name="app_name">Anabeesh</string>
-
-    <!--Landing page-->
-    <string name="continue_with_facebook">تابع بواسطة فيسبوك</string>
-    <string name="continue_with_google_plus">تابع بواسطة جوجل بلس</string>
-    <string name="or">أو</string>
-    <string name="create_new_account">انشئ حساب جديد</string>
-    <string name="already_a_user">لديك حسـاب؟</string>
-    <string name="sign_in">سجـل دخـول</string>
-    <string name="anabeesh_logo_content_description">لوجو أنابيـش</string>
-
-    <!--Login-->
-    <string name="email">البريد الالكتروني</string>
-    <string name="password">كلمة المرور</string>
-    <string name="forgot_password"><u>نسيت كلمة المرور؟</u></string>
-    <string name="login">تسجيل الدخول</string>
+    <string name="error_network">حدث خطأ بالإتصال,برجاء إعادة المحاوله.</string>
+    <string name="error_communicating_with_server">حدث خطأ اثناء الاتصال</string>
 
     <!--Registration-->
+    <string name="login"><b>تسجيل الدخول</b></string>
+    <string name="register">التسجيل</string>
+    <string name="new_account">حساب جديد</string>
     <string name="first_name">الإسم الأول</string>
-    <string name="last_name">إسم العائلة</string>
-    <string name="create_account">إنشاء حساب</string>
-    <string name="register">تسجيل</string>
-    <string name="what_is_your_email">ما هو بريدك الالكتروني؟</string>
-    <string name="confirm_email">ستحتاج الي ان تأكد هذا البريد الاكتروني لاحقا</string>
-    <string name="pick_password">اختر كلمة مرور</string>
-    <string name="use_eight_characters">استخدم ثمانية احرف علي الاقل</string>
-    <string name="next">التالـي</string>
-
-    <!--Home-->
-    <string name="ask_or_search_for_any_question">اسأل او ابحث عن اي سؤال…</string>
-    <string name="good_morning">Good morning,</string>
-    <string name="profile">الملف الشخصي</string>
-    <string name="notification">الاشعارات</string>
+    <string name="last_name">الإسم الأخير</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="email_format_error">البريد الإلكتروني غير صحيح</string>
+    <string name="password_format_error">يحب ان تتكون كلمه المرور من 6 حروف و تحتوى على حرف صغير و كبير</string>
+    <string name="first_name_format_error"> الاسم الاول غير صحيح</string>
+    <string name="last_name_format_error"> الاسم الاخير غير صحيح</string>
+    <string name="match_format_error">كلمات المرور غير متطابقة</string>
+    <string name="phone_number_format_error">رقم الهاتف غير صحيح</string>
+    <string name="user_already_exists">هذا رقم او البريد الإلكتروني مسجل من قبل</string>
+    <string name="connection_error">خطأ بالشبكة</string>
+    <string name="registering">جاري التسجيل..</string>
+    <string name="please_enter_phone_number">من فضلك إدخل رقم الهاتف</string>
+    <string name="please_enter_password">من فضلك أدخل كلمه المرور</string>
+    <string name="please_enter_first_name">من فضلك ادخل الأسم الأول</string>
+    <string name="please_enter_last_name">من فضلك ادخل الأسم الأخير</string>
+    <string name="please_enter_email_reg">من فضلك ادخل البريد الإلكترونى</string>
+    <string name="please_enter_confirm_password">من فضلك ادخل تأكيد كلمه المرور</string>
 
     <!--Login-->
-    <string name="loading">جاري التحميل..</string>
-    <string name="incorrect_inputs">البيانات غير صحيحة</string>
-    <string name="incorrect_email">البريد الالكتروني غير صحيح</string>
-    <string name="incorrect_password">كلمة المرور غير صحيحة</string>
-    <string name="done">تم بنجاح</string>
-    <string name="network_error">خطأ بالشبكة</string>
+    <string name="forget_password">نسيت كلمه المرور ؟</string>
+    <string name="please_fill_data">من فضلك املأ جميع البيانات</string>
+    <string name="password_format_error_login">كلمه مرور غير صحيحة</string>
 </resources>

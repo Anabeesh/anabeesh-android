@@ -13,7 +13,7 @@ import io.reactivex.Single;
 @ApplicationScope
 class PreferencesStore {
 
-    private static final String KEY_USER = "UserEntityPrefKey";
+    static final String KEY_USER = "UserEntityPrefKey";
     private final PreferencesUtil preferencesUtil;
 
     @Inject

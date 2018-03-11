@@ -75,7 +75,11 @@ class WebServiceStore {
                 emitter.onError(new WebServiceError(getAuthErrorMessage(response.errorBody())));
                 break;
             case SERVER_ERROR:
-                emitter.onError(new WebServiceError("Server error"));
+                String message = response.message();
+                if (message == null) {
+                    message = "Server error";
+                }
+                emitter.onError(new WebServiceError(message));
                 break;
             default:
                 emitter.onError(new WebServiceError("Unknown error"));

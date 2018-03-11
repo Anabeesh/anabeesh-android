@@ -1,79 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/layout_container_login"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.login.LoginActivity">
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
-    <Toolbar
-        android:id="@+id/tb_login"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorLoginToolbar" />
-
-    <TextView
-        android:id="@+id/tv_email"
-        style="@style/LoginTextViewLabelStyle"
+    <ImageView
+        android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_micro"
-        android:layout_marginEnd="@dimen/margin"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin_extra"
-        android:labelFor="@id/et_email"
-        android:text="@string/email" />
+        android:layout_marginBottom="@dimen/marginTopLoginImageView"
+        android:layout_marginTop="@dimen/marginTopLoginImageView"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@id/tv_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        style="@style/LoginTextViewTitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginLoginTextView"
+        android:layout_marginBottom="@dimen/marginTopLoginImageView"
+        android:text="@string/login"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/et_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
     <com.rxmuhammadyoussef.core.widget.rxedittext.email.EmailEditText
         android:id="@+id/et_email"
         style="@style/LoginEditTextStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginLoginEditText"
-        android:layout_marginEnd="@dimen/marginLoginEditText"
-        android:layout_marginStart="@dimen/marginLoginEditText"
-        tools:text="Muhammadyoussef.27@gmail.com" />
-
-    <TextView
-        android:id="@+id/tv_password"
-        style="@style/LoginTextViewLabelStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_micro"
-        android:layout_marginEnd="@dimen/margin"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin_extra"
-        android:labelFor="@id/et_password"
-        android:text="@string/password" />
+        android:layout_marginBottom="@dimen/marginBottomLoginEditText"
+        android:layout_marginEnd="@dimen/marginEndLoginEditText"
+        android:layout_marginStart="@dimen/marginStartLoginEditText"
+        android:layout_marginTop="@dimen/marginTopLoginEditText"
+        android:drawableStart="@drawable/log_in_mail_icon"
+        android:hint="@string/email"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@id/et_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login" />
 
     <com.rxmuhammadyoussef.core.widget.rxedittext.password.PasswordEditText
         android:id="@+id/et_password"
         style="@style/LoginEditTextStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/marginLoginEditText"
-        android:layout_marginStart="@dimen/marginLoginEditText"
-        tools:text="12345678" />
-
-    <TextView
-        android:id="@+id/tv_forgot_password"
-        style="@style/LoginTextViewSubTextClickableStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/forgot_password" />
+        android:layout_marginBottom="@dimen/marginBottomLoginEditText"
+        android:layout_marginEnd="@dimen/marginEndLoginEditText"
+        android:layout_marginStart="@dimen/marginStartLoginEditText"
+        android:drawableStart="@drawable/log_in_password_icon"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_email" />
 
     <Button
         android:id="@+id/btn_login"
+        style="@style/LoginButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottomLoginEditText"
+        android:layout_marginEnd="@dimen/marginEndLoginEditText"
+        android:layout_marginStart="@dimen/marginStartLoginEditText"
+        android:elevation="4dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@id/tv_forget_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+    <TextView
+        android:id="@+id/tv_forget_password"
+        style="@style/LoginTextViewTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/marginBottomLoginButton"
-        android:layout_marginEnd="@dimen/marginEndLoginButton"
-        android:layout_marginStart="@dimen/marginStartLoginButton"
-        android:layout_marginTop="@dimen/marginTopLoginButton"
-        android:text="@string/login" />
-</LinearLayout>
+        android:padding="@dimen/padding"
+        android:text="@string/forget_password"
+        app:layout_constraintBottom_toTopOf="@+id/rl_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <FrameLayout
+        android:id="@+id/rl_container"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            style="@style/LoginSemiCircleButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rotation="180" />
+
+        <Button
+            android:id="@+id/btn_new_account"
+            android:layout_width="match_parent"
+            android:elevation="@dimen/elevationLoginEditText"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/new_account"
+            android:textColor="@color/colorLoginButtonText"
+            android:textSize="@dimen/textSizeLoginButton"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/container_snackbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

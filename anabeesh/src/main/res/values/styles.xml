@@ -1,142 +1,148 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--Base application theme-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:layoutDirection">rtl</item>
-        <item name="android:windowBackground">@color/colorLayoutBackground</item>
-        <item name="android:typeface">monospace</item>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--Landing page-->
-    <style name="LandingPageTheme" parent="AppTheme">
-        <item name="android:buttonStyle">@style/LandingPageButtonStyle</item>
-        <item name="android:textViewStyle">@style/LandingPageTextViewStyle</item>
-        <item name="android:windowBackground">@color/colorLandingPageLayoutBackground</item>
-        <item name="android:colorPrimaryDark">@color/colorLandingPageLayoutBackground</item>
-        <item name="android:colorPrimary">@color/colorLandingPageLayoutBackground</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
+    <!-- Base activity theme-->
+    <style name="ActivityBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:typeface">monospace</item>
+        <item name="android:layoutDirection">rtl</item>
+    </style>
+
+    <!--Splash-->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorSplashLayoutBackground</item>
+        <item name="colorPrimaryDark">@color/colorSplashLayoutBackground</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
-    <style name="LandingPageTextViewStyle" parent="android:style/Widget.TextView">
-        <item name="android:textSize">@dimen/textSizeLandingPageText</item>
-        <item name="android:textColor">@color/colorLandingPageTextViewBody</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
+    <!--Registration-->
+    <style name="RegistrationTheme" parent="ActivityBaseTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccentRegistration</item>
+        <item name="android:windowBackground">@color/colorRegisterLayoutBackground</item>
+        <item name="android:editTextStyle">@style/RegisterEditTextStyle</item>
+        <item name="android:buttonStyle">@style/RegisterButtonStyle</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 
-    <style name="LandingPageButtonStyle" parent="android:style/Widget.Button">
-        <item name="android:textSize">@dimen/textSizeLandingPageText</item>
-        <item name="android:textColor">@color/colorLandingPageButtonText</item>
-        <item name="android:paddingTop">@dimen/paddingTopLandingPageButton</item>
-        <item name="android:paddingBottom">@dimen/paddingBottomLandingPageButton</item>
-        <item name="android:paddingStart">@dimen/paddingStartLandingPageButton</item>
-        <item name="android:paddingEnd">@dimen/paddingEndLandingPageButton</item>
-        <item name="android:drawablePadding">@dimen/paddingDrawableLandingPage</item>
-        <item name="android:elevation">@dimen/elevationLandingPageButton</item>
+    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="RegisterEditTextStyle" parent="android:style/Widget.EditText">
+        <item name="android:textSize">@dimen/textSizeRegistrationText</item>
+        <item name="android:textColor">@color/colorRegistrationEditTextText</item>
+        <item name="android:textColorHint">@color/colorRegistrationEditTextHint</item>
+        <item name="android:drawablePadding">@dimen/paddingDrawableRegistrationEditText</item>
+        <item name="android:padding">@dimen/paddingRegistrationEditText</item>
+        <item name="android:background">@drawable/shape_edittext_login</item>
+        <item name="android:elevation" tools:targetApi="lollipop">@dimen/elevationRegistrationEditText</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="RegisterSemiCircleButtonStyle" parent="android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/textSizeRegistrationText</item>
+        <item name="android:textColor">@color/colorRegistrationButtonTextInverse</item>
+        <item name="android:paddingTop">@dimen/paddingTopRegistrationSemiCircleButton</item>
+        <item name="android:paddingBottom">@dimen/paddingBottomRegistrationSemiCircleButton</item>
+        <item name="android:paddingStart">@dimen/paddingStartRegistrationSemiCircleButton</item>
+        <item name="android:paddingEnd">@dimen/paddingEndRegistrationSemiCircleButton</item>
+        <item name="android:background">@drawable/shape_registration_semi_circle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="RegisterButtonStyle" parent="android:style/Widget.Button">
+        <item name="android:textSize">@dimen/textSizeRegistrationText</item>
+        <item name="android:textColor">@drawable/selector_register_button_text</item>
+        <item name="android:paddingTop">@dimen/paddingTopRegistrationButton</item>
+        <item name="android:paddingBottom">@dimen/paddingBottomRegistrationButton</item>
+        <item name="android:paddingStart">@dimen/paddingStartRegistrationButton</item>
+        <item name="android:paddingEnd">@dimen/paddingEndRegistrationButton</item>
+        <item name="android:elevation" tools:targetApi="lollipop">@dimen/elevationRegistrationButton</item>
+        <item name="android:background">@drawable/selector_button_background_register</item>
+    </style>
+
+    <style name="RegisterTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorRegistrationTextViewTitle</item>
+        <item name="android:textSize">@dimen/textSizeRegistrationTitle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RegisterTextViewTitleInverseStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorRegistrationTextViewTitleInverse</item>
+        <item name="android:textSize">@dimen/textSizeRegistrationTitle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!--Login-->
-    <style name="LoginTheme" parent="AppTheme">
-        <item name="android:layoutDirection">rtl</item>
+    <style name="LoginTheme" parent="ActivityBaseTheme">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorPrimary">@color/colorPrimaryRegistration</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRegistration</item>
         <item name="android:windowBackground">@color/colorLoginLayoutBackground</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="android:buttonStyle">@style/LoginButtonStyle</item>
-        <item name="android:textViewStyle">@style/LoginTextViewStyle</item>
         <item name="android:editTextStyle">@style/LoginEditTextStyle</item>
-        <item name="android:typeface">monospace</item>
-    </style>
-
-    <style name="LoginTextViewStyle" parent="android:style/Widget.TextView">
-        <item name="android:textSize">@dimen/textSizeLoginText</item>
-        <item name="android:textColor">@color/colorLoginTextViewBody</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
     </style>
 
     <style name="LoginEditTextStyle" parent="android:style/Widget.EditText">
         <item name="android:textSize">@dimen/textSizeLoginEditText</item>
-        <item name="android:textColor">@color/colorLoginEditTextBody</item>
+        <item name="android:textColor">@color/colorLoginEditTextText</item>
         <item name="android:textColorHint">@color/colorLoginEditTextHint</item>
+        <item name="android:drawablePadding">@dimen/paddingDrawableLoginEditText</item>
         <item name="android:padding">@dimen/paddingLoginEditText</item>
+        <item name="android:elevation" tools:targetApi="lollipop">@dimen/elevationLoginEditText</item>
         <item name="android:background">@drawable/shape_edittext_login</item>
-        <item name="android:elevation">@dimen/elevationLoginEditText</item>
+        <item name="android:gravity">right</item>
     </style>
 
     <style name="LoginButtonStyle" parent="android:style/Widget.Button">
         <item name="android:textSize">@dimen/textSizeLoginText</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorLoginButtonText</item>
+        <item name="android:textColor">@drawable/selector_register_button_text</item>
         <item name="android:paddingTop">@dimen/paddingTopLoginButton</item>
         <item name="android:paddingBottom">@dimen/paddingBottomLoginButton</item>
         <item name="android:paddingStart">@dimen/paddingStartLoginButton</item>
         <item name="android:paddingEnd">@dimen/paddingEndLoginButton</item>
-        <item name="android:background">@drawable/selector_button_background_login</item>
-        <item name="android:elevation">@dimen/elevationLoginEditText</item>
+        <item name="android:background">@drawable/selector_button_background_register</item>
     </style>
 
-    <style name="LoginTextViewLabelStyle" parent="android:style/Widget.TextView">
+    <style name="LoginSemiCircleButtonStyle" parent="android:style/Widget.Button">
+        <item name="android:textSize">@dimen/textSizeRegistrationText</item>
+        <item name="android:textColor">@color/colorLoginButtonText</item>
+        <item name="android:paddingTop">@dimen/paddingTopRegistrationSemiCircleButton</item>
+        <item name="android:paddingBottom">@dimen/paddingBottomRegistrationSemiCircleButton</item>
+        <item name="android:paddingStart">@dimen/paddingStartRegistrationSemiCircleButton</item>
+        <item name="android:paddingEnd">@dimen/paddingEndRegistrationSemiCircleButton</item>
+        <item name="android:background">@drawable/shape_login_semi_circle</item>
+    </style>
+
+    <style name="LoginTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorLoginTextViewTitle</item>
+        <item name="android:textSize">@dimen/textSizeLoginTitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="LoginTextViewTextStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorLoginTextViewTitle</item>
         <item name="android:textSize">@dimen/textSizeLoginText</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
-    </style>
-
-    <style name="LoginTextViewSubTextClickableStyle" parent="android:style/Widget.TextView">
-        <item name="android:textColor">@color/colorLoginTextClickable</item>
-        <item name="android:textSize">@dimen/textSizeLoginSubText</item>
-        <item name="android:padding">@dimen/paddingLoginTextView</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
-    </style>
-
-    <!--Registration-->
-    <style name="RegisterTheme" parent="AppTheme">
-        <item name="android:layoutDirection">rtl</item>
-        <item name="android:windowBackground">@color/colorRegisterLayoutBackground</item>
-        <item name="android:buttonStyle">@style/RegisterButtonStyle</item>
-        <item name="android:textViewStyle">@style/RegisterTextViewStyle</item>
-        <item name="android:editTextStyle">@style/RegisterEditTextStyle</item>
-        <item name="android:typeface">monospace</item>
-    </style>
-
-    <style name="RegisterTextViewStyle" parent="android:style/Widget.TextView">
-        <item name="android:textSize">@dimen/textSizeRegisterTitle</item>
-        <item name="android:textColor">@color/colorRegisterTextViewBody</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
-    </style>
-
-    <style name="RegisterEditTextStyle" parent="android:style/Widget.EditText">
-        <item name="android:textSize">@dimen/textSizeRegisterEditText</item>
-        <item name="android:textColor">@color/colorRegisterEditTextBody</item>
-        <item name="android:textColorHint">@color/colorRegisterEditTextHint</item>
-        <item name="android:padding">@dimen/paddingRegisterEditText</item>
-        <item name="android:background">@drawable/shape_edittext_register</item>
-        <item name="android:elevation">@dimen/elevationRegistrationEditText</item>
-    </style>
-
-    <style name="RegisterButtonStyle" parent="android:style/Widget.Button">
-        <item name="android:textSize">@dimen/textSizeRegisterTitle</item>
-        <item name="android:textColor">@color/colorRegisterButtonText</item>
-        <item name="android:paddingTop">@dimen/paddingTopRegisterButton</item>
-        <item name="android:paddingBottom">@dimen/paddingBottomRegisterButton</item>
-        <item name="android:paddingStart">@dimen/paddingStartRegisterButton</item>
-        <item name="android:paddingEnd">@dimen/paddingEndRegisterButton</item>
-        <item name="android:background">@drawable/selector_button_background_register</item>
-        <item name="android:elevation">@dimen/elevationRegistrationEditText</item>
-    </style>
-
-    <style name="RegisterTextViewLabelStyle" parent="android:style/Widget.TextView">
-        <item name="android:textColor">@color/colorRegisterTextViewLabel</item>
-        <item name="android:textSize">@dimen/textSizeRegisterText</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
-    </style>
-
-    <style name="RegisterTextViewSubTextStyle" parent="android:style/Widget.TextView">
-        <item name="android:textColor">@color/colorLoginTextViewBody</item>
-        <item name="android:textSize">@dimen/textSizeRegisterSubText</item>
-        <item name="android:drawablePadding">@dimen/paddingRegisterTextViewDrawable</item>
         <item name="android:gravity">center</item>
-        <item name="android:lineSpacingExtra">@dimen/padding_nano</item>
+    </style>
+
+    <style name="LoginTextViewTitleInverseStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorLoginTextViewTitleInverse</item>
+        <item name="android:textSize">@dimen/textSizeLoginTitle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

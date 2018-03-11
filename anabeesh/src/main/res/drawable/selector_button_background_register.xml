@@ -2,24 +2,20 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false">
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="@color/colorRegisterButtonDisabled" />
-            <corners android:radius="@dimen/radiusButtonRegister" />
+            <solid android:color="@color/colorRegistrationButtonDisabled" />
+            <corners android:radius="@dimen/radiusRegistrationButton" />
         </shape>
     </item>
     <item android:state_enabled="true" android:state_pressed="true">
-        <ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorRegisterButtonRipple">
-            <item android:id="@android:id/background">
-                <shape>
-                    <solid android:color="@color/colorRegisterButton" />
-                    <corners android:radius="@dimen/radiusButtonRegister" />
-                </shape>
-            </item>
-        </ripple>
+        <shape>
+            <solid android:color="@color/colorRegistrationButtonPressed" />
+            <corners android:radius="@dimen/radiusRegistrationButton" />
+        </shape>
     </item>
     <item android:state_enabled="true">
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="@color/colorRegisterButton" />
-            <corners android:radius="@dimen/radiusButtonRegister" />
+            <solid android:color="@color/colorRegistrationButton" />
+            <corners android:radius="@dimen/radiusRegistrationButton" />
         </shape>
     </item>
 </selector>

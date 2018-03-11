@@ -1,39 +1,49 @@
 package com.rxmuhammadyoussef.anabeesh.store;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
+import com.google.gson.Gson;
 import com.rxmuhammadyoussef.anabeesh.di.application.ApplicationScope;
+import com.rxmuhammadyoussef.anabeesh.store.model.user.UserEntity;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
+import com.rxmuhammadyoussef.core.util.PreferencesUtil;
 
 import javax.inject.Inject;
+
+import static com.rxmuhammadyoussef.anabeesh.store.PreferencesStore.KEY_USER;
 
 @ApplicationScope
 public class UserSessionManager {
 
-    private final PreferencesStore preferencesStore;
+    private final PreferencesUtil preferencesUtil;
     private final UserMapper userMapper;
 
     @Inject
-    UserSessionManager(PreferencesStore preferencesStore, UserMapper userMapper) {
-        this.preferencesStore = preferencesStore;
+    UserSessionManager(PreferencesUtil preferencesUtil, UserMapper userMapper) {
+        this.preferencesUtil = preferencesUtil;
         this.userMapper = userMapper;
     }
 
     public boolean isSessionActive() {
-        return preferencesStore.getCurrentUser()
-                .map(userEntity -> userEntity != null)
-                .blockingGet();
+        Gson gson = new Gson();
+        String userJson = preferencesUtil.getString(KEY_USER);
+        return gson.fromJson(userJson, UserEntity.class) != null;
     }
 
-    @NonNull
+    @Nullable
     public UserModel getCurrentUser() {
-        return preferencesStore.getCurrentUser()
-                .map(userMapper::toModel)
-                .blockingGet();
+        Gson gson = new Gson();
+        String userJson = preferencesUtil.getString(KEY_USER);
+        UserEntity userEntity = gson.fromJson(userJson, UserEntity.class);
+        UserModel userModel = null;
+        if (userEntity != null) {
+            userModel = userMapper.toModel(userEntity);
+        }
+        return userModel;
     }
 
     public void logout() {
-        preferencesStore.deleteCurrentUser();
+        preferencesUtil.delete(KEY_USER);
     }
 }
