@@ -4,7 +4,10 @@ import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.content.Intent;
 
+import com.rxmuhammadyoussef.anabeesh.ui.login.LoginScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationScreen;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
+import com.rxmuhammadyoussef.core.util.UiUtil;
 
 import dagger.Module;
 import dagger.Provides;
@@ -42,7 +45,25 @@ public class ActivityModule {
 
     @ActivityScope
     @Provides
+    UiUtil providesUiUtil() {
+        return new UiUtil(activity);
+    }
+
+    @ActivityScope
+    @Provides
     CompositeDisposable providesCompositeDisposable() {
         return new CompositeDisposable();
+    }
+
+    @ActivityScope
+    @Provides
+    LoginScreen providesLoginScreen() {
+        return (LoginScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    RegistrationScreen providesRegistrationScreen() {
+        return (RegistrationScreen) activity;
     }
 }

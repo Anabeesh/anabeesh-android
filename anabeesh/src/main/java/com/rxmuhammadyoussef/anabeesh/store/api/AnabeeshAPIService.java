@@ -10,17 +10,17 @@ import retrofit2.http.POST;
 
 public interface AnabeeshAPIService {
 
-    @POST("api/login")
+    @POST("/api/login")
     @FormUrlEncoded
     Call<UserApiResponse.DataResponse> login(
-            @Header("Content-Type") String header,
+            @Header("content-type") String header,
             @Field("Email") String email,
             @Field("Password") String password);
 
-    @POST("api/Register")
+    @POST("/api/Register")
     @FormUrlEncoded
     Call<UserApiResponse.DataResponse> register(
-            @Header("Content-Type") String header,
+            @Header("content-type") String header,
             @Field("Email") String email,
             @Field("Password") String password,
             @Field("FirstName") String firstName,

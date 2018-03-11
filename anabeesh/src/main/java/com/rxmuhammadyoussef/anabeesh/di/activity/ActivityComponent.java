@@ -1,5 +1,9 @@
 package com.rxmuhammadyoussef.anabeesh.di.activity;
 
+import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivity;
+import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivity;
+import com.rxmuhammadyoussef.anabeesh.ui.splash.SplashActivity;
+
 import dagger.Subcomponent;
 
 /**
@@ -10,4 +14,10 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = {ActivityModule.class})
 public interface ActivityComponent {
+
+    void inject(SplashActivity splashActivity);
+
+    void inject(LoginActivity loginActivity);
+
+    void inject(RegistrationActivity registrationActivity);
 }

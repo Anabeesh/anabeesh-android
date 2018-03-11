@@ -2,101 +2,80 @@
 <resources>
     <!--Main-->
     <dimen name="margin">16dp</dimen>
-    <dimen name="margin_micro">8dp</dimen>
-    <dimen name="margin_nano">4dp</dimen>
     <dimen name="margin_extra">24dp</dimen>
+    <dimen name="margin_micro">8dp</dimen>
     <dimen name="padding">16dp</dimen>
-    <dimen name="padding_nano">4dp</dimen>
+    <dimen name="padding_extra">21dp</dimen>
     <dimen name="padding_micro">8dp</dimen>
-    <dimen name="padding_extra">24dp</dimen>
+    <dimen name="padding_nano">4dp</dimen>
 
-    <!--Landing page-->
-    <!--ImageView-->
-    <dimen name="marginTopLandingPageImageView">16dp</dimen>
-    <dimen name="marginBottomLandingPageImageView">56dp</dimen>
+    <!--Registration-->
+    <!--EditText-->
+    <dimen name="marginTopRegistrationEditText">8dp</dimen>
+    <dimen name="marginBottomRegistrationEditText">8dp</dimen>
+    <dimen name="marginStartRegistrationEditText">16dp</dimen>
+    <dimen name="marginEndRegistrationEditText">16dp</dimen>
+    <dimen name="paddingRegistrationEditText">16dp</dimen>
+    <dimen name="paddingDrawableRegistrationEditText">8dp</dimen>
+    <dimen name="textSizeRegistrationEditText">14sp</dimen>
+    <dimen name="radiusRegistrationEditText">8dp</dimen>
+    <dimen name="elevationRegistrationEditText">2dp</dimen>
     <!--TextView-->
-    <dimen name="paddingLandingPageTextView">16dp</dimen>
-    <dimen name="marginLandingPageTextView">16dp</dimen>
-    <dimen name="textSizeLandingPageTitle">16sp</dimen>
-    <dimen name="textSizeLandingPageText">14sp</dimen>
-    <dimen name="textSizeLandingPageSubText">12sp</dimen>
+    <dimen name="paddingRegistrationTextView">16dp</dimen>
+    <dimen name="marginRegistrationTextView">24dp</dimen>
+    <dimen name="textSizeRegistrationTitle">16sp</dimen>
+    <dimen name="textSizeRegistrationText">14sp</dimen>
     <!--Button-->
-    <dimen name="elevationLandingPageButton">2dp</dimen>
-    <dimen name="marginTopLandingPageButton">16dp</dimen>
-    <dimen name="marginBottomLandingPageButton">0dp</dimen>
-    <dimen name="marginStartLandingPageButton">0dp</dimen>
-    <dimen name="marginEndLandingPageButton">0dp</dimen>
-    <dimen name="paddingDrawableLandingPage">10dp</dimen>
-    <dimen name="paddingTopLandingPageButton">10dp</dimen>
-    <dimen name="paddingBottomLandingPageButton">10dp</dimen>
-    <dimen name="paddingStartLandingPageButton">64dp</dimen>
-    <dimen name="paddingEndLandingPageButton">64dp</dimen>
-    <dimen name="radiusButtonLandingPage">50dp</dimen>
+    <dimen name="heightRegistrationButton">110dp</dimen>
+    <dimen name="marginTopRegistrationButton">16dp</dimen>
+    <dimen name="marginBottomRegistrationButton">16dp</dimen>
+    <dimen name="marginStartRegistrationButton">16dp</dimen>
+    <dimen name="marginEndRegistrationButton">16dp</dimen>
+    <dimen name="paddingTopRegistrationSemiCircleButton">32dp</dimen>
+    <dimen name="paddingBottomRegistrationSemiCircleButton">32dp</dimen>
+    <dimen name="paddingStartRegistrationSemiCircleButton">80dp</dimen>
+    <dimen name="paddingEndRegistrationSemiCircleButton">80dp</dimen>
+    <dimen name="paddingTopRegistrationButton">16dp</dimen>
+    <dimen name="paddingBottomRegistrationButton">16dp</dimen>
+    <dimen name="paddingStartRegistrationButton">80dp</dimen>
+    <dimen name="paddingEndRegistrationButton">80dp</dimen>
+    <dimen name="radiusRegistrationButton">10dp</dimen>
+    <dimen name="elevationRegistrationButton">1dp</dimen>
 
     <!--Login-->
     <!--EditText-->
-    <dimen name="elevationLoginEditText">2dp</dimen>
-    <dimen name="textSizeLoginEditText">14sp</dimen>
-    <dimen name="marginLoginEditText">16dp</dimen>
+    <dimen name="marginTopLoginEditText">16dp</dimen>
+    <dimen name="marginBottomLoginEditText">16dp</dimen>
+    <dimen name="marginStartLoginEditText">16dp</dimen>
+    <dimen name="marginEndLoginEditText">16dp</dimen>
     <dimen name="paddingLoginEditText">16dp</dimen>
-    <dimen name="radiusEditTextLogin">4dp</dimen>
+    <dimen name="paddingDrawableLoginEditText">8dp</dimen>
+    <dimen name="textSizeLoginEditText">14sp</dimen>
+    <dimen name="radiusLoginEditText">8dp</dimen>
+    <dimen name="elevationLoginEditText">2dp</dimen>
     <!--TextView-->
     <dimen name="paddingLoginTextView">16dp</dimen>
-    <dimen name="marginLoginTextView">16dp</dimen>
+    <dimen name="marginLoginTextView">40dp</dimen>
     <dimen name="textSizeLoginTitle">16sp</dimen>
     <dimen name="textSizeLoginText">14sp</dimen>
-    <dimen name="textSizeLoginSubText">12sp</dimen>
     <!--Button-->
-    <dimen name="marginTopLoginButton">40dp</dimen>
-    <dimen name="marginBottomLoginButton">0dp</dimen>
-    <dimen name="marginStartLoginButton">0dp</dimen>
-    <dimen name="marginEndLoginButton">0dp</dimen>
+    <dimen name="marginTopLoginButton">16dp</dimen>
+    <dimen name="marginBottomLoginButton">16dp</dimen>
+    <dimen name="marginStartLoginButton">16dp</dimen>
+    <dimen name="marginEndLoginButton">16dp</dimen>
+    <dimen name="paddingTopLoginSemiCircleButton">32dp</dimen>
+    <dimen name="paddingBottomLoginSemiCircleButton">32dp</dimen>
+    <dimen name="paddingStartLoginSemiCircleButton">80dp</dimen>
+    <dimen name="paddingEndLoginSemiCircleButton">80dp</dimen>
     <dimen name="paddingTopLoginButton">10dp</dimen>
     <dimen name="paddingBottomLoginButton">10dp</dimen>
     <dimen name="paddingStartLoginButton">80dp</dimen>
     <dimen name="paddingEndLoginButton">80dp</dimen>
-    <dimen name="radiusButtonLogin">50dp</dimen>
-
-    <!--Registration-->
-    <!--EditText-->
-    <dimen name="elevationRegistrationEditText">2dp</dimen>
-    <dimen name="textSizeRegisterEditText">14sp</dimen>
-    <dimen name="marginRegisterEditText">16dp</dimen>
-    <dimen name="paddingRegisterEditText">16dp</dimen>
-    <dimen name="radiusEditTextRegister">4dp</dimen>
-    <!--TextView-->
-    <dimen name="paddingRegisterTextView">16dp</dimen>
-    <dimen name="paddingRegisterTextViewDrawable">8dp</dimen>
-    <dimen name="marginRegisterTextView">16dp</dimen>
-    <dimen name="textSizeRegisterTitle">16sp</dimen>
-    <dimen name="textSizeRegisterText">14sp</dimen>
-    <dimen name="textSizeRegisterSubText">12sp</dimen>
-    <!--Button-->
-    <dimen name="marginTopRegisterButton">40dp</dimen>
-    <dimen name="marginBottomRegisterButton">0dp</dimen>
-    <dimen name="marginStartRegisterButton">0dp</dimen>
-    <dimen name="marginEndRegisterButton">0dp</dimen>
-    <dimen name="paddingTopRegisterButton">10dp</dimen>
-    <dimen name="paddingBottomRegisterButton">10dp</dimen>
-    <dimen name="paddingStartRegisterButton">80dp</dimen>
-    <dimen name="paddingEndRegisterButton">80dp</dimen>
-    <dimen name="radiusButtonRegister">50dp</dimen>
-
-    <!--Home-->
-    <dimen name="elevationHomeCard">2dp</dimen>
-    <!--EditText-->
-    <dimen name="textSizeHomeEditText">14sp</dimen>
-    <dimen name="marginHomeEditText">16dp</dimen>
-    <dimen name="paddingHomeEditText">16dp</dimen>
-    <dimen name="radiusHomeEditText">4dp</dimen>
-    <!--TextView-->
-    <dimen name="paddingDrawableHome">8dp</dimen>
-    <dimen name="paddingHomeTextView">16dp</dimen>
-    <dimen name="marginHomeTextView">16dp</dimen>
-    <dimen name="textSizeHomeTitle">16sp</dimen>
-    <dimen name="textSizeHomeText">14sp</dimen>
-    <dimen name="textSizeHomeSubText">12sp</dimen>
-    <dimen name="radiusQuestionTag">8dp</dimen>
+    <dimen name="radiusLoginButton">8dp</dimen>
+    <dimen name="textSizeLoginButton">18sp</dimen>
     <!--ImageView-->
-    <dimen name="imageSizeHomeQuestion">88dp</dimen>
+    <dimen name="marginTopLoginImageView">32dp</dimen>
+    <dimen name="marginBottomLoginImageView">16dp</dimen>
+    <dimen name="marginStartLoginImageView">16dp</dimen>
+    <dimen name="marginEndLoginImageView">16dp</dimen>
 </resources>

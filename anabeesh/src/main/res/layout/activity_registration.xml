@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            tools:context="com.intcore.sayes_android.ui.registration.RegistrationActivity">
+
+            <TextView
+                android:id="@+id/btn_login"
+                style="@style/RegisterSemiCircleButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/heightRegistrationButton"
+                android:layout_marginBottom="@dimen/marginBottomRegistrationButton"
+                android:elevation="@dimen/elevationRegistrationEditText"
+                android:text="@string/login"
+                app:layout_constraintBottom_toTopOf="@id/tv_new_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_new_account"
+                style="@style/RegisterTextViewTitleInverseStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginRegistrationTextView"
+                android:text="@string/new_account"
+                app:layout_constraintBottom_toTopOf="@+id/iv_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:elevation="@dimen/elevationRegistrationEditText"
+                android:src="@drawable/user_icon"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toTopOf="@id/ll_fields"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_new_account" />
+
+            <LinearLayout
+                android:id="@+id/ll_fields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar">
+
+                <com.rxmuhammadyoussef.core.widget.rxedittext.name.NameEditText
+                    android:id="@+id/et_first_name"
+                    style="@style/RegisterEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:drawableStart="@drawable/log_in_user_icon"
+                    android:hint="@string/first_name" />
+
+                <com.rxmuhammadyoussef.core.widget.rxedittext.name.NameEditText
+                    android:id="@+id/et_last_name"
+                    style="@style/RegisterEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:drawableStart="@drawable/log_in_user_icon"
+                    android:hint="@string/last_name" />
+
+                <com.rxmuhammadyoussef.core.widget.rxedittext.email.EmailEditText
+                    android:id="@+id/et_email"
+                    style="@style/RegisterEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:drawableStart="@drawable/log_in_mail_icon"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+
+                <com.rxmuhammadyoussef.core.widget.rxedittext.password.PasswordEditText
+                    android:id="@+id/et_password"
+                    style="@style/RegisterEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:drawableStart="@drawable/sign_up_password_icon"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+                <com.rxmuhammadyoussef.core.widget.rxedittext.password.PasswordEditText
+                    android:id="@+id/et_confirm_password"
+                    style="@style/RegisterEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:drawableStart="@drawable/sign_up_password_icon"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword" />
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/marginBottomLoginButton"
+                    android:layout_marginEnd="@dimen/marginEndRegistrationEditText"
+                    android:layout_marginStart="@dimen/marginStartRegistrationEditText"
+                    android:layout_marginTop="@dimen/marginTopRegistrationEditText"
+                    android:elevation="@dimen/elevationRegistrationEditText"
+                    android:text="@string/register" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/container_snackbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
