@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.anabeesh.events;
+package com.rxmuhammadyoussef.anabeesh.events.error;
 
 public class WebServiceError extends Throwable {
 
