@@ -8,6 +8,7 @@
     <dimen name="padding_extra">21dp</dimen>
     <dimen name="padding_micro">8dp</dimen>
     <dimen name="padding_nano">4dp</dimen>
+    <dimen name="textSizeHeading">24dp</dimen>
 
     <!--Registration-->
     <!--EditText-->

@@ -1,58 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Main-->
-    <color name="colorPrimary">#757ce4</color>
-    <color name="colorPrimaryDark">#757ce4</color>
-    <color name="colorAccent">#00d2b9</color>
+    <color name="colorPrimary">#00A8FE</color>
+    <color name="colorPrimaryDark">#00A8FE</color>
+    <color name="colorAccent">#00A8FE</color>
+    <color name="colorAccentLight">#9F9C9D</color>
+    <color name="colorLayoutBackground">#e4e7ee</color>
+
+    <!--Text-->
+    <color name="colorTextPrimaryDark">#3e3e3e</color>
+    <color name="colorTextPrimaryLight">#ffffff</color>
+    <color name="colorTextSecondaryDark">#646464</color>
+    <color name="colorTextSecondaryLight">#bbbbbb</color>
+    <color name="colorTextClickable">#5864f4</color>
 
     <!--Splash-->
-    <color name="colorSplashLayoutBackground">#e4e7ee</color>
+    <color name="colorSplashLayoutBackground">@color/colorLayoutBackground</color>
 
     <!--Registration-->
     <color name="colorPrimaryRegistration">#e4e7ee</color>
     <color name="colorPrimaryDarkRegistration">#e4e7ee</color>
-    <color name="colorAccentRegistration">#00d2b9</color>
-    <color name="colorRegisterLayoutBackground">#e4e7ee</color>
+    <color name="colorAccentRegistration">@color/colorAccent</color>
+    <color name="colorRegisterLayoutBackground">@color/colorLayoutBackground</color>
     <!--TextView-->
-    <color name="colorRegistrationTextViewTitle">#ffffff</color>
-    <color name="colorRegistrationTextViewTitleInverse">#757bc9</color>
+    <color name="colorRegistrationTextViewTitle">@color/colorTextPrimaryLight</color>
+    <color name="colorRegistrationTextViewTitleInverse">@color/colorTextPrimaryDark</color>
     <!--EditText-->
-    <color name="colorRegistrationEditTextBackground">#20f1f5fe</color>
-    <color name="colorRegistrationEditTextText">#757bc9</color>
-    <color name="colorRegistrationEditTextHint">#969595</color>
-    <color name="colorRegistrationEditTextIcon">#00d2b9</color>
+    <color name="colorRegistrationEditTextBackground">#f6f7f9</color>
+    <color name="colorRegistrationEditTextText">@color/colorTextPrimaryDark</color>
+    <color name="colorRegistrationEditTextHint">@color/colorTextSecondaryLight</color>
+    <color name="colorRegistrationEditTextIcon">@color/colorTextPrimaryDark</color>
     <!--Button-->
-    <color name="colorRegistrationButton">#00d2b9</color>
+    <color name="colorRegistrationButton">@color/colorAccent</color>
     <color name="colorRegistrationButtonDisabled">#FFABABAB</color>
-    <color name="colorRegistrationButtonPressed">#00F0D3</color>
-    <color name="colorRegistrationButtonText">#FFFFFF</color>
-    <color name="colorRegistrationButtonTextDisabled">#bdf0f0f0</color>
-    <color name="colorRegistrationButtonTextInverse">#ffffff</color>
+    <color name="colorRegistrationButtonPressed">@color/colorAccentLight</color>
+    <color name="colorRegistrationButtonText">@color/colorTextPrimaryLight</color>
+    <color name="colorRegistrationButtonTextDisabled">@color/colorTextSecondaryLight</color>
+    <color name="colorRegistrationButtonTextInverse">@color/colorTextPrimaryLight</color>
     <!--semiCircleButton-->
-    <color name="colorRegistrationSemiCircleButton">#757ce4</color>
-    <color name="colorRegistrationSemiCircleButtonPressed">#838BFF</color>
+    <color name="colorRegistrationSemiCircleButton">@color/colorPrimary</color>
+    <color name="colorRegistrationSemiCircleButtonPressed">@color/colorPrimary</color>
 
     <!--Login-->
     <color name="colorPrimaryLogin">#FFE3E6ED</color>
     <color name="colorPrimaryDarkLogin">#FFE3E6ED</color>
-    <color name="colorAccentLogin">#00d2b9</color>
-    <color name="colorLoginLayoutBackground">#FFE3E6ED</color>
+    <color name="colorAccentLogin">@color/colorAccent</color>
+    <color name="colorLoginLayoutBackground">@color/colorLayoutBackground</color>
     <!--TextView-->
-    <color name="colorLoginTextViewTitle">#757bc9</color>
-    <color name="colorLoginTextViewTitleInverse">#ffffff</color>
+    <color name="colorLoginTextViewTitle">@color/colorTextPrimaryDark</color>
+    <color name="colorLoginTextViewTitleInverse">@color/colorTextPrimaryLight</color>
     <!--EditText-->
-    <color name="colorLoginEditTextBackground">#ffffff</color>
-    <color name="colorLoginEditTextText">#757bc9</color>
-    <color name="colorLoginEditTextHint">#969595</color>
-    <color name="colorLoginEditTextIcon">#00d2b9</color>
+    <color name="colorLoginEditTextBackground">#f6f7f9</color>
+    <color name="colorLoginEditTextText">@color/colorTextPrimaryDark</color>
+    <color name="colorLoginEditTextHint">@color/colorTextSecondaryLight</color>
+    <color name="colorLoginEditTextIcon">@color/colorTextPrimaryDark</color>
     <!--Button-->
-    <color name="colorLoginButton">#00d2b9</color>
+    <color name="colorLoginButton">@color/colorAccent</color>
     <color name="colorLoginButtonDisabled">#FFABABAB</color>
-    <color name="colorLoginButtonPressed">#00F0D3</color>
-    <color name="colorLoginButtonText">#FFFFFF</color>
-    <color name="colorLoginButtonTextDisabled">#bdf0f0f0</color>
-    <color name="colorLoginButtonTextInverse">#757bc9</color>
+    <color name="colorLoginButtonPressed">@color/colorAccentLight</color>
+    <color name="colorLoginButtonText">@color/colorTextPrimaryLight</color>
+    <color name="colorLoginButtonTextDisabled">@color/colorTextSecondaryLight</color>
+    <color name="colorLoginButtonTextInverse">@color/colorPrimary</color>
     <!--semiCircleButton-->
-    <color name="colorLoginSemiCircleButton">#757ce4</color>
-    <color name="colorLoginSemiCircleButtonPressed">#838BFF</color>
+    <color name="colorLoginSemiCircleButton">@color/colorPrimary</color>
+    <color name="colorLoginSemiCircleButtonPressed">@color/colorPrimary</color>
 </resources>

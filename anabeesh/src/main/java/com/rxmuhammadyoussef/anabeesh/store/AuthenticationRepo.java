@@ -15,7 +15,6 @@ import com.rxmuhammadyoussef.core.util.Preconditions;
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Action;
 
 @ActivityScope
 public class AuthenticationRepo implements LifecycleObserver {

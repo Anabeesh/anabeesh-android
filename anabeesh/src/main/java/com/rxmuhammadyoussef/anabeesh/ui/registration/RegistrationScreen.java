@@ -7,7 +7,7 @@ public interface RegistrationScreen extends BaseScreen {
 
     void setupEditText();
 
-    void updateAvatarImage(String path);
+    void setRegistrationButtonEnabled(boolean enabled);
 
     void onUserReady(UserModel element);
 }

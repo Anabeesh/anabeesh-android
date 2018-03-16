@@ -10,11 +10,11 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-class CoreActivityModule {
+public class CoreActivityModule {
 
     private final BaseActivity baseActivity;
 
-    CoreActivityModule(BaseActivity baseActivity) {
+    public CoreActivityModule(BaseActivity baseActivity) {
         this.baseActivity = new WeakReference<>(baseActivity).get();
     }
 

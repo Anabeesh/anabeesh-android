@@ -94,6 +94,6 @@ class WebServiceStore {
         } catch (Throwable throwable) {
             Timber.e(throwable);
         }
-        return "Unknown error";
+        return "Unknown error message";
     }
 }
