@@ -4,12 +4,14 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityScope;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
-import com.rxmuhammadyoussef.anabeesh.schedulers.ThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.IOThread;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
+import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.IOThread;
 import com.rxmuhammadyoussef.core.util.Preconditions;
 
 import javax.inject.Inject;
@@ -40,12 +42,10 @@ public class AuthenticationRepo implements LifecycleObserver {
         this.disposable = disposable;
     }
 
-    public void login(String email, String password, OperationListener<UserModel> operationListener) {
+    public void login(LoginRequestBody loginRequestBody, OperationListener<UserModel> operationListener) {
         Preconditions.checkNonNull(operationListener, "operationListener cannot be null");
         disposable.add(
-                webServiceStore.login(
-                        Preconditions.requireStringNotEmpty(email, "email is required non empty or null"),
-                        Preconditions.requireStringNotEmpty(password, "password is required non empty or null"))
+                webServiceStore.login(Preconditions.requireNonNull(loginRequestBody, "request body cannot be null"))
                         .map(userMapper::toEntity)
                         .flatMap(preferencesStore::copyOrUpdateUser)
                         .map(userMapper::toModel)
@@ -54,14 +54,10 @@ public class AuthenticationRepo implements LifecycleObserver {
                         .subscribe(operationListener::onSuccess, operationListener::onError));
     }
 
-    public void register(String email, String password, String firstName, String lastName, OperationListener<UserModel> operationListener) {
+    public void register(RegisterRequestBody registerRequestBody, OperationListener<UserModel> operationListener) {
         Preconditions.checkNonNull(operationListener, "operationListener cannot be null");
         disposable.add(
-                webServiceStore.register(
-                        Preconditions.requireStringNotEmpty(email, "email is required non empty or null"),
-                        Preconditions.requireStringNotEmpty(password, "password is required non empty or null"),
-                        Preconditions.requireStringNotEmpty(firstName, "firstName is required non empty or null"),
-                        Preconditions.requireStringNotEmpty(lastName, "lastName is required non empty or null"))
+                webServiceStore.register(Preconditions.requireNonNull(registerRequestBody, "request body can not be null"))
                         .map(userMapper::toEntity)
                         .flatMap(preferencesStore::copyOrUpdateUser)
                         .map(userMapper::toModel)

@@ -1,12 +1,9 @@
 package com.rxmuhammadyoussef.anabeesh.store.api;
 
-import com.rxmuhammadyoussef.anabeesh.di.application.ApplicationScope;
-
-import java.util.concurrent.TimeUnit;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 
 import javax.inject.Inject;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,6 +16,7 @@ public class APIsUtil {
 
     @Inject
     APIsUtil() {
+        //No extra logic needed
     }
 
     public AnabeeshAPIService getAnabeeshAPIService() {
@@ -30,14 +28,8 @@ public class APIsUtil {
             anabeeshRetrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .client(okHttpClient)
                     .build();
         }
         return anabeeshRetrofit;
     }
-
-    private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.MINUTES)
-            .connectTimeout(60, TimeUnit.MINUTES)
-            .build();
 }

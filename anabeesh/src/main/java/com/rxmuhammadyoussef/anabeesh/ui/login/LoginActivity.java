@@ -8,10 +8,11 @@ import android.widget.Button;
 import com.rxmuhammadyoussef.anabeesh.AnabeeshApplication;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityModule;
-import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityScope;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
+import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivity;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.widget.rxedittext.email.EmailEditText;
 import com.rxmuhammadyoussef.core.widget.rxedittext.password.PasswordEditText;
 
@@ -63,11 +64,10 @@ public class LoginActivity extends BaseActivity implements LoginScreen {
 
     @Override
     public void onUserReady(UserModel user) {
-        //TODO navigate to home
-       /* Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, HostActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        finish();*/
+        finish();
     }
 
     @Override

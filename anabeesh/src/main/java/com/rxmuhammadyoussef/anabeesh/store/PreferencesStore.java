@@ -1,7 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.store;
 
 import com.google.gson.Gson;
-import com.rxmuhammadyoussef.anabeesh.di.application.ApplicationScope;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserEntity;
 import com.rxmuhammadyoussef.core.util.PreferencesUtil;
 

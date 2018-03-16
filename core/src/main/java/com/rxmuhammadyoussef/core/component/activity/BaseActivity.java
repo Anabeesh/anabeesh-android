@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.rxmuhammadyoussef.core.R;
-import com.rxmuhammadyoussef.core.di.CoreActivityModule;
-import com.rxmuhammadyoussef.core.di.DaggerCoreActivityComponent;
+import com.rxmuhammadyoussef.core.di.activity.CoreActivityModule;
+import com.rxmuhammadyoussef.core.di.activity.DaggerCoreActivityComponent;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 import com.rxmuhammadyoussef.core.util.UiUtil;
 import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;

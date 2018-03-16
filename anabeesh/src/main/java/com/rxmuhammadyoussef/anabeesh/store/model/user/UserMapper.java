@@ -1,6 +1,6 @@
 package com.rxmuhammadyoussef.anabeesh.store.model.user;
 
-import com.rxmuhammadyoussef.anabeesh.di.application.ApplicationScope;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 
 import javax.inject.Inject;
 

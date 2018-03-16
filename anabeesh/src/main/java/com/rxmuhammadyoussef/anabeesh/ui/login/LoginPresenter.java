@@ -5,15 +5,16 @@ import android.util.Pair;
 
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
-import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityScope;
 import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
 import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
-import com.rxmuhammadyoussef.anabeesh.schedulers.ThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.anabeesh.store.AuthenticationRepo;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
 import com.rxmuhammadyoussef.core.component.activity.BasePresenter;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
+import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.core.util.TextUtil;
 
 import javax.inject.Inject;
@@ -67,8 +68,12 @@ class LoginPresenter extends BasePresenter {
     }
 
     void onLoginClicked(String email, String password) {
+        LoginRequestBody loginRequestBody = new LoginRequestBody.Builder()
+                .email(email)
+                .password(password)
+                .build();
         loginScreen.showLoadingAnimation();
-        authenticationRepo.login(email, password, new OperationListener<UserModel>() {
+        authenticationRepo.login(loginRequestBody, new OperationListener<UserModel>() {
             @Override
             public void onSuccess(@Nullable UserModel user) {
                 loginScreen.hideLoadingAnimation();

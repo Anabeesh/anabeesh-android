@@ -2,7 +2,7 @@
 <resources>
 
     <!--SnackBar-->
-    <color name="colorSnackBarHeader">#757bc9</color>
+    <color name="colorSnackBarHeader">#00A8FE</color>
     <color name="colorSnackBarBody">#FFFFFF</color>
-    <color name="colorSnackBarText">#757bc9</color>
+    <color name="colorSnackBarText">#707070</color>
 </resources>

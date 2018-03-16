@@ -5,8 +5,9 @@ import android.text.InputType;
 import android.util.AttributeSet;
 
 import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.rxmuhammadyoussef.core.util.TextUtil;
 import com.rxmuhammadyoussef.core.widget.rxedittext.RxEditText;
-import com.rxmuhammadyoussef.core.widget.rxedittext.ValidityListener;
+import com.rxmuhammadyoussef.core.widget.rxedittext.TextChangesListener;
 
 public class PhoneEditText extends RxEditText {
 
@@ -31,7 +32,7 @@ public class PhoneEditText extends RxEditText {
     }
 
     @Override
-    public void setValidityListener(ValidityListener validityListener) {
+    public void setValidityListener(TextChangesListener<TextUtil.Result> validityListener) {
         presenter.listenIfValid(RxTextView.afterTextChangeEvents(this), validityListener);
     }
 }

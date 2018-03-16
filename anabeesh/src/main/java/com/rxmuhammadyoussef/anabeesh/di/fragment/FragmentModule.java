@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
+import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
+
 import dagger.Module;
 import dagger.Provides;
 

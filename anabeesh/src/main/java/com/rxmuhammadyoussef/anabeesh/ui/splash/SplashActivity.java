@@ -7,6 +7,7 @@ import com.rxmuhammadyoussef.anabeesh.AnabeeshApplication;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityModule;
 import com.rxmuhammadyoussef.anabeesh.store.UserSessionManager;
+import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivity;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 
@@ -24,8 +25,7 @@ public class SplashActivity extends BaseActivity {
                 .inject(this);
         new Handler().postDelayed(() -> {
             if (userSessionManager.isSessionActive()) {
-                //TODO navigate to home
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, HostActivity.class));
                 finish();
             } else {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));

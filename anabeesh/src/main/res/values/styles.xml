@@ -146,4 +146,57 @@
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <!--Host-->
+    <style name="HostTheme" parent="ActivityBaseTheme">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorPrimary">@color/colorPrimaryHost</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkHost</item>
+        <item name="android:windowBackground">@color/colorHostLayoutBackground</item>
+        <item name="android:textViewStyle">@style/HostTextViewTitleStyle</item>
+    </style>
+
+    <style name="HostToolbarStyle">
+        <item name="android:background">@color/colorPrimaryHost</item>
+        <item name="android:elevation">@dimen/elevationHostToolbar</item>
+    </style>
+
+    <style name="HostTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorLoginTextViewTitle</item>
+        <item name="android:textSize">@dimen/textSizeHeading</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="HostTextViewTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorHostTextViewText</item>
+        <item name="android:textSize">@dimen/textSizeHostText</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingStart">@dimen/padding_extra</item>
+        <item name="android:paddingEnd">@dimen/padding_extra</item>
+        <item name="android:paddingTop">@dimen/padding</item>
+        <item name="android:paddingBottom">@dimen/padding</item>
+    </style>
+
+    <style name="HostTextViewSubTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorHostTextViewSubText</item>
+        <item name="android:textSize">@dimen/textSizeHostSubText</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingStart">@dimen/padding_extra</item>
+        <item name="android:paddingEnd">@dimen/padding_extra</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">@dimen/padding_extra</item>
+    </style>
+
+    <style name="HostDrawerItemTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@drawable/selector_drawer_item_text</item>
+        <item name="android:textSize">@dimen/textSizeHostText</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingStart">@dimen/padding_extra</item>
+        <item name="android:paddingEnd">@dimen/padding_extra</item>
+        <item name="android:paddingTop">@dimen/padding</item>
+        <item name="android:paddingBottom">@dimen/padding</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
 </resources>

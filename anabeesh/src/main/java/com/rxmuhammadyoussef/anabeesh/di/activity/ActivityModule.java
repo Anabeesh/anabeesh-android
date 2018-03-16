@@ -2,11 +2,13 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
-import android.content.Intent;
 
+import com.rxmuhammadyoussef.anabeesh.ui.host.HostScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationScreen;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
+import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.util.UiUtil;
 
 import dagger.Module;
@@ -65,5 +67,11 @@ public class ActivityModule {
     @Provides
     RegistrationScreen providesRegistrationScreen() {
         return (RegistrationScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    HostScreen providesHostScreen() {
+        return (HostScreen) activity;
     }
 }

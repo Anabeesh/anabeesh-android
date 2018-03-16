@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.rxmuhammadyoussef.anabeesh"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -31,5 +32,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/RegistrationTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.host.HostActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/HostTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
+
 </manifest>
