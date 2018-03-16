@@ -78,6 +78,7 @@ public class LoginActivity extends BaseActivity implements LoginScreen {
     @OnClick(R.id.btn_new_account)
     void onNewAccountClicked() {
         startActivity(new Intent(this, RegistrationActivity.class));
+        overridePendingTransition(0, 0);
     }
 
     @OnClick(R.id.btn_login)

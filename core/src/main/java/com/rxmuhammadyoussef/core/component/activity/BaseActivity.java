@@ -12,10 +12,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.rxmuhammadyoussef.core.R;
-import com.rxmuhammadyoussef.core.di.CoreActivityInjector;
-import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
+import com.rxmuhammadyoussef.core.di.CoreActivityModule;
+import com.rxmuhammadyoussef.core.di.DaggerCoreActivityComponent;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 import com.rxmuhammadyoussef.core.util.UiUtil;
+import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
 
 import javax.inject.Inject;
 
@@ -36,8 +37,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        CoreActivityInjector.getComponent(this)
-                .inject(this);
+        DaggerCoreActivityComponent.builder()
+                .coreActivityModule(new CoreActivityModule(this))
+                .build();
         onCreateActivity();
         lifecycleRegistry.markState(Lifecycle.State.CREATED);
         Timber.tag("Muhammad").d("Lifecycle activity: CREATED");

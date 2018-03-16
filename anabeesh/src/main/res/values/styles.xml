@@ -23,10 +23,10 @@
 
     <!--Registration-->
     <style name="RegistrationTheme" parent="ActivityBaseTheme">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccentRegistration</item>
-        <item name="android:windowBackground">@color/colorRegisterLayoutBackground</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorPrimary">@color/colorPrimaryRegistration</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRegistration</item>
+        <item name="android:windowBackground">@color/colorLoginLayoutBackground</item>
         <item name="android:editTextStyle">@style/RegisterEditTextStyle</item>
         <item name="android:buttonStyle">@style/RegisterButtonStyle</item>
         <item name="android:textColorPrimary">@android:color/black</item>
@@ -128,9 +128,10 @@
 
     <style name="LoginTextViewTitleStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorLoginTextViewTitle</item>
-        <item name="android:textSize">@dimen/textSizeLoginTitle</item>
+        <item name="android:textSize">@dimen/textSizeHeading</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/padding</item>
     </style>
 
     <style name="LoginTextViewTextStyle" parent="android:style/Widget.TextView">
