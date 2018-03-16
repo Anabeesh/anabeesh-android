@@ -7,7 +7,7 @@ import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
 import com.rxmuhammadyoussef.core.util.Preconditions;
 import com.rxmuhammadyoussef.core.util.TextUtil;
 import com.rxmuhammadyoussef.core.widget.rxedittext.RxEditTextPresenter;
-import com.rxmuhammadyoussef.core.widget.rxedittext.ValidityListener;
+import com.rxmuhammadyoussef.core.widget.rxedittext.TextChangesListener;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -15,14 +15,11 @@ import timber.log.Timber;
 
 class NamePresenter extends RxEditTextPresenter {
 
-    private final TextUtil textUtil;
-
     NamePresenter(Context context) {
         super(context);
-        textUtil = new TextUtil(context);
     }
 
-    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, ValidityListener validityListener) {
+    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener<TextUtil.Result> validityListener) {
         Preconditions.checkNonNull(validityListener, "validityListener cannot be null");
         disposable.add(
                 afterTextChangeObservable
@@ -33,6 +30,6 @@ class NamePresenter extends RxEditTextPresenter {
                         .map(textUtil::getIfValidNameResult)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(validityListener::onAfterTextChange, Timber::e));
+                        .subscribe(validityListener::onChanged, Timber::e));
     }
 }

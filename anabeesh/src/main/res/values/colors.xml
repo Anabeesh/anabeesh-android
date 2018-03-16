@@ -6,13 +6,16 @@
     <color name="colorAccent">#00A8FE</color>
     <color name="colorAccentLight">#9F9C9D</color>
     <color name="colorLayoutBackground">#e4e7ee</color>
+    <color name="colorNavDrawerHeaderBackground">#ffffff</color>
+    <color name="colorNavDrawerContentBackground">#f7f7f7</color>
+    <color name="colorDivider">#9e9e9e</color>
 
     <!--Text-->
-    <color name="colorTextPrimaryDark">#3e3e3e</color>
+    <color name="colorTextPrimaryDark">#212121</color>
     <color name="colorTextPrimaryLight">#ffffff</color>
-    <color name="colorTextSecondaryDark">#646464</color>
-    <color name="colorTextSecondaryLight">#bbbbbb</color>
-    <color name="colorTextClickable">#5864f4</color>
+    <color name="colorTextSecondaryDark">#707070</color>
+    <color name="colorTextSecondaryLight">#9e9e9e</color>
+    <color name="colorTextClickable">#00A8FE</color>
 
     <!--Splash-->
     <color name="colorSplashLayoutBackground">@color/colorLayoutBackground</color>
@@ -32,10 +35,10 @@
     <color name="colorRegistrationEditTextIcon">@color/colorTextPrimaryDark</color>
     <!--Button-->
     <color name="colorRegistrationButton">@color/colorAccent</color>
-    <color name="colorRegistrationButtonDisabled">#FFABABAB</color>
+    <color name="colorRegistrationButtonDisabled">#d6b4b4b4</color>
     <color name="colorRegistrationButtonPressed">@color/colorAccentLight</color>
     <color name="colorRegistrationButtonText">@color/colorTextPrimaryLight</color>
-    <color name="colorRegistrationButtonTextDisabled">@color/colorTextSecondaryLight</color>
+    <color name="colorRegistrationButtonTextDisabled">#dddddd</color>
     <color name="colorRegistrationButtonTextInverse">@color/colorTextPrimaryLight</color>
     <!--semiCircleButton-->
     <color name="colorRegistrationSemiCircleButton">@color/colorPrimary</color>
@@ -56,12 +59,23 @@
     <color name="colorLoginEditTextIcon">@color/colorTextPrimaryDark</color>
     <!--Button-->
     <color name="colorLoginButton">@color/colorAccent</color>
-    <color name="colorLoginButtonDisabled">#FFABABAB</color>
+    <color name="colorLoginButtonDisabled">#d6b4b4b4</color>
     <color name="colorLoginButtonPressed">@color/colorAccentLight</color>
     <color name="colorLoginButtonText">@color/colorTextPrimaryLight</color>
-    <color name="colorLoginButtonTextDisabled">@color/colorTextSecondaryLight</color>
+    <color name="colorLoginButtonTextDisabled">#dddddd</color>
     <color name="colorLoginButtonTextInverse">@color/colorPrimary</color>
     <!--semiCircleButton-->
     <color name="colorLoginSemiCircleButton">@color/colorPrimary</color>
     <color name="colorLoginSemiCircleButtonPressed">@color/colorPrimary</color>
+
+    <!--Host-->
+    <color name="colorPrimaryHost">#ffffff</color>
+    <color name="colorPrimaryDarkHost">#ffffff</color>
+    <color name="colorAccentHost">@color/colorAccent</color>
+    <color name="colorHostLayoutBackground">@color/colorLayoutBackground</color>
+    <!--TextView-->
+    <color name="colorHostTextViewTitle">@color/colorTextPrimaryDark</color>
+    <color name="colorHostTextViewTitleInverse">@color/colorTextPrimaryLight</color>
+    <color name="colorHostTextViewText">@color/colorTextPrimaryDark</color>
+    <color name="colorHostTextViewSubText">@color/colorTextSecondaryLight</color>
 </resources>

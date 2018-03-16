@@ -3,11 +3,13 @@ package com.rxmuhammadyoussef.anabeesh.store;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.rxmuhammadyoussef.anabeesh.di.application.ApplicationScope;
 import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
 import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.store.api.APIsUtil;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserApiResponse;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 
 import javax.inject.Inject;
 
@@ -33,9 +35,9 @@ class WebServiceStore {
         this.apisUtil = apisUtil;
     }
 
-    Single<UserApiResponse.DataResponse> login(String email, String password) {
+    Single<UserApiResponse.DataResponse> login(LoginRequestBody loginRequestBody) {
         return Single.create(emitter -> apisUtil.getAnabeeshAPIService()
-                .login(HEADER, email, password)
+                .login(HEADER, loginRequestBody)
                 .enqueue(new Callback<UserApiResponse.DataResponse>() {
                     @Override
                     public void onResponse(Call<UserApiResponse.DataResponse> call, Response<UserApiResponse.DataResponse> response) {
@@ -49,9 +51,9 @@ class WebServiceStore {
                 }));
     }
 
-    Single<UserApiResponse.DataResponse> register(String email, String password, String firstName, String lastName) {
+    Single<UserApiResponse.DataResponse> register(RegisterRequestBody registerRequestBody) {
         return Single.create(emitter -> apisUtil.getAnabeeshAPIService()
-                .register(HEADER, email, password, firstName, lastName)
+                .register(HEADER, registerRequestBody)
                 .enqueue(new Callback<UserApiResponse.DataResponse>() {
                     @Override
                     public void onResponse(Call<UserApiResponse.DataResponse> call, Response<UserApiResponse.DataResponse> response) {
@@ -75,14 +77,14 @@ class WebServiceStore {
                 emitter.onError(new WebServiceError(getAuthErrorMessage(response.errorBody())));
                 break;
             case SERVER_ERROR:
-                String message = response.message();
-                if (message == null) {
-                    message = "Server error";
-                }
-                emitter.onError(new WebServiceError(message));
+                emitter.onError(new WebServiceError(response.message()));
                 break;
             default:
-                emitter.onError(new WebServiceError("Unknown error"));
+                String message = response.message();
+                if (message == null) {
+                    message = "Unknown error message";
+                }
+                emitter.onError(new WebServiceError(message));
         }
     }
 
@@ -94,6 +96,6 @@ class WebServiceStore {
         } catch (Throwable throwable) {
             Timber.e(throwable);
         }
-        return "Unknown error message";
+        return "Unknown bad request message";
     }
 }

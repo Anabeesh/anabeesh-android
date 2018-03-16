@@ -3,6 +3,7 @@ package com.rxmuhammadyoussef.anabeesh.di.application;
 import com.rxmuhammadyoussef.anabeesh.AnabeeshApplication;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityModule;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 
 import dagger.Component;
 

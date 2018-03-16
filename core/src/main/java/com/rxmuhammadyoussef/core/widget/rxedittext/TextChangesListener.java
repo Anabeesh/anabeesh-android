@@ -1,6 +1,6 @@
 package com.rxmuhammadyoussef.core.widget.rxedittext;
 
-public interface TextChangesListener {
+public interface TextChangesListener<T> {
 
-    void onAfterTextChange(String s);
+    void onChanged(T result);
 }

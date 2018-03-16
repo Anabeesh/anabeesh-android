@@ -3,6 +3,8 @@ package com.rxmuhammadyoussef.anabeesh.di.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.rxmuhammadyoussef.core.di.qualifier.ForApplication;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.core.util.PreferencesUtil;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 import com.rxmuhammadyoussef.core.util.TextUtil;

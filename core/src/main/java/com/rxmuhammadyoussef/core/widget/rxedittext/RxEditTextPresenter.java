@@ -22,7 +22,7 @@ public class RxEditTextPresenter {
         textUtil = new TextUtil(context);
     }
 
-    void setTextChangesListener(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener textChangesListener) {
+    void setTextChangesListener(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener<String> textChangesListener) {
         Preconditions.checkNonNull(textChangesListener, "textChangesListener cannot be null");
         disposable.add(
                 afterTextChangeObservable
@@ -32,10 +32,10 @@ public class RxEditTextPresenter {
                         .map(String::trim)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(textChangesListener::onAfterTextChange, Timber::e));
+                        .subscribe(textChangesListener::onChanged, Timber::e));
     }
 
-    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, ValidityListener validityListener) {
+    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener<TextUtil.Result> validityListener) {
         Preconditions.checkNonNull(validityListener, "validityListener cannot be null");
         disposable.add(
                 afterTextChangeObservable
@@ -46,7 +46,7 @@ public class RxEditTextPresenter {
                         .map(textUtil::getIfNotEmptyStringResult)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(validityListener::onAfterTextChange, Timber::e));
+                        .subscribe(validityListener::onChanged, Timber::e));
     }
 
     void onDetachedFromWindow() {

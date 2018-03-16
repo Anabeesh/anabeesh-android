@@ -1,14 +1,15 @@
 package com.rxmuhammadyoussef.anabeesh.di.application;
 
-import com.rxmuhammadyoussef.anabeesh.schedulers.ComputationalThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.IOThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.MainThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.ThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.UnitTestingThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.ComputationalThread;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.IOThread;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.MainThread;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.UnitTestingThread;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
+import com.rxmuhammadyoussef.core.schedulers.ComputationalThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.IOThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.MainThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.TestThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.IOThread;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.MainThread;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.TestThread;
 
 import dagger.Module;
 import dagger.Provides;
@@ -43,8 +44,8 @@ public class SchedulersModule {
 
     @ApplicationScope
     @Provides
-    @UnitTestingThread
+    @TestThread
     ThreadSchedulers providesUnitTestingThreadSchedulers() {
-        return new UnitTestingThreadSchedulers();
+        return new TestThreadSchedulers();
     }
 }

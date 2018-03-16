@@ -7,7 +7,7 @@ import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
 import com.rxmuhammadyoussef.core.util.Preconditions;
 import com.rxmuhammadyoussef.core.util.TextUtil;
 import com.rxmuhammadyoussef.core.widget.rxedittext.RxEditTextPresenter;
-import com.rxmuhammadyoussef.core.widget.rxedittext.ValidityListener;
+import com.rxmuhammadyoussef.core.widget.rxedittext.TextChangesListener;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,14 +16,11 @@ import timber.log.Timber;
 
 class PasswordPresenter extends RxEditTextPresenter {
 
-    private final TextUtil textUtil;
-
     PasswordPresenter(Context context) {
         super(context);
-        textUtil = new TextUtil(context);
     }
 
-    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, ValidityListener validityListener) {
+    void listenIfValid(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeObservable, TextChangesListener<TextUtil.Result> validityListener) {
         Preconditions.checkNonNull(validityListener, "validityListener cannot be null");
         disposable.add(
                 afterTextChangeObservable
@@ -34,7 +31,7 @@ class PasswordPresenter extends RxEditTextPresenter {
                         .map(textUtil::getIfValidPasswordResult)
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(validityListener::onAfterTextChange, Timber::e));
+                        .subscribe(validityListener::onChanged, Timber::e));
     }
 
     private Observable<String> getStringObservable(InitialValueObservable<TextViewAfterTextChangeEvent> afterTextChangeEvent) {
@@ -47,7 +44,7 @@ class PasswordPresenter extends RxEditTextPresenter {
 
     void checkIfPasswordMatches(InitialValueObservable<TextViewAfterTextChangeEvent> passwordAfterTextChangeEvent,
                                 InitialValueObservable<TextViewAfterTextChangeEvent> confirmationAfterTextChangeEvent,
-                                ValidityListener validityListener) {
+                                TextChangesListener<TextUtil.Result> validityListener) {
         Preconditions.checkNonNull(validityListener, "validityListener cannot be null");
         disposable.add(
                 Observable.combineLatest(
@@ -57,6 +54,6 @@ class PasswordPresenter extends RxEditTextPresenter {
                         .distinctUntilChanged()
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(validityListener::onAfterTextChange, Timber::e));
+                        .subscribe(validityListener::onChanged, Timber::e));
     }
 }

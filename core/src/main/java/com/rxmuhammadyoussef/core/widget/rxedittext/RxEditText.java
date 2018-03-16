@@ -6,6 +6,10 @@ import android.text.InputType;
 import android.util.AttributeSet;
 
 import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
+import com.rxmuhammadyoussef.core.util.TextUtil;
+
+import io.reactivex.Observable;
 
 public class RxEditText extends AppCompatEditText {
 
@@ -39,11 +43,19 @@ public class RxEditText extends AppCompatEditText {
         super.onDetachedFromWindow();
     }
 
-    public void setTextChangesListener(TextChangesListener textChangesListener) {
+    public void setTextChangesListener(TextChangesListener<String> textChangesListener) {
         presenter.setTextChangesListener(RxTextView.afterTextChangeEvents(this), textChangesListener);
     }
 
-    public void setValidityListener(ValidityListener validityListener) {
+    public void setValidityListener(TextChangesListener<TextUtil.Result> validityListener) {
         presenter.listenIfValid(RxTextView.afterTextChangeEvents(this), validityListener);
+    }
+
+    public Observable<String> getTextObservable() {
+        return RxTextView.afterTextChangeEvents(this)
+                .filter(et -> true)
+                .map(TextViewAfterTextChangeEvent::editable)
+                .map(CharSequence::toString)
+                .map(String::trim);
     }
 }

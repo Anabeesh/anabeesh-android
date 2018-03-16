@@ -2,15 +2,16 @@ package com.rxmuhammadyoussef.anabeesh.ui.registration;
 
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
-import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityScope;
 import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
 import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
-import com.rxmuhammadyoussef.anabeesh.schedulers.ThreadSchedulers;
-import com.rxmuhammadyoussef.anabeesh.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.anabeesh.store.AuthenticationRepo;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
 import com.rxmuhammadyoussef.core.component.activity.BasePresenter;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
+import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.core.util.TextUtil;
 
 import javax.inject.Inject;
@@ -82,8 +83,14 @@ class RegistrationPresenter extends BasePresenter {
     }
 
     void onRegisterClick(String email, String password, String fName, String lName) {
+        RegisterRequestBody registerRequestBody = new RegisterRequestBody.Builder()
+                .email(email)
+                .password(password)
+                .firstName(fName)
+                .lastName(lName)
+                .build();
         registrationScreen.showLoadingAnimation();
-        authenticationRepo.register(email, password, fName, lName, new OperationListener<UserModel>() {
+        authenticationRepo.register(registerRequestBody, new OperationListener<UserModel>() {
             @Override
             public void onSuccess(UserModel element) {
                 registrationScreen.hideLoadingAnimation();

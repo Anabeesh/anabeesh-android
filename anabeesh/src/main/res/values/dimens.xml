@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Main-->
+    <dimen name="margin_nano">4dp</dimen>
+    <dimen name="margin_micro">8dp</dimen>
     <dimen name="margin">16dp</dimen>
     <dimen name="margin_extra">24dp</dimen>
-    <dimen name="margin_micro">8dp</dimen>
-    <dimen name="padding">16dp</dimen>
-    <dimen name="padding_extra">21dp</dimen>
-    <dimen name="padding_micro">8dp</dimen>
+    <dimen name="margin_ultra">32dp</dimen>
     <dimen name="padding_nano">4dp</dimen>
+    <dimen name="padding_micro">8dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_extra">24dp</dimen>
+    <dimen name="padding_ultra">32dp</dimen>
     <dimen name="textSizeHeading">24dp</dimen>
 
     <!--Registration-->
@@ -79,4 +82,13 @@
     <dimen name="marginBottomLoginImageView">16dp</dimen>
     <dimen name="marginStartLoginImageView">16dp</dimen>
     <dimen name="marginEndLoginImageView">16dp</dimen>
+
+    <!--Host-->
+    <dimen name="elevationHostToolbar">4dp</dimen>
+    <!--Text-->
+    <dimen name="paddingHostTextView">16dp</dimen>
+    <dimen name="marginHostTextView">40dp</dimen>
+    <dimen name="textSizeHostTitle">16sp</dimen>
+    <dimen name="textSizeHostText">14sp</dimen>
+    <dimen name="textSizeHostSubText">12sp</dimen>
 </resources>
