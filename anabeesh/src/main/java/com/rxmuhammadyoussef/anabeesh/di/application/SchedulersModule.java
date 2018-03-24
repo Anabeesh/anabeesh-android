@@ -5,11 +5,11 @@ import com.rxmuhammadyoussef.core.schedulers.ComputationalThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.IOThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.MainThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
-import com.rxmuhammadyoussef.core.schedulers.TestThreadSchedulers;
+import com.rxmuhammadyoussef.core.schedulers.NetworkThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.IOThread;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.MainThread;
-import com.rxmuhammadyoussef.core.schedulers.qualifires.TestThread;
+import com.rxmuhammadyoussef.core.schedulers.qualifires.NetworkThread;
 
 import dagger.Module;
 import dagger.Provides;
@@ -44,8 +44,8 @@ public class SchedulersModule {
 
     @ApplicationScope
     @Provides
-    @TestThread
+    @NetworkThread
     ThreadSchedulers providesUnitTestingThreadSchedulers() {
-        return new TestThreadSchedulers();
+        return new NetworkThreadSchedulers();
     }
 }

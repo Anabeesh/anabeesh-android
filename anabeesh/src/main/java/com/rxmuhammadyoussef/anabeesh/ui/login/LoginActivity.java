@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 @ActivityScope
-public class LoginActivity extends BaseActivity implements LoginScreen {
+public class LoginActivity extends BaseActivity implements LoginActivityScreen {
 
     @BindView(R.id.et_email)
     EmailEditText emailEditText;
@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity implements LoginScreen {
     LoginPresenter loginPresenter;
 
     @Override
-    protected void onCreateActivity() {
+    protected void onCreateActivityComponents() {
         AnabeeshApplication.getComponent(this)
                 .plus(new ActivityModule(this))
                 .inject(this);

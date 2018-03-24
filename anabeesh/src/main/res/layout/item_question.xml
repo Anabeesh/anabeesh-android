@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@+id/_item_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/padding_micro"
+    android:background="@drawable/card"
+    android:elevation="2dp"
+    android:padding="@dimen/padding_micro">
+
+</android.support.constraint.ConstraintLayout>

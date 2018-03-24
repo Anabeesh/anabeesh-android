@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.rxmuhammadyoussef.core.util.permission.PermissionUtil;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
-public interface BaseScreen {
+public interface BaseActivityScreen {
 
     void showDefaultMessage(String message);
 

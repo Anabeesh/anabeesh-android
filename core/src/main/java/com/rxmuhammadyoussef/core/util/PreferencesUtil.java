@@ -93,7 +93,7 @@ public class PreferencesUtil {
      */
     public int getInt(String key) {
         SharedPreferences sp = context.getSharedPreferences(PREFERENCES, Activity.MODE_PRIVATE);
-        return sp.getInt(Preconditions.requireStringNotEmpty(key), 0);
+        return sp.getInt(Preconditions.requireStringNotEmpty(key), -1);
     }
 
     /**

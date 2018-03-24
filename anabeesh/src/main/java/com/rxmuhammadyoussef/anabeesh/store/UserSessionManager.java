@@ -1,12 +1,10 @@
 package com.rxmuhammadyoussef.anabeesh.store;
 
-import android.support.annotation.Nullable;
-
 import com.google.gson.Gson;
-import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserEntity;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.core.util.PreferencesUtil;
 
 import javax.inject.Inject;
@@ -31,7 +29,6 @@ public class UserSessionManager {
         return gson.fromJson(userJson, UserEntity.class) != null;
     }
 
-    @Nullable
     public UserModel getCurrentUser() {
         Gson gson = new Gson();
         String userJson = preferencesUtil.getString(KEY_USER);

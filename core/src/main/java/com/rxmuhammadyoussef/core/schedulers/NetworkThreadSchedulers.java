@@ -5,10 +5,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- unit-testing-specific Schedulers
+ Network-calls-specific Schedulers
  */
 
-public class TestThreadSchedulers implements ThreadSchedulers {
+public class NetworkThreadSchedulers implements ThreadSchedulers {
 
     @Override
     public Scheduler mainThread() {

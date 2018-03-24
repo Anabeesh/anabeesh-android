@@ -11,7 +11,8 @@ import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
 import com.rxmuhammadyoussef.anabeesh.store.AuthenticationRepo;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
-import com.rxmuhammadyoussef.core.component.activity.BasePresenter;
+import com.rxmuhammadyoussef.core.component.activity.BaseActivityPresenter;
+import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
@@ -24,18 +25,20 @@ import io.reactivex.disposables.CompositeDisposable;
 import timber.log.Timber;
 
 @ActivityScope
-class LoginPresenter extends BasePresenter {
+class LoginPresenter extends BaseActivityPresenter {
 
     private final BehaviorRelay<Boolean> passwordValidityRelay;
     private final BehaviorRelay<Boolean> emailValidityRelay;
     private final AuthenticationRepo authenticationRepo;
     private final ThreadSchedulers threadSchedulers;
     private final CompositeDisposable disposable;
-    private final LoginScreen loginScreen;
+    private final LoginActivityScreen loginScreen;
 
     @Inject
-    LoginPresenter(@ComputationalThread ThreadSchedulers threadSchedulers, AuthenticationRepo authenticationRepo,
-                   CompositeDisposable disposable, LoginScreen loginScreen) {
+    LoginPresenter(@ComputationalThread ThreadSchedulers threadSchedulers,
+                   @ForActivity CompositeDisposable disposable,
+                   AuthenticationRepo authenticationRepo,
+                   LoginActivityScreen loginScreen) {
         super(loginScreen);
         this.threadSchedulers = threadSchedulers;
         this.authenticationRepo = authenticationRepo;

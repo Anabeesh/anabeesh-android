@@ -9,6 +9,7 @@ public final class UserMapper {
 
     @Inject
     UserMapper() {
+        //Needed for dependency injection, no extra logic needed
     }
 
     public UserEntity toEntity(UserApiResponse.DataResponse userApiResponse) {

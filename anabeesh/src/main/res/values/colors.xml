@@ -78,4 +78,12 @@
     <color name="colorHostTextViewTitleInverse">@color/colorTextPrimaryLight</color>
     <color name="colorHostTextViewText">@color/colorTextPrimaryDark</color>
     <color name="colorHostTextViewSubText">@color/colorTextSecondaryLight</color>
+
+    <!--Home-->
+    <!--TextView-->
+    <color name="colorHomeTextViewTitleDark">@color/colorTextPrimaryDark</color>
+    <color name="colorHomeTextViewTitleLight">@color/colorTextSecondaryDark</color>
+    <color name="colorHomeTextViewDark">@color/colorTextPrimaryDark</color>
+    <color name="colorHomeTextViewLight">@color/colorTextSecondaryDark</color>
+    <color name="colorHomeTextViewSubText">@color/colorTextSecondaryLight</color>
 </resources>

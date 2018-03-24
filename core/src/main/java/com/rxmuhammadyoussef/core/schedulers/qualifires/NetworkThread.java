@@ -9,5 +9,5 @@ import javax.inject.Qualifier;
  */
 
 @Qualifier
-public @interface TestThread {
+public @interface NetworkThread {
 }

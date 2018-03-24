@@ -153,7 +153,6 @@
         <item name="colorPrimary">@color/colorPrimaryHost</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkHost</item>
         <item name="android:windowBackground">@color/colorHostLayoutBackground</item>
-        <item name="android:textViewStyle">@style/HostTextViewTitleStyle</item>
     </style>
 
     <style name="HostToolbarStyle">
@@ -181,11 +180,7 @@
     <style name="HostTextViewSubTextStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorHostTextViewSubText</item>
         <item name="android:textSize">@dimen/textSizeHostSubText</item>
-        <item name="android:gravity">start</item>
-        <item name="android:paddingStart">@dimen/padding_extra</item>
-        <item name="android:paddingEnd">@dimen/padding_extra</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">@dimen/padding_extra</item>
+        <item name="android:gravity">start|center_vertical</item>
     </style>
 
     <style name="HostDrawerItemTextStyle" parent="android:style/Widget.TextView">
@@ -198,5 +193,29 @@
         <item name="android:paddingBottom">@dimen/padding</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+    </style>
+
+    <!--Home-->
+    <style name="HomeTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorHomeTextViewTitleDark</item>
+        <item name="android:textSize">@dimen/textSizeHomeTitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="HomeTextViewTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorHomeTextViewLight</item>
+        <item name="android:textSize">@dimen/textSizeHomeText</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="HomeTextViewSubTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorHomeTextViewSubText</item>
+        <item name="android:textSize">@dimen/textSizeHomeSubText</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingStart">@dimen/padding_extra</item>
+        <item name="android:paddingEnd">@dimen/padding_extra</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">@dimen/padding_extra</item>
     </style>
 </resources>

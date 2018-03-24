@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 
-import java.lang.ref.WeakReference;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -15,7 +13,7 @@ public class CoreActivityModule {
     private final BaseActivity baseActivity;
 
     public CoreActivityModule(BaseActivity baseActivity) {
-        this.baseActivity = new WeakReference<>(baseActivity).get();
+        this.baseActivity = baseActivity;
     }
 
     @Provides

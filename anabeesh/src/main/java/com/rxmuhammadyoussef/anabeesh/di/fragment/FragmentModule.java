@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.rxmuhammadyoussef.anabeesh.ui.home.HomeScreen;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  This class is responsible for providing the requested objects to {@link FragmentScope} annotated classes
@@ -41,5 +43,18 @@ public class FragmentModule {
     @Provides
     Activity provideActivity() {
         return fragment.getActivity();
+    }
+
+    @FragmentScope
+    @ForFragment
+    @Provides
+    CompositeDisposable providesCompositeDisposable() {
+        return new CompositeDisposable();
+    }
+
+    @FragmentScope
+    @Provides
+    HomeScreen ProvideHomeScreen() {
+        return (HomeScreen) fragment;
     }
 }

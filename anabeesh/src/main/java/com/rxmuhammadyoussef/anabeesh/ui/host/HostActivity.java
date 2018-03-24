@@ -22,6 +22,7 @@ import com.rxmuhammadyoussef.anabeesh.di.UIHostComponentProvider;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityModule;
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
+import com.rxmuhammadyoussef.anabeesh.store.model.user.UserViewModel;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeFragment;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
@@ -34,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @ActivityScope
-public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnDrawerItemClickListener, UIHostComponentProvider {
+public class HostActivity extends BaseActivity implements HostActivityScreen, Drawer.OnDrawerItemClickListener, UIHostComponentProvider {
 
     private final Stack<String> backStack = new Stack<>();
     private ActivityComponent activityComponent;
@@ -46,10 +47,10 @@ public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnD
     TextView titleTextView;
 
     @Inject
-    HostPresenter hostPresenter;
+    HostActivityPresenter hostPresenter;
 
     @Override
-    protected void onCreateActivity() {
+    protected void onCreateActivityComponents() {
         activityComponent = AnabeeshApplication.getComponent(this)
                 .plus(new ActivityModule(this));
         activityComponent.inject(this);
@@ -72,10 +73,12 @@ public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnD
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else {
-            if (!backStack.empty()) {
+            if (backStack.empty() || backStack.get(backStack.size() - 1).contentEquals(HomeFragment.class.getSimpleName())) {
+                finish();
+            } else {
                 backStack.pop();
+                super.onBackPressed();
             }
-            super.onBackPressed();
         }
     }
 
@@ -97,8 +100,8 @@ public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnD
     }
 
     @Override
-    public void setupNavigationDrawer() {
-        AccountHeader header = createHeader();
+    public void setupNavigationDrawer(UserViewModel userViewModel) {
+        AccountHeader header = createHeader(userViewModel);
         PrimaryDrawerItem home = createDrawerItem(R.string.home, DrawerItem.HOME, false);
         PrimaryDrawerItem bookmarks = createDrawerItem(R.string.bookmarks, DrawerItem.BOOKMARKS, false);
         PrimaryDrawerItem interests = createDrawerItem(R.string.interests, DrawerItem.INTERESTS, false);
@@ -134,7 +137,7 @@ public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnD
                 .commit();
     }
 
-    private AccountHeader createHeader() {
+    private AccountHeader createHeader(UserViewModel userViewModel) {
         return new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.color.colorNavDrawerHeaderBackground)
@@ -145,8 +148,9 @@ public class HostActivity extends BaseActivity implements HostScreen, Drawer.OnD
                 .withPaddingBelowHeader(true)
                 .withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(new ProfileDrawerItem()
-                        .withName("محمد يوسف محمد")
-                        .withIcon(getResources().getDrawable(R.mipmap.ic_launcher)))
+                        .withName(userViewModel.getDisplayName())
+                        .withEmail(userViewModel.getEmail())
+                        .withIcon(getResources().getDrawable(R.drawable.user_icon)))
                 .withOnAccountHeaderListener((view, profile, currentProfile) -> false)
                 .build();
     }

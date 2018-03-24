@@ -3,9 +3,10 @@ package com.rxmuhammadyoussef.anabeesh.ui.host;
 import android.support.v4.app.Fragment;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
-import com.rxmuhammadyoussef.core.component.activity.BaseScreen;
+import com.rxmuhammadyoussef.anabeesh.store.model.user.UserViewModel;
+import com.rxmuhammadyoussef.core.component.activity.BaseActivityScreen;
 
-public interface HostScreen extends BaseScreen {
+public interface HostActivityScreen extends BaseActivityScreen {
 
     void setLayoutDirection();
 
@@ -13,7 +14,7 @@ public interface HostScreen extends BaseScreen {
 
     void setToolbarTitle(String title);
 
-    void setupNavigationDrawer();
+    void setupNavigationDrawer(UserViewModel userViewModel);
 
     void setSelectedItem(@DrawerItem int selectedItem);
 
