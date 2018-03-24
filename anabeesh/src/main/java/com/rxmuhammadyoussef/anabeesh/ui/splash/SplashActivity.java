@@ -19,7 +19,7 @@ public class SplashActivity extends BaseActivity {
     UserSessionManager userSessionManager;
 
     @Override
-    protected void onCreateActivity() {
+    protected void onCreateActivityComponents() {
         AnabeeshApplication.getComponent(this)
                 .plus(new ActivityModule(this))
                 .inject(this);

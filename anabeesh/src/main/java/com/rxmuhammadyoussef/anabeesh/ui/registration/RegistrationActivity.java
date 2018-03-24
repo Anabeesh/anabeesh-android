@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 @ActivityScope
-public class RegistrationActivity extends BaseActivity implements RegistrationScreen {
+public class RegistrationActivity extends BaseActivity implements RegistrationActivityScreen {
 
     @BindView(R.id.et_first_name)
     NameEditText firstNameEditText;
@@ -41,7 +41,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationSc
     RegistrationPresenter presenter;
 
     @Override
-    protected void onCreateActivity() {
+    protected void onCreateActivityComponents() {
         AnabeeshApplication.getComponent(this)
                 .plus(new ActivityModule(this))
                 .inject(this);

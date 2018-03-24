@@ -11,7 +11,12 @@
     <dimen name="padding">16dp</dimen>
     <dimen name="padding_extra">24dp</dimen>
     <dimen name="padding_ultra">32dp</dimen>
+
+    <!--Text-->
     <dimen name="textSizeHeading">24dp</dimen>
+
+    <!--Elevation-->
+    <dimen name="elevationCard">3dp</dimen>
 
     <!--Registration-->
     <!--EditText-->
@@ -91,4 +96,11 @@
     <dimen name="textSizeHostTitle">16sp</dimen>
     <dimen name="textSizeHostText">14sp</dimen>
     <dimen name="textSizeHostSubText">12sp</dimen>
+
+    <!--Home-->
+    <dimen name="elevationHomeCard">2dp</dimen>
+    <!--Text-->
+    <dimen name="textSizeHomeTitle">16sp</dimen>
+    <dimen name="textSizeHomeText">14sp</dimen>
+    <dimen name="textSizeHomeSubText">12sp</dimen>
 </resources>

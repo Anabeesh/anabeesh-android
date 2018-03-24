@@ -1,7 +1,7 @@
 <resources>
     <!--Main-->
     <string name="app_name">Anabeesh</string>
-    <string name="error_network">حدث خطأ بالإتصال,برجاء إعادة المحاوله.</string>
+    <string name="error_network">حدث خطأ بالإتصال, برجاء إعادة المحاوله</string>
     <string name="error_communicating_with_server">حدث خطأ اثناء الاتصال</string>
 
     <!--Registration-->
@@ -46,6 +46,6 @@
     <string name="join_us">انضم الينا</string>
     <string name="settings">الاعدادات</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Home-->
+    <string name="articles">مقالات</string>
 </resources>

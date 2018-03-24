@@ -11,7 +11,10 @@
         android:background="@drawable/shape_warning_toast"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_warning"
-        android:padding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:textColor="#8f8422"
         tools:text="Warning" />
 </FrameLayout>

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 apply from: "$project.rootDir/tools/gradle/script/git-version.gradle"
 apply from: "$project.rootDir/tools/gradle/script/quality.gradle"
 apply from: "$project.rootDir/tools/gradle/script/java-code-coverage.gradle"
@@ -57,12 +58,11 @@ dependencies {
     implementation deps.rx.relay
     implementation deps.rx.android
     implementation deps.rx.binding
+    implementation deps.rx.retrofitAdapter
 
     // Dependency Injection
     implementation deps.dependencyInjection.dagger
     implementation deps.dependencyInjection.daggerSupportAndroid
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-v4:27.1.0'
     kapt deps.dependencyInjection.daggerCompiler
     kapt deps.dependencyInjection.daggerAndroidCompiler
 
@@ -80,6 +80,7 @@ dependencies {
 
     // Log
     implementation deps.log.timber
+    implementation deps.log.ANRWatchDog
     debugImplementation deps.log.leakCanaryDebug
     releaseImplementation deps.log.leakCanaryRelease
 

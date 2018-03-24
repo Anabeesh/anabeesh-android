@@ -13,11 +13,19 @@ public class RegisterRequestBody {
     @SerializedName("LastName")
     private final String lastName;
 
-    private RegisterRequestBody(String email, String password, String firstName, String lastName) {
+    RegisterRequestBody(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Builder builder() {
+        return new Builder()
+                .email(this.email)
+                .password(this.password)
+                .firstName(this.firstName)
+                .lastName(this.lastName);
     }
 
     public static class Builder {

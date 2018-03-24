@@ -1,9 +1,9 @@
 package com.rxmuhammadyoussef.anabeesh.ui.login;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
-import com.rxmuhammadyoussef.core.component.activity.BaseScreen;
+import com.rxmuhammadyoussef.core.component.activity.BaseActivityScreen;
 
-public interface LoginScreen extends BaseScreen {
+public interface LoginActivityScreen extends BaseActivityScreen {
 
     void setupEditText();
 

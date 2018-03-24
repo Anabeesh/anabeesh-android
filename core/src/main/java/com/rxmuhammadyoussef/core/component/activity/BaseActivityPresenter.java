@@ -12,14 +12,14 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class BasePresenter implements LifecycleObserver {
+public class BaseActivityPresenter implements LifecycleObserver {
 
-    private final BaseScreen baseScreen;
+    private final BaseActivityScreen baseActivityScreen;
 
     @Inject
-    protected BasePresenter(BaseScreen baseScreen) {
-        this.baseScreen = baseScreen;
-        baseScreen.getLifecycle().addObserver(this);
+    protected BaseActivityPresenter(BaseActivityScreen baseActivityScreen) {
+        this.baseActivityScreen = baseActivityScreen;
+        baseActivityScreen.getLifecycle().addObserver(this);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -53,18 +53,18 @@ public class BasePresenter implements LifecycleObserver {
     }
 
     protected Intent getIntent() {
-        return baseScreen.getIntent();
+        return baseActivityScreen.getIntent();
     }
 
     protected Lifecycle getLifeCycle() {
-        return baseScreen.getLifecycle();
+        return baseActivityScreen.getLifecycle();
     }
 
     protected ResourcesUtil getResourcesUtil() {
-        return baseScreen.getResourcesUtil();
+        return baseActivityScreen.getResourcesUtil();
     }
 
     protected PermissionUtil getPermissionUtil() {
-        return baseScreen.getPermissionUtil();
+        return baseActivityScreen.getPermissionUtil();
     }
 }

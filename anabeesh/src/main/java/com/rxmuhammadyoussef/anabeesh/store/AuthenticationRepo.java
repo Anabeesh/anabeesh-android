@@ -9,6 +9,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserModel;
+import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.IOThread;
@@ -29,11 +30,11 @@ public class AuthenticationRepo implements LifecycleObserver {
 
     @Inject
     AuthenticationRepo(@IOThread ThreadSchedulers threadSchedulers,
+                       @ForActivity CompositeDisposable disposable,
                        PreferencesStore preferencesStore,
                        WebServiceStore webServiceStore,
-                       CompositeDisposable disposable,
                        UserMapper userMapper,
-                       Lifecycle lifecycle) {
+                       @ForActivity Lifecycle lifecycle) {
         lifecycle.addObserver(this);
         this.threadSchedulers = threadSchedulers;
         this.preferencesStore = preferencesStore;

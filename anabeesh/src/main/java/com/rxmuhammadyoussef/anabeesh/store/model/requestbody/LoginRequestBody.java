@@ -9,9 +9,15 @@ public class LoginRequestBody {
     @SerializedName("Password")
     private final String password;
 
-    private LoginRequestBody(String email, String password) {
+    LoginRequestBody(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Builder builder() {
+        return new Builder()
+                .email(this.email)
+                .password(this.password);
     }
 
     public static class Builder {

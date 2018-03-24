@@ -22,7 +22,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public abstract class BaseActivity extends AppCompatActivity implements LifecycleOwner, BaseScreen {
+public abstract class BaseActivity extends AppCompatActivity implements LifecycleOwner, BaseActivityScreen {
 
     private final LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
 
@@ -40,24 +40,23 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
         DaggerCoreActivityComponent.builder()
                 .coreActivityModule(new CoreActivityModule(this))
                 .build();
-        onCreateActivity();
+        onCreateActivityComponents();
         lifecycleRegistry.markState(Lifecycle.State.CREATED);
         Timber.tag("Muhammad").d("Lifecycle activity: CREATED");
     }
 
-    protected abstract void onCreateActivity();
+    protected abstract void onCreateActivityComponents();
 
     @LayoutRes
     protected abstract int getLayout();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 

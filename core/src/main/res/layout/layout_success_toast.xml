@@ -11,7 +11,10 @@
         android:background="@drawable/shape_success_toast"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_done"
-        android:padding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:textColor="#ffffff"
         tools:text="Completed successfully" />
 </FrameLayout>

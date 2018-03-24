@@ -4,32 +4,37 @@ import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
 
+import com.github.anrwatchdog.ANRWatchDog;
 import com.rxmuhammadyoussef.anabeesh.di.application.AppComponent;
 import com.rxmuhammadyoussef.anabeesh.di.application.AppModule;
 import com.rxmuhammadyoussef.anabeesh.di.application.DaggerAppComponent;
+import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.core.util.FontUtil;
 import com.squareup.leakcanary.LeakCanary;
 
+import io.realm.Realm;
 import timber.log.Timber;
 
+@ApplicationScope
 public class AnabeeshApplication extends Application {
+
+    private final AppComponent appComponent = createAppComponent();
 
     @Override
     public void onCreate() {
         super.onCreate();
         FontUtil.overrideDefaultMonoSpaceFont(getAssets(), "NeoSansArabic.ttf");
+        Realm.init(this);
         setStrictModeEnabledForDebug();
+        setupANRWatchDogForDebug();
         setupTimberTree();
         installLeakCanary();
     }
-
-    private final AppComponent appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     public static AppComponent getComponent(Context context) {
         return getApp(context).appComponent;
     }
 
-    //This is a hack to get a non-static field from a static method (i.e. appComponent)
     private static AnabeeshApplication getApp(Context context) {
         return (AnabeeshApplication) context.getApplicationContext();
     }
@@ -59,6 +64,14 @@ public class AnabeeshApplication extends Application {
         //TODO setup different tree for release (if needed)
     }
 
+    private void setupANRWatchDogForDebug() {
+        if (BuildConfig.DEBUG) {
+            new ANRWatchDog()
+                    .setReportMainThreadOnly()
+                    .start();
+        }
+    }
+
     private void installLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -66,5 +79,11 @@ public class AnabeeshApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+    }
+
+    private AppComponent createAppComponent() {
+        return DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
     }
 }

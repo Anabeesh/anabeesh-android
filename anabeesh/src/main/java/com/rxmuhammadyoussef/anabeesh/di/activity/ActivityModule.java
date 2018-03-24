@@ -3,9 +3,9 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 
-import com.rxmuhammadyoussef.anabeesh.ui.host.HostScreen;
-import com.rxmuhammadyoussef.anabeesh.ui.login.LoginScreen;
-import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivityScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivityScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivityScreen;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
@@ -40,6 +40,7 @@ public class ActivityModule {
     }
 
     @ActivityScope
+    @ForActivity
     @Provides
     Lifecycle provideLifCycle() {
         return activity.getLifecycle();
@@ -52,6 +53,7 @@ public class ActivityModule {
     }
 
     @ActivityScope
+    @ForActivity
     @Provides
     CompositeDisposable providesCompositeDisposable() {
         return new CompositeDisposable();
@@ -59,19 +61,19 @@ public class ActivityModule {
 
     @ActivityScope
     @Provides
-    LoginScreen providesLoginScreen() {
-        return (LoginScreen) activity;
+    LoginActivityScreen providesLoginScreen() {
+        return (LoginActivityScreen) activity;
     }
 
     @ActivityScope
     @Provides
-    RegistrationScreen providesRegistrationScreen() {
-        return (RegistrationScreen) activity;
+    RegistrationActivityScreen providesRegistrationScreen() {
+        return (RegistrationActivityScreen) activity;
     }
 
     @ActivityScope
     @Provides
-    HostScreen providesHostScreen() {
-        return (HostScreen) activity;
+    HostActivityScreen providesHostScreen() {
+        return (HostActivityScreen) activity;
     }
 }
