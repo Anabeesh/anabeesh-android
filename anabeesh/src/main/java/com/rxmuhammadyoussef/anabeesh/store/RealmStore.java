@@ -2,6 +2,7 @@ package com.rxmuhammadyoussef.anabeesh.store;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleEntity;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryEntity;
+import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionEntity;
 import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 
 import java.util.List;
@@ -39,6 +40,16 @@ class RealmStore {
         });
     }
 
+    Single<List<QuestionEntity>> saveQuestionsAndReturnAll(List<QuestionEntity> entities) {
+        return Single.create(emitter -> {
+            Realm instance = Realm.getDefaultInstance();
+            instance.executeTransaction(realm -> realm.insertOrUpdate(entities));
+            List<QuestionEntity> categoryEntities = copyAllQuestionsFromRealm(instance);
+            instance.close();
+            emitter.onSuccess(categoryEntities);
+        });
+    }
+
     Single<List<ArticleEntity>> fetchArticles() {
         return Single.create(emitter -> {
             Realm instance = Realm.getDefaultInstance();
@@ -57,6 +68,15 @@ class RealmStore {
         });
     }
 
+    Single<List<QuestionEntity>> fetchQuestions() {
+        return Single.create(emitter -> {
+            Realm instance = Realm.getDefaultInstance();
+            List<QuestionEntity> categoryEntities = copyAllQuestionsFromRealm(instance);
+            instance.close();
+            emitter.onSuccess(categoryEntities);
+        });
+    }
+
     private List<ArticleEntity> copyAllArticlesFromRealm(Realm instance) {
         return instance.copyFromRealm(instance
                 .where(ArticleEntity.class)
@@ -66,6 +86,12 @@ class RealmStore {
     private List<CategoryEntity> copyAllCategoriesFromRealm(Realm instance) {
         return instance.copyFromRealm(instance
                 .where(CategoryEntity.class)
+                .findAll());
+    }
+
+    private List<QuestionEntity> copyAllQuestionsFromRealm(Realm instance) {
+        return instance.copyFromRealm(instance
+                .where(QuestionEntity.class)
                 .findAll());
     }
 }
