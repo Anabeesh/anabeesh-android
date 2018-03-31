@@ -1,6 +1,9 @@
 package com.rxmuhammadyoussef.anabeesh.store.model.question;
 
-public class QuestionViewModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class QuestionViewModel implements Parcelable {
 
     private final String id;
     private final String userId;
@@ -94,4 +97,44 @@ public class QuestionViewModel {
     public int hashCode() {
         return id.length() + userId.length() + numberOfAnswers.length();
     }
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.userId);
+        dest.writeString(this.headline);
+        dest.writeString(this.description);
+        dest.writeString(this.categoryId);
+        dest.writeString(this.numberOfAnswers);
+        dest.writeString(this.upVotes);
+        dest.writeString(this.downVotes);
+        dest.writeString(this.coverUrl);
+        dest.writeByte(this.topRated ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.newFeed ? (byte) 1 : (byte) 0);
+    }
+
+    protected QuestionViewModel(Parcel in) {
+        this.id = in.readString();
+        this.userId = in.readString();
+        this.headline = in.readString();
+        this.description = in.readString();
+        this.categoryId = in.readString();
+        this.numberOfAnswers = in.readString();
+        this.upVotes = in.readString();
+        this.downVotes = in.readString();
+        this.coverUrl = in.readString();
+        this.topRated = in.readByte() != 0;
+        this.newFeed = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<QuestionViewModel> CREATOR = new Parcelable.Creator<QuestionViewModel>() {
+        @Override
+        public QuestionViewModel createFromParcel(Parcel source) {return new QuestionViewModel(source);}
+
+        @Override
+        public QuestionViewModel[] newArray(int size) {return new QuestionViewModel[size];}
+    };
 }

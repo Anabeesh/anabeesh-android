@@ -18,6 +18,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.timeline.QuestionTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemType;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TitleTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
+import com.rxmuhammadyoussef.anabeesh.ui.questiondetails.QuestionDetailsActivityArgs;
 import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
@@ -114,6 +115,8 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     class QuestionViewHolder extends RecyclerView.ViewHolder {
 
+        private QuestionViewModel questionViewModel;
+
         @BindView(R.id.tv_header)
         TextView headerTextView;
         @BindView(R.id.tv_body)
@@ -127,6 +130,7 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         void bind(QuestionViewModel questionViewModel) {
+            this.questionViewModel = questionViewModel;
             headerTextView.setText(questionViewModel.getHeadline());
             bodyTextView.setText(questionViewModel.getDescription());
             GlideApp.with(itemView)
@@ -135,6 +139,12 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     .signature(new ObjectKey(questionViewModel.getId()))
                     .centerCrop()
                     .into(coverImageView);
+        }
+
+        @OnClick(R.id.item_container)
+        void onQuestionClick() {
+            new QuestionDetailsActivityArgs(questionViewModel)
+                    .launch(context);
         }
     }
 }

@@ -17,6 +17,7 @@
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginStart="@dimen/margin"
         android:layout_marginTop="@dimen/margin"
+        android:transitionName="cover_activity_transition"
         app:layout_constraintBottom_toTopOf="@id/tv_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

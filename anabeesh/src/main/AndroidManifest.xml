@@ -50,6 +50,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/HostTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.questiondetails.QuestionDetailsActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/HostTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 
 </manifest>

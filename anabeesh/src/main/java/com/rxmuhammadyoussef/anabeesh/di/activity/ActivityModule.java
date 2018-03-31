@@ -7,6 +7,7 @@ import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivityScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivityScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.questiondetails.QuestionDetailsScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivityScreen;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
@@ -89,5 +90,11 @@ public class ActivityModule {
     @Provides
     ArticleDetailsScreen providesArticleDetailsScreen() {
         return (ArticleDetailsScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    QuestionDetailsScreen providesQuestionDetailsScreen() {
+        return (QuestionDetailsScreen) activity;
     }
 }
