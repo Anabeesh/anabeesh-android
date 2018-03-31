@@ -10,10 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.signature.ObjectKey;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.rxmuhammadyoussef.anabeesh.R;
+import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
+import com.rxmuhammadyoussef.anabeesh.store.model.timeline.QuestionTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemType;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TitleTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
+import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
@@ -56,7 +61,7 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof QuestionViewHolder) {
-            ((QuestionViewHolder) holder).bind();
+            ((QuestionViewHolder) holder).bind(((QuestionTimelineItem) presenter.getTimeLineItems().get(position)).getQuestionViewModel());
         } else if (holder instanceof TitleViewHolder) {
             ((TitleViewHolder) holder).bind(((TitleTimelineItem) presenter.getTimeLineItems().get(position)).getTitle());
         } else if (holder instanceof ArticleListViewHolder) {
@@ -109,13 +114,27 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     class QuestionViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.tv_header)
+        TextView headerTextView;
+        @BindView(R.id.tv_body)
+        TextView bodyTextView;
+        @BindView(R.id.iv_cover)
+        RoundedImageView coverImageView;
+
         QuestionViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void bind() {
-            //TODO bind question
+        void bind(QuestionViewModel questionViewModel) {
+            headerTextView.setText(questionViewModel.getHeadline());
+            bodyTextView.setText(questionViewModel.getDescription());
+            GlideApp.with(itemView)
+                    .load(questionViewModel.getCoverUrl())
+                    .placeholder(R.color.colorTextSecondaryLight)
+                    .signature(new ObjectKey(questionViewModel.getId()))
+                    .centerCrop()
+                    .into(coverImageView);
         }
     }
 }

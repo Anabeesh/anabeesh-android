@@ -8,6 +8,7 @@ import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.store.api.APIsUtil;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
+import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserApiResponse;
@@ -83,6 +84,16 @@ class WebServiceStore {
     Single<List<CategoryApiResponse>> fetchCategories(String userId) {
         return apisUtil.getAnabeeshRxAPIService()
                 .fetchCategories(userId);
+    }
+
+    Single<List<QuestionApiResponse>> fetchTopRatedQuestions(String userId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .fetchTopRatedQuestions(userId);
+    }
+
+    Single<List<QuestionApiResponse>> fetchNewestQuestions(String userId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .fetchNewestQuestions(userId);
     }
 
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {

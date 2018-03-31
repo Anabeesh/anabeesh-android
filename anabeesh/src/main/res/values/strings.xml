@@ -53,4 +53,6 @@
     <string name="follow">تابع</string>
     <string name="more">المزيد</string>
     <string name="articles_details">تفاصيل المقال</string>
+    <string name="top_rated_questions">الاسئلة الاكثر تقييما</string>
+    <string name="newest_questions">جديد</string>
 </resources>
