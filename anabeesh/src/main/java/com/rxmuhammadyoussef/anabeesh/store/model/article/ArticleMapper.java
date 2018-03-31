@@ -70,6 +70,7 @@ public final class ArticleMapper {
                 articleApiResponse.getCategoryId(),
                 articleApiResponse.getUserId(),
                 articleApiResponse.getUserName(),
-                APIsUtil.BASE_URL.concat(articleApiResponse.getUserAvatarUrl()));
+                APIsUtil.BASE_URL.concat(articleApiResponse.getUserAvatarUrl()),
+                "https://source.unsplash.com/collection/400620/480x480");
     }
 }

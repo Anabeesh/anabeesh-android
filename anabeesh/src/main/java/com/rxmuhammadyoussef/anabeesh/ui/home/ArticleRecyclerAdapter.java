@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.signature.ObjectKey;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
@@ -62,6 +64,8 @@ class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter
         TextView userNameTextView;
         @BindView(R.id.iv_user)
         CircleImageView userAvatarImageView;
+        @BindView(R.id.iv_cover)
+        RoundedImageView coverImageView;
 
         ArticleViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +82,12 @@ class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter
                     .placeholder(R.mipmap.ic_launcher)
                     .centerCrop()
                     .into(userAvatarImageView);
+            GlideApp.with(itemView)
+                    .load(articleViewModel.getCoverUrl())
+                    .placeholder(R.color.colorTextSecondaryLight)
+                    .signature(new ObjectKey(articleViewModel.getId()))
+                    .centerCrop()
+                    .into(coverImageView);
         }
 
         @OnClick(R.id.item_container)

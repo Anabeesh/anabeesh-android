@@ -46,6 +46,7 @@ dependencies {
     implementation deps.support.recyclerview
     implementation deps.support.constraintLayout
     implementation deps.view.circleimageview
+    implementation deps.view.roundedImageView
     implementation(deps.view.materialdrawer) {
         transitive = true
     }

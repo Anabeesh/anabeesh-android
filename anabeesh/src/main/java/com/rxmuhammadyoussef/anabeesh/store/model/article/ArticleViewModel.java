@@ -9,8 +9,9 @@ public class ArticleViewModel {
     private final String userId;
     private final String userName;
     private final String userAvatarUrl;
+    private final String coverUrl;
 
-    ArticleViewModel(long id, String heading, String body, long categoryId, String userId, String userName, String userAvatarUrl) {
+    ArticleViewModel(long id, String heading, String body, long categoryId, String userId, String userName, String userAvatarUrl, String coverUrl) {
         this.id = id;
         this.heading = heading;
         this.body = body;
@@ -18,6 +19,7 @@ public class ArticleViewModel {
         this.userId = userId;
         this.userName = userName;
         this.userAvatarUrl = userAvatarUrl;
+        this.coverUrl = coverUrl;
     }
 
     public long getId() {
@@ -46,6 +48,10 @@ public class ArticleViewModel {
 
     public String getUserAvatarUrl() {
         return userAvatarUrl;
+    }
+
+    public String getCoverUrl() {
+        return coverUrl;
     }
 
     @Override
