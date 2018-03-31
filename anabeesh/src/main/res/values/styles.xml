@@ -12,6 +12,7 @@
     <style name="ActivityBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:typeface">monospace</item>
         <item name="android:layoutDirection">rtl</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!--Splash-->
@@ -201,6 +202,7 @@
         <item name="android:textSize">@dimen/textSizeHomeTitle</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">start</item>
+        <item name="android:lineSpacingExtra">@dimen/margin_nano</item>
     </style>
 
     <style name="HomeTextViewTextStyle" parent="android:style/Widget.TextView">

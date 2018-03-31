@@ -6,6 +6,7 @@ import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivity;
+import com.rxmuhammadyoussef.anabeesh.ui.questiondetails.QuestionDetailsActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.splash.SplashActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
@@ -34,4 +35,6 @@ public interface ActivityComponent {
     void inject(ArticleActivity articleActivity);
 
     void inject(ArticleDetailsActivity articleDetailsActivity);
+
+    void inject(QuestionDetailsActivity questionDetailsActivity);
 }

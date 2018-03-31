@@ -15,6 +15,7 @@
         android:id="@+id/iv_cover"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:transitionName="cover_activity_transition"
         app:layout_constraintBottom_toTopOf="@id/tv_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
