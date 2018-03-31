@@ -51,4 +51,6 @@
     <string name="categories">مجالات</string>
     <string name="following">متابع</string>
     <string name="follow">تابع</string>
+    <string name="more">المزيد</string>
+    <string name="articles_details">تفاصيل المقال</string>
 </resources>

@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.signature.ObjectKey;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryViewModel;
+import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
@@ -55,6 +58,8 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CategoryViewH
         TextView titleTextView;
         @BindView(R.id.btn_follow)
         TextView followButton;
+        @BindView(R.id.iv_category)
+        RoundedImageView categoryImageView;
 
         CategoryViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +68,12 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CategoryViewH
 
         void bind(CategoryViewModel categoryViewModel) {
             this.categoryViewModel = categoryViewModel;
+            GlideApp.with(itemView)
+                    .load(categoryViewModel.getImageUrl())
+                    .placeholder(R.color.colorTextSecondaryLight)
+                    .signature(new ObjectKey(categoryViewModel.getId()))
+                    .centerCrop()
+                    .into(categoryImageView);
             titleTextView.setText(categoryViewModel.getName());
             if (categoryViewModel.isFollowing()) {
                 followButton.setText(context.getString(R.string.following));

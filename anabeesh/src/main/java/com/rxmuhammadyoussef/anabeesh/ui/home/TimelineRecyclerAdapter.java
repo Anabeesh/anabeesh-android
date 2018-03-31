@@ -1,6 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemType;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TitleTimelineItem;
+import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
@@ -19,6 +21,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @FragmentScope
 class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -96,6 +99,11 @@ class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             articleRecyclerView.setHasFixedSize(true);
             articleRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             articleRecyclerView.setAdapter(adapter);
+        }
+
+        @OnClick(R.id.tv_show_more)
+        void onShowMoreClick() {
+            context.startActivity(new Intent(context, ArticleActivity.class));
         }
     }
 

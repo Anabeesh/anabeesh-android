@@ -43,7 +43,8 @@ public class CategoryMapper {
             viewModels.add(new CategoryViewModel(
                     categoryModel.getId(),
                     categoryModel.getName(),
-                    categoryModel.isFollowing()));
+                    categoryModel.isFollowing(),
+                    "https://source.unsplash.com/collection/400620/480x480"));
         }
         return viewModels;
     }

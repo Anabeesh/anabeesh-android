@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.anabeesh.ui.home;
+package com.rxmuhammadyoussef.anabeesh.ui.article;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -14,8 +14,8 @@ import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsActivityArgs;
 import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
-import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
-import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
+import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 
 import javax.inject.Inject;
 
@@ -24,15 +24,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-@FragmentScope
-class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter.ArticleViewHolder> {
+@ActivityScope
+class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ArticleViewHolder> {
 
     private final LayoutInflater layoutInflater;
-    private final HomePresenter presenter;
+    private final ArticlePresenter presenter;
     private final Context context;
 
     @Inject
-    ArticleRecyclerAdapter(@ForFragment Context context, HomePresenter presenter) {
+    RecyclerAdapter(@ForActivity Context context, ArticlePresenter presenter) {
         this.layoutInflater = LayoutInflater.from(context);
         this.presenter = presenter;
         this.context = context;
@@ -40,7 +40,7 @@ class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ArticleViewHolder(layoutInflater.inflate(R.layout.item_article, new ConstraintLayout(context), false));
+        return new ArticleViewHolder(layoutInflater.inflate(R.layout.item_all_article, new ConstraintLayout(context), false));
     }
 
     @Override
@@ -75,6 +75,12 @@ class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter
 
         void bind(ArticleViewModel articleViewModel) {
             this.articleViewModel = articleViewModel;
+            if (getAdapterPosition() == 0) {
+                ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+                ConstraintLayout.LayoutParams newParams = new ConstraintLayout.LayoutParams(layoutParams.width, layoutParams.height);
+                newParams.setMargins(0, 64, 0, 16);
+                itemView.setLayoutParams(newParams);
+            }
             headerTextView.setText(articleViewModel.getHeading());
             bodyTextView.setText(articleViewModel.getBody());
             userNameTextView.setText(articleViewModel.getUserName());

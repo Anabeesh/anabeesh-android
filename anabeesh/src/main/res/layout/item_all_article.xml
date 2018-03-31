@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@+id/item_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_micro"
+    android:background="@drawable/card"
+    android:elevation="@dimen/elevationHomeCard"
+    android:minHeight="160dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintBottom_toTopOf="@id/tv_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:riv_corner_radius="3dp"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        tools:scaleType="centerCrop"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        style="@style/HomeTextViewTitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_nano"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_micro"
+        android:gravity="right"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/tv_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_cover"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        tools:text="Article title goes here" />
+
+    <TextView
+        android:id="@+id/tv_body"
+        style="@style/HomeTextViewTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:maxLines="3"
+        app:layout_constraintBottom_toTopOf="@id/iv_user"
+        app:layout_constraintEnd_toEndOf="@id/tv_header"
+        app:layout_constraintStart_toStartOf="@id/tv_header"
+        app:layout_constraintTop_toBottomOf="@id/tv_header"
+        tools:text="Article body goes here and it looks like this when there is multiple lines, the max lines should be 3 lines and the article should have internal design to see the full article content." />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_user"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_nano"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_body"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        style="@style/HostTextViewSubTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:gravity="right"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="@id/iv_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_user"
+        app:layout_constraintTop_toTopOf="@id/iv_user"
+        tools:text="by Muhammad Youssef" />
+</android.support.constraint.ConstraintLayout>

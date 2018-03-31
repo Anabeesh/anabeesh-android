@@ -2,6 +2,8 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentComponent;
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
+import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
+import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivity;
@@ -28,4 +30,8 @@ public interface ActivityComponent {
     void inject(RegistrationActivity registrationActivity);
 
     void inject(HostActivity hostActivity);
+
+    void inject(ArticleActivity articleActivity);
+
+    void inject(ArticleDetailsActivity articleDetailsActivity);
 }
