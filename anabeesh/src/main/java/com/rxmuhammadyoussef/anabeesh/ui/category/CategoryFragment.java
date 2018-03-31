@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.anabeesh.ui.home;
+package com.rxmuhammadyoussef.anabeesh.ui.category;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.rxmuhammadyoussef.anabeesh.di.UIHostComponentProvider;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
+import com.rxmuhammadyoussef.anabeesh.ui.TitledView;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
@@ -30,25 +31,25 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
 
 @FragmentScope
-public class HomeFragment extends Fragment implements HomeScreen {
+public class CategoryFragment extends Fragment implements CategoryScreen, TitledView {
 
-    @BindView(R.id.rv_home_feed)
+    @BindView(R.id.rv_categories)
     RecyclerView recyclerView;
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout refreshLayout;
 
     @Inject
-    UiUtil uiUtil;
-    @Inject
-    HomePresenter presenter;
-    @Inject
-    TimelineRecyclerAdapter adapter;
-    @Inject
     @ForFragment
     CompositeDisposable disposable;
+    @Inject
+    UiUtil uiUtil;
+    @Inject
+    RecyclerAdapter adapter;
+    @Inject
+    CategoryPresenter presenter;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static CategoryFragment newInstance() {
+        return new CategoryFragment();
     }
 
     @Override
@@ -72,7 +73,7 @@ public class HomeFragment extends Fragment implements HomeScreen {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_category, container, false);
     }
 
     @Override
@@ -87,8 +88,8 @@ public class HomeFragment extends Fragment implements HomeScreen {
         super.onResume();
         presenter.onResume();
         if (getActivity() instanceof HostActivity) {
-            ((HostActivity) getActivity()).setToolbarTitle(getString(R.string.home));
-            ((HostActivity) getActivity()).setSelectedItem(DrawerItem.HOME);
+            ((HostActivity) getActivity()).setToolbarTitle(getString(R.string.interests));
+            ((HostActivity) getActivity()).setSelectedItem(DrawerItem.INTERESTS);
         }
     }
 
@@ -129,5 +130,10 @@ public class HomeFragment extends Fragment implements HomeScreen {
     @Override
     public void updateUi(DiffUtil.DiffResult diffResult) {
         diffResult.dispatchUpdatesTo(adapter);
+    }
+
+    @Override
+    public String getTitle() {
+        return getString(R.string.categories);
     }
 }

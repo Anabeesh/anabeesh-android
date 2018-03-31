@@ -30,6 +30,6 @@ public class HostActivityPresenter extends BaseActivityPresenter {
         hostScreen.setLayoutDirection();
         hostScreen.setupToolbar();
         hostScreen.setupNavigationDrawer(userViewModel);
-        hostScreen.setFragment(new HomeFragment(), HomeFragment.class.getSimpleName());
+        hostScreen.setFragment(HomeFragment.newInstance(), HomeFragment.class.getSimpleName());
     }
 }

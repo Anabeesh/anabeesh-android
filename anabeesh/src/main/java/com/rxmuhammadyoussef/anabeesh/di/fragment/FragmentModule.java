@@ -3,7 +3,9 @@ package com.rxmuhammadyoussef.anabeesh.di.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
+import com.rxmuhammadyoussef.anabeesh.ui.category.CategoryScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeScreen;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
@@ -39,6 +41,12 @@ public class FragmentModule {
     }
 
     @FragmentScope
+    @Provides
+    FragmentManager provideFragmentManager() {
+        return fragment.getChildFragmentManager();
+    }
+
+    @FragmentScope
     @ForFragment
     @Provides
     Activity provideActivity() {
@@ -56,5 +64,11 @@ public class FragmentModule {
     @Provides
     HomeScreen ProvideHomeScreen() {
         return (HomeScreen) fragment;
+    }
+
+    @FragmentScope
+    @Provides
+    CategoryScreen ProvideCategoryScreen() {
+        return (CategoryScreen) fragment;
     }
 }
