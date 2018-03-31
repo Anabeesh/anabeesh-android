@@ -15,7 +15,6 @@
         android:layout_marginStart="@dimen/margin"
         android:layout_marginTop="@dimen/margin_ultra"
         android:paddingTop="@dimen/padding"
-        android:textColor="@color/colorHomeTextViewTitleLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

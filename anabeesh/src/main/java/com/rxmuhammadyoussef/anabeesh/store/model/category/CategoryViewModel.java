@@ -5,11 +5,13 @@ public class CategoryViewModel {
     private final String id;
     private final String name;
     private final boolean following;
+    private final String imageUrl;
 
-    CategoryViewModel(String id, String name, boolean following) {
+    CategoryViewModel(String id, String name, boolean following, String imageUrl) {
         this.id = id;
         this.name = name;
         this.following = following;
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {
@@ -22,6 +24,10 @@ public class CategoryViewModel {
 
     public boolean isFollowing() {
         return following;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     @Override

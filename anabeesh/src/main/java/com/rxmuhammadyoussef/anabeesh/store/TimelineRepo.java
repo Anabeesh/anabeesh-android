@@ -3,8 +3,8 @@ package com.rxmuhammadyoussef.anabeesh.store;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleModel;
-import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
-import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
+import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
+import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.IOThread;
 import com.rxmuhammadyoussef.core.util.Preconditions;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-@FragmentScope
+@ActivityScope
 public class TimelineRepo {
 
     private final ThreadSchedulers threadSchedulers;
@@ -26,7 +26,7 @@ public class TimelineRepo {
 
     @Inject
     TimelineRepo(@IOThread ThreadSchedulers threadSchedulers,
-                 @ForFragment CompositeDisposable disposable,
+                 @ForActivity CompositeDisposable disposable,
                  WebServiceStore webServiceStore,
                  ArticleMapper articleMapper,
                  RealmStore realmStore) {

@@ -8,16 +8,19 @@
     android:layout_marginBottom="@dimen/margin_nano"
     android:layout_marginTop="@dimen/margin_nano">
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_category"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:padding="@dimen/padding_micro"
         android:layout_marginRight="@dimen/margin_micro"
+        android:padding="@dimen/padding_micro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tv_title"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="3dp"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
         tools:src="@mipmap/ic_launcher" />
 
     <TextView

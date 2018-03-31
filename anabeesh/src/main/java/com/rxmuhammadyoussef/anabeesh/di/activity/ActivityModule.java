@@ -3,6 +3,8 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 
+import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivityScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.login.LoginActivityScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.registration.RegistrationActivityScreen;
@@ -75,5 +77,17 @@ public class ActivityModule {
     @Provides
     HostActivityScreen providesHostScreen() {
         return (HostActivityScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    ArticleScreen providesArticleScreen() {
+        return (ArticleScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    ArticleDetailsScreen providesArticleDetailsScreen() {
+        return (ArticleDetailsScreen) activity;
     }
 }
