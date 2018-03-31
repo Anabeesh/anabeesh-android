@@ -86,4 +86,13 @@
     <color name="colorHomeTextViewDark">@color/colorTextPrimaryDark</color>
     <color name="colorHomeTextViewLight">@color/colorTextSecondaryDark</color>
     <color name="colorHomeTextViewSubText">@color/colorTextSecondaryLight</color>
+
+    <!--Category-->
+    <!--TextView-->
+    <color name="colorCategoryTextViewTitleDark">@color/colorTextPrimaryDark</color>
+    <!--Button-->
+    <color name="colorCategoryButton">@color/colorAccent</color>
+    <color name="colorCategoryButtonInActive">#bbbbbb</color>
+    <color name="colorCategoryButtonText">@color/colorAccent</color>
+    <color name="colorCategoryButtonTextInActive">#bbbbbb</color>
 </resources>

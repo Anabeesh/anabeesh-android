@@ -48,4 +48,7 @@
 
     <!--Home-->
     <string name="articles">مقالات</string>
+    <string name="categories">مجالات</string>
+    <string name="following">متابع</string>
+    <string name="follow">تابع</string>
 </resources>

@@ -218,4 +218,21 @@
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">@dimen/padding_extra</item>
     </style>
+
+    <!--Category-->
+    <style name="CategoryTextViewTitleStyle" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorCategoryTextViewTitleDark</item>
+        <item name="android:textSize">@dimen/textSizeCategoryText</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:textSize">@dimen/textSizeCategoryText</item>
+        <item name="android:textColor">@drawable/selector_button_text</item>
+        <item name="android:paddingTop">@dimen/padding_nano</item>
+        <item name="android:paddingBottom">@dimen/padding_nano</item>
+        <item name="android:paddingStart">@dimen/padding_extra</item>
+        <item name="android:paddingEnd">@dimen/padding_extra</item>
+        <item name="android:background">@drawable/selector_button_background</item>
+    </style>
 </resources>

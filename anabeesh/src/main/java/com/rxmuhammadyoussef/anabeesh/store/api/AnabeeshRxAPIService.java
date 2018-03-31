@@ -1,6 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.store.api;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
+import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface AnabeeshRxAPIService {
             @Path("userId") String userId,
             @Path("page") int pageNumber,
             @Path("pageSize") int pageSize);
+
+    @GET("api/Categories/{userId}")
+    Single<List<CategoryApiResponse>> fetchCategories(
+            @Path("userId") String userId);
 }

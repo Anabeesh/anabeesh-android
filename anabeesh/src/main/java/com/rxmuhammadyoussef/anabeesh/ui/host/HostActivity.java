@@ -23,7 +23,9 @@ import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityModule;
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserViewModel;
+import com.rxmuhammadyoussef.anabeesh.ui.category.CategoryFragment;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeFragment;
+import com.rxmuhammadyoussef.anabeesh.ui.interests.InterestsFragment;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 
@@ -178,14 +180,14 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         }
         switch (view.getId()) {
             case DrawerItem.HOME:
-                setFragment(new HomeFragment(), HomeFragment.class.getSimpleName());
+                setFragment(HomeFragment.newInstance(), HomeFragment.class.getSimpleName());
                 return false;
             case DrawerItem.BOOKMARKS:
                 //TODO navigate to bookmarks
                 return true;
             case DrawerItem.INTERESTS:
-                //TODO navigate to interests
-                return true;
+                setFragment(CategoryFragment.newInstance(), CategoryFragment.class.getSimpleName());
+                return false;
             case DrawerItem.JOIN_US:
                 //TODO navigate to join us
                 return true;

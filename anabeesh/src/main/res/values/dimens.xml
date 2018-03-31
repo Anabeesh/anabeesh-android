@@ -103,4 +103,13 @@
     <dimen name="textSizeHomeTitle">16sp</dimen>
     <dimen name="textSizeHomeText">14sp</dimen>
     <dimen name="textSizeHomeSubText">12sp</dimen>
+
+    <!--Category-->
+    <dimen name="elevationCategoryCard">2dp</dimen>
+    <!--Text-->
+    <dimen name="textSizeCategoryTitle">16sp</dimen>
+    <dimen name="textSizeCategoryText">14sp</dimen>
+    <dimen name="textSizeCategorySubText">12sp</dimen>
+    <!--Radius-->
+    <dimen name="radiusButton">2dp</dimen>
 </resources>

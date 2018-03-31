@@ -7,6 +7,7 @@ import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
 import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.store.api.APIsUtil;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
+import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserApiResponse;
@@ -74,50 +75,20 @@ class WebServiceStore {
     }
 
     Single<List<ArticleApiResponse>> fetchArticles(String userId) {
-        return Single.create(emitter -> apisUtil.getAnabeeshAPIService()
+        return apisUtil.getAnabeeshRxAPIService()
                 .fetchArticles(userId, getPageNumber(), PAGE_SIZE)
-                .enqueue(new Callback<List<ArticleApiResponse>>() {
-                    @Override
-                    public void onResponse(Call<List<ArticleApiResponse>> call, Response<List<ArticleApiResponse>> response) {
-                        processArticleResponse(emitter, response);
-                    }
+                .doOnSuccess(ignored -> incrementPageNumberAndSave());
+    }
 
-                    @Override
-                    public void onFailure(Call<List<ArticleApiResponse>> call, Throwable t) {
-                        emitter.onError(new NetworkConnectionError(t));
-                    }
-                }));
+    Single<List<CategoryApiResponse>> fetchCategories(String userId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .fetchCategories(userId);
     }
 
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {
         Log.d("MuhammadDebug", response.toString());
         switch (response.code()) {
             case 200:
-                emitter.onSuccess(response.body());
-                break;
-            case 400:
-                emitter.onError(new WebServiceError(getAuthErrorMessage(response.errorBody())));
-                break;
-            case 500:
-                emitter.onError(new WebServiceError(response.message()));
-                break;
-            default:
-                String message = response.message();
-                if (message == null) {
-                    message = "Unknown error message";
-                }
-                emitter.onError(new WebServiceError(message));
-                break;
-        }
-    }
-
-    private void processArticleResponse(SingleEmitter<List<ArticleApiResponse>> emitter, Response<List<ArticleApiResponse>> response) {
-        Log.d("MuhammadDebug", response.toString());
-        switch (response.code()) {
-            case 200:
-                if (!response.body().isEmpty()) {
-                    incrementPageNumberAndSave();
-                }
                 emitter.onSuccess(response.body());
                 break;
             case 400:

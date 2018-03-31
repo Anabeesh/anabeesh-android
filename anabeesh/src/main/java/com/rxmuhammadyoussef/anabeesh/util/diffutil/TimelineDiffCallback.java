@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.anabeesh.util;
+package com.rxmuhammadyoussef.anabeesh.util.diffutil;
 
 import android.support.v7.util.DiffUtil;
 import android.util.Pair;

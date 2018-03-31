@@ -3,10 +3,9 @@ package com.rxmuhammadyoussef.anabeesh.ui.home;
 import android.support.v7.util.DiffUtil;
 import android.util.Pair;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
-import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
-import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
 import com.rxmuhammadyoussef.anabeesh.store.TimelineRepo;
 import com.rxmuhammadyoussef.anabeesh.store.UserSessionManager;
@@ -15,13 +14,14 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimelineItem;
-import com.rxmuhammadyoussef.anabeesh.util.TimelineDiffCallback;
+import com.rxmuhammadyoussef.anabeesh.util.diffutil.TimelineDiffCallback;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
 import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -109,9 +109,9 @@ class HomePresenter {
     }
 
     private void processError(Throwable throwable) {
-        if (throwable instanceof WebServiceError) {
-            homeScreen.showErrorMessage(throwable.getMessage());
-        } else if (throwable instanceof NetworkConnectionError) {
+        if (throwable instanceof HttpException) {
+            homeScreen.showErrorMessage(((HttpException) throwable).message());
+        } else if (throwable instanceof IOException) {
             homeScreen.showErrorMessage(resourcesUtil.getString(R.string.error_network));
         } else {
             homeScreen.showErrorMessage(resourcesUtil.getString(R.string.error_communicating_with_server));
