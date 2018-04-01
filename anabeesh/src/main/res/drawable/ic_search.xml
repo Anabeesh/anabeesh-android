@@ -6,7 +6,7 @@
     <path
         android:fillColor="@android:color/transparent"
         android:pathData="M11,11m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"
-        android:strokeColor="@color/colorHostTextViewTitle"
+        android:strokeColor="@color/colorLoginTextViewTitleInverse"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeWidth="2" />
@@ -14,7 +14,7 @@
     <path
         android:fillColor="@android:color/transparent"
         android:pathData="M21,21L16.65,16.65"
-        android:strokeColor="@color/colorHostTextViewTitle"
+        android:strokeColor="@color/colorLoginTextViewTitleInverse"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeWidth="2" />

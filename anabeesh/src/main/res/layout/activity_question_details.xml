@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryHost">
+    android:background="@color/colorReadingLayoutBackground">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_details"
@@ -15,7 +15,9 @@
         app:layout_constraintBottom_toTopOf="@+id/sv_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/HostToolbarStyle"
+        app:theme="@style/HostToolbarStyle">
 
         <TextView
             android:id="@+id/tv_title"
