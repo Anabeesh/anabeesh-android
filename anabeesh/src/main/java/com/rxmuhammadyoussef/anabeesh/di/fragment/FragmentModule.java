@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.rxmuhammadyoussef.anabeesh.ui.category.CategoryScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeScreen;
+import com.rxmuhammadyoussef.anabeesh.ui.settings.SettingsScreen;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
@@ -70,5 +71,11 @@ public class FragmentModule {
     @Provides
     CategoryScreen ProvideCategoryScreen() {
         return (CategoryScreen) fragment;
+    }
+
+    @FragmentScope
+    @Provides
+    SettingsScreen ProvideSettingsScreen() {
+        return (SettingsScreen) fragment;
     }
 }

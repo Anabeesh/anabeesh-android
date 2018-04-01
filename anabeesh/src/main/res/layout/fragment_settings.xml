@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rxmuhammadyoussef.anabeesh.ui.settings.SettingsFragment">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:layout_marginTop="@dimen/margin_ultra"
+        android:background="@color/colorTextSecondaryLight" />
+
+    <TextView
+        android:id="@+id/tv_edit_profile"
+        style="@style/HomeTextViewTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawableLeft="@drawable/ic_next"
+        android:drawablePadding="@dimen/padding_micro"
+        android:drawableRight="@drawable/log_in_user_icon"
+        android:gravity="start|center_vertical"
+        android:paddingBottom="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:paddingTop="@dimen/padding"
+        android:text="@string/edit_profile"
+        android:textColor="@color/colorTextSecondaryDark" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="@color/colorTextSecondaryLight" />
+
+    <TextView
+        android:id="@+id/tv_logout"
+        style="@style/HomeTextViewTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawablePadding="@dimen/padding_micro"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:paddingTop="@dimen/padding"
+        android:text="@string/logout"
+        android:textColor="@color/colorTextWarning"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="@color/colorTextSecondaryLight" />
+</LinearLayout>

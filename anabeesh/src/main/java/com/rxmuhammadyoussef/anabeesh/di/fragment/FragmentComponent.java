@@ -3,6 +3,7 @@ package com.rxmuhammadyoussef.anabeesh.di.fragment;
 import com.rxmuhammadyoussef.anabeesh.ui.category.CategoryFragment;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeFragment;
 import com.rxmuhammadyoussef.anabeesh.ui.interests.InterestsFragment;
+import com.rxmuhammadyoussef.anabeesh.ui.settings.SettingsFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 
 import dagger.Subcomponent;
@@ -21,4 +22,6 @@ public interface FragmentComponent {
     void inject(InterestsFragment interestsFragment);
 
     void inject(CategoryFragment categoryFragment);
+
+    void inject(SettingsFragment settingsFragment);
 }

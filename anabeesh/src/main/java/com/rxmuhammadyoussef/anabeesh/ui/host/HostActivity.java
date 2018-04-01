@@ -25,7 +25,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserViewModel;
 import com.rxmuhammadyoussef.anabeesh.ui.category.CategoryFragment;
 import com.rxmuhammadyoussef.anabeesh.ui.home.HomeFragment;
-import com.rxmuhammadyoussef.anabeesh.ui.interests.InterestsFragment;
+import com.rxmuhammadyoussef.anabeesh.ui.settings.SettingsFragment;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 
@@ -192,8 +192,8 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
                 //TODO navigate to join us
                 return true;
             case DrawerItem.SETTINGS:
-                //TODO navigate to settings
-                return true;
+                setFragment(SettingsFragment.newInstance(), SettingsFragment.class.getSimpleName());
+                return false;
             default:
                 return false;
         }

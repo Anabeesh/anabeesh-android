@@ -14,7 +14,9 @@
         app:layout_constraintBottom_toTopOf="@+id/swipe_refresh_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/HostToolbarStyle"
+        app:theme="@style/HostToolbarStyle">
 
         <TextView
             android:id="@+id/tv_title"

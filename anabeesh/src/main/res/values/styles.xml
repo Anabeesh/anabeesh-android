@@ -150,7 +150,7 @@
 
     <!--Host-->
     <style name="HostTheme" parent="ActivityBaseTheme">
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="colorPrimary">@color/colorPrimaryHost</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkHost</item>
         <item name="android:windowBackground">@color/colorHostLayoutBackground</item>
@@ -159,12 +159,21 @@
     <style name="HostToolbarStyle">
         <item name="android:background">@color/colorPrimaryHost</item>
         <item name="android:elevation">@dimen/elevationHostToolbar</item>
+        <item name="android:textColorPrimary">@color/colorLoginTextViewTitleInverse</item>
+        <item name="actionMenuTextColor">@color/colorLoginTextViewTitleInverse</item>
+        <item name="android:textColorSecondary">@color/colorLoginTextViewTitleInverse</item>
+    </style>
+
+    <style name="HostToolbarPopupMenuStyle">
+        <item name="android:elevation">@dimen/elevationHostToolbar</item>
+        <item name="android:textColorPrimary">@color/colorLoginTextViewTitleInverse</item>
+        <item name="actionMenuTextColor">@color/colorLoginTextViewTitleInverse</item>
+        <item name="android:textColorSecondary">@color/colorLoginTextViewTitleInverse</item>
     </style>
 
     <style name="HostTextViewTitleStyle" parent="android:style/Widget.TextView">
-        <item name="android:textColor">@color/colorLoginTextViewTitle</item>
+        <item name="android:textColor">@color/colorLoginTextViewTitleInverse</item>
         <item name="android:textSize">@dimen/textSizeHeading</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:gravity">start</item>
     </style>
 

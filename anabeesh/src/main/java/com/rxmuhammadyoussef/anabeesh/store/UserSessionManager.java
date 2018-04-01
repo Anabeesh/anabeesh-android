@@ -9,17 +9,21 @@ import com.rxmuhammadyoussef.core.util.PreferencesUtil;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
+
 import static com.rxmuhammadyoussef.anabeesh.store.PreferencesStore.KEY_USER;
 
 @ApplicationScope
 public class UserSessionManager {
 
     private final PreferencesUtil preferencesUtil;
+    private final RealmStore realmStore;
     private final UserMapper userMapper;
 
     @Inject
-    UserSessionManager(PreferencesUtil preferencesUtil, UserMapper userMapper) {
+    UserSessionManager(PreferencesUtil preferencesUtil, RealmStore realmStore, UserMapper userMapper) {
         this.preferencesUtil = preferencesUtil;
+        this.realmStore = realmStore;
         this.userMapper = userMapper;
     }
 
@@ -40,7 +44,8 @@ public class UserSessionManager {
         return userModel;
     }
 
-    public void logout() {
-        preferencesUtil.delete(KEY_USER);
+    public Completable logout() {
+        return realmStore.clearDatabase()
+                .doOnComplete(preferencesUtil::deleteAll);
     }
 }

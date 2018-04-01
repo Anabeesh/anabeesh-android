@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.realm.Realm;
 
@@ -74,6 +75,13 @@ class RealmStore {
             List<QuestionEntity> categoryEntities = copyAllQuestionsFromRealm(instance);
             instance.close();
             emitter.onSuccess(categoryEntities);
+        });
+    }
+
+    Completable clearDatabase() {
+        return Completable.create(emitter -> {
+            Realm.deleteRealm(Realm.getDefaultConfiguration());
+            emitter.onComplete();
         });
     }
 

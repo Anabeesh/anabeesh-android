@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryHost">
+    android:background="@color/colorReadingLayoutBackground">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_details"
@@ -15,7 +15,9 @@
         app:layout_constraintBottom_toTopOf="@+id/sv_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/HostToolbarStyle"
+        app:theme="@style/HostToolbarStyle">
 
         <TextView
             android:id="@+id/tv_title"
@@ -47,10 +49,10 @@
                 android:layout_marginBottom="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:transitionName="cover_activity_transition"
-                app:layout_constraintBottom_toTopOf="@id/tv_header"
+                app:layout_constraintBottom_toTopOf="@id/tv_body"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_user"
+                app:layout_constraintTop_toBottomOf="@id/tv_header"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:riv_corner_radius="0dp"
                 app:riv_mutate_background="true"
@@ -66,13 +68,16 @@
                 android:layout_marginBottom="@dimen/margin"
                 android:layout_marginEnd="@dimen/margin"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_ultra"
                 android:gravity="right"
-                app:layout_constraintBottom_toTopOf="@id/tv_body"
+                android:paddingTop="@dimen/padding"
+                android:textSize="@dimen/textSizeHeading"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/iv_cover"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_cover"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="spread_inside"
                 tools:text="Article title goes here" />
 
@@ -83,10 +88,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin"
                 android:gravity="right"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/iv_user"
                 app:layout_constraintEnd_toEndOf="@id/tv_header"
                 app:layout_constraintStart_toStartOf="@id/tv_header"
-                app:layout_constraintTop_toBottomOf="@id/tv_header"
+                app:layout_constraintTop_toBottomOf="@id/iv_cover"
                 tools:text="Article body goes here and it looks like this when there is multiple lines, the max lines should be 3 lines and the article should have internal design to see the full article content." />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -97,11 +102,11 @@
                 android:layout_marginEnd="@dimen/margin"
                 android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin_extra"
-                app:layout_constraintBottom_toTopOf="@id/iv_cover"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_user_name"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_body"
                 tools:src="@mipmap/ic_launcher" />
 
             <TextView
