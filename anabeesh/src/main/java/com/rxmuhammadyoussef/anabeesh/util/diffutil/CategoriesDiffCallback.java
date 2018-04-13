@@ -30,7 +30,7 @@ public class CategoriesDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldItems.get(oldItemPosition).getId().contentEquals(oldItems.get(newItemPosition).getId());
+        return oldItems.get(oldItemPosition).getId().contentEquals(newItems.get(newItemPosition).getId());
     }
 
     @Override

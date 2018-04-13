@@ -48,29 +48,4 @@ public class CategoryMapper {
         }
         return viewModels;
     }
-
-    public List<CategoryModel> getList() {
-        List<CategoryModel> categoryModels = new ArrayList<>();
-        categoryModels.add(new CategoryModel("id1", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id2", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id3", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id4", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id5", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id1", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id2", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id3", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id4", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id5", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id1", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id2", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id3", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id4", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id5", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id1", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id2", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id3", "Title goes here", true));
-        categoryModels.add(new CategoryModel("id4", "Title goes here", false));
-        categoryModels.add(new CategoryModel("id5", "Title goes here", false));
-        return categoryModels;
-    }
 }
