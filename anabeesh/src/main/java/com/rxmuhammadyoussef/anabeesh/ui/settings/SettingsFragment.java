@@ -38,9 +38,8 @@ public class SettingsFragment extends Fragment implements SettingsScreen {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Context context = getContext();
+    public void onAttach(Context context) {
+        super.onAttach(context);
         if (context instanceof UIHostComponentProvider) {
             UIHostComponentProvider provider = ((UIHostComponentProvider) context);
             if (provider.getComponent() instanceof ActivityComponent) {
@@ -76,9 +75,9 @@ public class SettingsFragment extends Fragment implements SettingsScreen {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDetach() {
         disposable.clear();
+        super.onDetach();
     }
 
     @Override
