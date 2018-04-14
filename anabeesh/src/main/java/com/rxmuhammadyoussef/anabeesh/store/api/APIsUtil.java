@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @ApplicationScope
 public class APIsUtil {
 
-    public static final String BASE_URL = "http://anabeesh1-001-site1.atempurl.com/";
+    public static final String BASE_URL = "http://anabeesh2-001-site1.itempurl.com/";
     private static Retrofit anabeeshRetrofit;
     private static Retrofit anabeeshRxRetrofit;
 
