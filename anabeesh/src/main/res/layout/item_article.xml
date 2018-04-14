@@ -4,12 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
-    android:layout_height="wrap_content"
+    android:layout_height="260dp"
     android:layout_marginBottom="@dimen/margin"
     android:layout_marginStart="@dimen/margin_micro"
     android:background="@drawable/card"
-    android:elevation="@dimen/elevationCard"
-    android:minHeight="160dp">
+    android:elevation="@dimen/elevationCard">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_cover"
@@ -21,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="spread_inside"
         app:riv_corner_radius_top_left="3dp"
         app:riv_corner_radius_top_right="3dp"
         app:riv_mutate_background="true"
