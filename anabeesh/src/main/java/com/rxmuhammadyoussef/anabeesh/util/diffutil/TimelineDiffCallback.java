@@ -64,7 +64,7 @@ public class TimelineDiffCallback extends DiffUtil.Callback {
     }
 
     private boolean areQuestionItemsContentTheSame(QuestionTimelineItem oldTimeLineItem, QuestionTimelineItem newTimeLineItem) {
-        return oldTimeLineItem.equals(newTimeLineItem);
+        return oldTimeLineItem.getQuestionViewModel().equals(newTimeLineItem.getQuestionViewModel());
     }
 
     private boolean areArticleListItemsContentTheSame(ArticleListTimelineItem oldTimeLineItem, ArticleListTimelineItem newTimeLineItem) {

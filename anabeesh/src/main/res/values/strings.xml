@@ -62,4 +62,8 @@
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="logout">تسجيل خروج</string>
     <string name="search_here">ابحث هنا…</string>
+    <string name="what_s_on_your_mind">تفاصيل السؤال</string>
+    <string name="post">أرسل</string>
+    <string name="question_headline">العنوان</string>
+    <string name="choose_category">اختر فئة السؤال</string>
 </resources>

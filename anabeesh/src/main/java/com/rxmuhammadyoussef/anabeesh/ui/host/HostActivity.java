@@ -91,12 +91,7 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         if (!(fragment instanceof HomeFragment)) {
             setFragment(HomeFragment.newInstance(), HomeFragment.class.getSimpleName());
         }
-        ViewAnimationUtil.circularReveal(searchEditText,
-                170,
-                toolbar.getHeight() / 2,
-                ViewAnimationUtil.DEFAULT_RADIUS);
-        searchEditText.requestFocus();
-        getUiUtil().showKeyboard(searchEditText);
+       showSearchBar();
     }
 
     @Override
@@ -104,11 +99,7 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else if (searchEditText.getVisibility() == View.VISIBLE) {
-            ViewAnimationUtil.circularHide(searchEditText,
-                    170,
-                    toolbar.getHeight() / 2,
-                    ViewAnimationUtil.DEFAULT_RADIUS);
-            searchEditText.setText("");
+           hideSearchBar();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, HomeFragment.newInstance()).commit();
         } else if (backStack.empty() || backStack.get(backStack.size() - 1).contentEquals(HomeFragment.class.getSimpleName())) {
             finish();
@@ -117,6 +108,23 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
             super.onBackPressed();
         }
         getUiUtil().hideKeyboard(searchEditText);
+    }
+
+    private void showSearchBar() {
+        ViewAnimationUtil.circularReveal(searchEditText,
+                80,
+                toolbar.getHeight() / 2,
+                ViewAnimationUtil.DEFAULT_RADIUS);
+        searchEditText.requestFocus();
+        getUiUtil().showKeyboard(searchEditText);
+    }
+
+    private void hideSearchBar() {
+        ViewAnimationUtil.circularHide(searchEditText,
+                80,
+                toolbar.getHeight() / 2,
+                ViewAnimationUtil.DEFAULT_RADIUS);
+        searchEditText.setText("");
     }
 
     @Override
@@ -140,9 +148,9 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
     public void setupNavigationDrawer(UserViewModel userViewModel) {
         AccountHeader header = createHeader(userViewModel);
         PrimaryDrawerItem home = createDrawerItem(R.string.home, DrawerItem.HOME, false);
-        PrimaryDrawerItem bookmarks = createDrawerItem(R.string.bookmarks, DrawerItem.BOOKMARKS, false);
+        //PrimaryDrawerItem bookmarks = createDrawerItem(R.string.bookmarks, DrawerItem.BOOKMARKS, false);
         PrimaryDrawerItem interests = createDrawerItem(R.string.interests, DrawerItem.INTERESTS, false);
-        PrimaryDrawerItem joinUs = createDrawerItem(R.string.join_us, DrawerItem.JOIN_US, true);
+        //PrimaryDrawerItem joinUs = createDrawerItem(R.string.join_us, DrawerItem.JOIN_US, true);
         PrimaryDrawerItem settings = createDrawerItem(R.string.settings, DrawerItem.SETTINGS, false);
         DividerDrawerItem dividerDrawerItem = new DividerDrawerItem();
         drawer = new DrawerBuilder()
@@ -151,7 +159,7 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
                 .withAccountHeader(header)
                 .withSelectedItem(-1)
                 .withSliderBackgroundColorRes(R.color.colorNavDrawerContentBackground)
-                .addDrawerItems(home, bookmarks, interests, dividerDrawerItem, joinUs, dividerDrawerItem, settings)
+                .addDrawerItems(home, /*bookmarks,*/ interests, /*dividerDrawerItem, joinUs,*/ dividerDrawerItem, settings)
                 .withOnDrawerItemClickListener(this)
                 .build();
     }

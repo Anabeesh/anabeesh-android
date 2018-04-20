@@ -32,7 +32,7 @@ public class RxEditText extends AppCompatEditText {
 
     protected void init(Context context) {
         presenter = new RxEditTextPresenter(context);
-        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
     }
 
     @Override

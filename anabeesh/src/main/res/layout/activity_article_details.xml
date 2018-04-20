@@ -71,7 +71,7 @@
                 android:layout_marginTop="@dimen/margin_ultra"
                 android:gravity="right"
                 android:paddingTop="@dimen/padding"
-                android:textSize="@dimen/textSizeHeading"
+                android:textSize="@dimen/textSizeHeading1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/iv_cover"
                 app:layout_constraintEnd_toEndOf="parent"

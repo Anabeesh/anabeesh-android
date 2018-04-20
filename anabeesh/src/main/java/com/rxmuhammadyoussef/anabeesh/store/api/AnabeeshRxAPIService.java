@@ -3,13 +3,16 @@ package com.rxmuhammadyoussef.anabeesh.store.api;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
 
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -33,13 +36,18 @@ public interface AnabeeshRxAPIService {
     @GET("api/search/question/{question}")
     Observable<List<QuestionApiResponse>> searchQuestions(@Path("question") String keyword);
 
-    @POST("api/Follow/FollowCategory/{userId}/{categoryId}")
+    @GET("api/Follow/FollowCategory/{userId}/{categoryId}")
     Single<ResponseBody> followCategory(
             @Path("userId") String userId,
             @Path("categoryId") String categoryId);
 
-    @POST("api/Follow/UnfollowCategory/{userId}/{categoryId}")
+    @GET("api/Follow/UnfollowCategory/{userId}/{categoryId}")
     Single<ResponseBody> unFollowCategory(
             @Path("userId") String userId,
             @Path("categoryId") String categoryId);
+
+    @POST("api/questions")
+    Single<ResponseBody> addQuestion(
+            @Header("content-type") String header,
+            @Body QuestionRequestBody requestBody);
 }

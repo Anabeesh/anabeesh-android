@@ -1,6 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.rxmuhammadyoussef.anabeesh.di.UIHostComponentProvider;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
+import com.rxmuhammadyoussef.anabeesh.ui.addquestion.AddQuestionActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
@@ -28,6 +30,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.disposables.CompositeDisposable;
 
 @FragmentScope
@@ -104,6 +107,13 @@ public class HomeFragment extends Fragment implements HomeScreen {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                uiUtil.hideKeyboard(recyclerView);
+            }
+        });
     }
 
     @Override
@@ -130,5 +140,10 @@ public class HomeFragment extends Fragment implements HomeScreen {
     @Override
     public void updateUi(DiffUtil.DiffResult diffResult) {
         diffResult.dispatchUpdatesTo(adapter);
+    }
+
+    @OnClick(R.id.fab)
+    void onFabClicked() {
+        startActivity(new Intent(getActivity(), AddQuestionActivity.class));
     }
 }

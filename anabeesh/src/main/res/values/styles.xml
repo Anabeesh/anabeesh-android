@@ -129,7 +129,7 @@
 
     <style name="LoginTextViewTitleStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorLoginTextViewTitle</item>
-        <item name="android:textSize">@dimen/textSizeHeading</item>
+        <item name="android:textSize">@dimen/textSizeHeading1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">start</item>
         <item name="android:padding">@dimen/padding</item>
@@ -173,7 +173,7 @@
 
     <style name="HostTextViewTitleStyle" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/colorLoginTextViewTitleInverse</item>
-        <item name="android:textSize">@dimen/textSizeHeading</item>
+        <item name="android:textSize">@dimen/textSizeHeading1</item>
         <item name="android:gravity">start</item>
     </style>
 
