@@ -6,6 +6,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -19,14 +20,14 @@ public interface AnabeeshRxAPIService {
             @Path("pageSize") int pageSize);
 
     @GET("api/Categories/{userId}")
-    Single<List<CategoryApiResponse>> fetchCategories(
-            @Path("userId") String userId);
+    Single<List<CategoryApiResponse>> fetchCategories(@Path("userId") String userId);
 
     @GET("api/homepage/toprated/{userId}")
-    Single<List<QuestionApiResponse>> fetchTopRatedQuestions(
-            @Path("userId") String userId);
+    Single<List<QuestionApiResponse>> fetchTopRatedQuestions(@Path("userId") String userId);
 
     @GET("api/homepage/newest/{userId}")
-    Single<List<QuestionApiResponse>> fetchNewestQuestions(
-            @Path("userId") String userId);
+    Single<List<QuestionApiResponse>> fetchNewestQuestions(@Path("userId") String userId);
+
+    @GET("api/search/question/{question}")
+    Observable<List<QuestionApiResponse>> searchQuestions(@Path("question") String keyword);
 }

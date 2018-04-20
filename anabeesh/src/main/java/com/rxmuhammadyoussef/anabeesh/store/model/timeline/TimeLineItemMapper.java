@@ -30,23 +30,31 @@ public class TimeLineItemMapper {
         List<QuestionViewModel> topRatedViewModels = new ArrayList<>();
         List<QuestionViewModel> newestViewModels = new ArrayList<>();
         for (QuestionViewModel questionViewModel : questionViewModels) {
-            if (questionViewModel.isTopRated()){
+            if (questionViewModel.isTopRated()) {
                 topRatedViewModels.add(questionViewModel);
-            }else {
+            } else {
                 newestViewModels.add(questionViewModel);
             }
         }
-        if (!topRatedViewModels.isEmpty()){
+        if (!topRatedViewModels.isEmpty()) {
             timelineItems.add(new TitleTimelineItem(resourcesUtil.getString(R.string.top_rated_questions)));
-            for (QuestionViewModel questionViewModel:topRatedViewModels) {
+            for (QuestionViewModel questionViewModel : topRatedViewModels) {
                 timelineItems.add(new QuestionTimelineItem(questionViewModel));
             }
         }
-        if (!newestViewModels.isEmpty()){
+        if (!newestViewModels.isEmpty()) {
             timelineItems.add(new TitleTimelineItem(resourcesUtil.getString(R.string.newest_questions)));
-            for (QuestionViewModel questionViewModel:newestViewModels) {
+            for (QuestionViewModel questionViewModel : newestViewModels) {
                 timelineItems.add(new QuestionTimelineItem(questionViewModel));
             }
+        }
+        return timelineItems;
+    }
+
+    public List<TimelineItem> toTimelineItems(List<QuestionViewModel> questionViewModels) {
+        List<TimelineItem> timelineItems = new ArrayList<>();
+        for (QuestionViewModel questionViewModel : questionViewModels) {
+            timelineItems.add(new QuestionTimelineItem(questionViewModel));
         }
         return timelineItems;
     }

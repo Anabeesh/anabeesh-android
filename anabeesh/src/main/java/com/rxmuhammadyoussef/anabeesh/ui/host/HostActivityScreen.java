@@ -1,6 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.ui.host;
 
 import android.support.v4.app.Fragment;
+import android.widget.EditText;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserViewModel;
@@ -19,4 +20,6 @@ public interface HostActivityScreen extends BaseActivityScreen {
     void setSelectedItem(@DrawerItem int selectedItem);
 
     void setFragment(Fragment fragment, String tag);
+
+    EditText getSearchEditText();
 }

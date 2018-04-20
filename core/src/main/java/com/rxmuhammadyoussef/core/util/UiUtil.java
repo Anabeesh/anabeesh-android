@@ -121,6 +121,12 @@ public class UiUtil {
         return snackbar;
     }
 
+    public void showKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        assert imm != null;
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    }
+
     public void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         assert imm != null;

@@ -61,4 +61,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="logout">تسجيل خروج</string>
+    <string name="search_here">ابحث هنا…</string>
 </resources>

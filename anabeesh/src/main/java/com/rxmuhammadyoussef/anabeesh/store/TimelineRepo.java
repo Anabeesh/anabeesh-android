@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -82,5 +83,12 @@ public class TimelineRepo {
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
                 .subscribe(operationListener::onSuccess, operationListener::onError));
+    }
+
+    public Observable<List<QuestionModel>> searchQuestions(String keyword) {
+        return webServiceStore.searchQuestions(
+                Preconditions.requireStringNotEmpty(keyword, "you should use non empty string for"))
+                .map(questionMapper::toEntities)
+                .map(questionMapper::toModels);
     }
 }

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.di.UIHostComponentProvider;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
@@ -88,6 +89,7 @@ public class HomeFragment extends Fragment implements HomeScreen {
         if (getActivity() instanceof HostActivity) {
             ((HostActivity) getActivity()).setToolbarTitle(getString(R.string.home));
             ((HostActivity) getActivity()).setSelectedItem(DrawerItem.HOME);
+            presenter.onAfterSearchChanged(RxTextView.afterTextChangeEvents(((HostActivity) getActivity()).getSearchEditText()));
         }
     }
 

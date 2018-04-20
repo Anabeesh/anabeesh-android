@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import okhttp3.ResponseBody;
@@ -94,6 +95,11 @@ class WebServiceStore {
     Single<List<QuestionApiResponse>> fetchNewestQuestions(String userId) {
         return apisUtil.getAnabeeshRxAPIService()
                 .fetchNewestQuestions(userId);
+    }
+
+    Observable<List<QuestionApiResponse>> searchQuestions(String keyword) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .searchQuestions(keyword);
     }
 
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {

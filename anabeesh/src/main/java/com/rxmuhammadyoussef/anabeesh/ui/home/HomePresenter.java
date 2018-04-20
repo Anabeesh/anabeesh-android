@@ -1,9 +1,13 @@
 package com.rxmuhammadyoussef.anabeesh.ui.home;
 
 import android.support.v7.util.DiffUtil;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Pair;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import com.jakewharton.rxbinding2.InitialValueObservable;
+import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
@@ -27,6 +31,7 @@ import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -112,6 +117,37 @@ class HomePresenter {
                 processError(t);
             }
         });
+    }
+
+    void onAfterSearchChanged(InitialValueObservable<TextViewAfterTextChangeEvent> afterSearchChangedObservable) {
+        disposable.add(afterSearchChangedObservable
+                .map(TextViewAfterTextChangeEvent::editable)
+                .map(Editable::toString)
+                .map(String::trim)
+                .map(this::getAppropriateKeyWord)
+                .debounce(300, TimeUnit.MILLISECONDS)
+                .distinctUntilChanged()
+                .skip(1)
+                .flatMap(timelineRepo::searchQuestions)
+                .map(questionMapper::toViewModels)
+                .map(timeLineItemMapper::toTimelineItems)
+                .map(newTimelineItems -> new Pair<>(timelineItemRelay.getValue(), newTimelineItems))
+                .map(TimelineDiffCallback::new)
+                .map(timelineDiffCallback -> new Pair<>(DiffUtil.calculateDiff(timelineDiffCallback), timelineDiffCallback.getNewItems()))
+                .subscribeOn(threadSchedulers.workerThread())
+                .observeOn(threadSchedulers.mainThread())
+                .subscribe(diffResultNewListPair -> {
+                    homeScreen.updateUi(diffResultNewListPair.first);
+                    timelineItemRelay.accept(diffResultNewListPair.second);
+                }, Timber::e));
+    }
+
+    private String getAppropriateKeyWord(String keyword) {
+        if (TextUtils.isEmpty(keyword)) {
+            return "EmptyUnProcessableStringWorksAsAPlaceHolderForEmptyKeywords";
+        } else {
+            return keyword;
+        }
     }
 
     private void processArticleResult(List<ArticleModel> articleModels) {
