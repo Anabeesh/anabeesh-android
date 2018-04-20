@@ -1,5 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.store.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.core.schedulers.NetworkThreadSchedulers;
@@ -41,9 +43,12 @@ public class APIsUtil {
 
     private Retrofit getAnabeeshRxClient() {
         if (anabeeshRxRetrofit == null) {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
             anabeeshRxRetrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(new NetworkThreadSchedulers().workerThread()))
                     .build();
         }

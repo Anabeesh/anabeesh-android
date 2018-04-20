@@ -15,4 +15,6 @@ public interface CategoryScreen {
     void hideLoadingAnimation();
 
     void updateUi(DiffUtil.DiffResult diffResult);
+
+    void notifyCategoryChanged(int position);
 }

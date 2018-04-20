@@ -102,6 +102,16 @@ class WebServiceStore {
                 .searchQuestions(keyword);
     }
 
+    Single<ResponseBody> followCategory(String userId, String categoryId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .followCategory(userId, categoryId);
+    }
+
+    Single<ResponseBody> unFollowCategory(String userId, String categoryId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .unFollowCategory(userId, categoryId);
+    }
+
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {
         Log.d("MuhammadDebug", response.toString());
         switch (response.code()) {

@@ -18,6 +18,7 @@ import com.rxmuhammadyoussef.anabeesh.di.UIHostComponentProvider;
 import com.rxmuhammadyoussef.anabeesh.di.activity.ActivityComponent;
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
 import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
+import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryViewModel;
 import com.rxmuhammadyoussef.anabeesh.ui.TitledView;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
@@ -129,6 +130,11 @@ public class CategoryFragment extends Fragment implements CategoryScreen, Titled
     @Override
     public void updateUi(DiffUtil.DiffResult diffResult) {
         diffResult.dispatchUpdatesTo(adapter);
+    }
+
+    @Override
+    public void notifyCategoryChanged(int position) {
+        adapter.notifyItemChanged(position);
     }
 
     @Override

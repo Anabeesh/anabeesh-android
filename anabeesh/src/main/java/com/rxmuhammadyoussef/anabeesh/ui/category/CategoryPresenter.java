@@ -6,6 +6,7 @@ import android.util.Pair;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
+import com.rxmuhammadyoussef.anabeesh.events.operation.OperationAnimationListener;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
 import com.rxmuhammadyoussef.anabeesh.store.InterestsRepo;
 import com.rxmuhammadyoussef.anabeesh.store.UserSessionManager;
@@ -20,6 +21,7 @@ import com.rxmuhammadyoussef.core.schedulers.qualifires.ComputationalThread;
 import com.rxmuhammadyoussef.core.util.ResourcesUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -86,6 +88,24 @@ class CategoryPresenter {
         });
     }
 
+    void followOrUnFollowCategory(int adapterPosition, CategoryViewModel categoryViewModel, OperationAnimationListener<CategoryViewModel> operationListener) {
+        disposable.add(interestsRepo
+                .followOrUnFollowCategory(categoryViewModel.isFollowing(), userSessionManager.getCurrentUser().getUserId(), categoryViewModel.getId())
+                .map(categoryMapper::toViewModel)
+                .subscribeOn(threadSchedulers.workerThread())
+                .observeOn(threadSchedulers.mainThread())
+                .doOnSubscribe(ignored -> operationListener.onPreExecute())
+                .doFinally(operationListener::onPostExecute)
+                .subscribe(viewModel -> {
+                    List<CategoryViewModel> newList = new ArrayList<>();
+                    newList.addAll(categoryRelay.getValue());
+                    newList.remove(adapterPosition);
+                    newList.add(adapterPosition, viewModel);
+                    categoryRelay.accept(newList);
+                    categoryScreen.notifyCategoryChanged(adapterPosition);
+                }, this::processError));
+    }
+
     private void processResult(List<CategoryModel> categoryModels) {
         disposable.add(Single.just(categoryModels)
                 .map(categoryMapper::toViewModels)
@@ -101,6 +121,7 @@ class CategoryPresenter {
     }
 
     private void processError(Throwable throwable) {
+        Timber.e(throwable);
         if (throwable instanceof HttpException) {
             categoryScreen.showErrorMessage(((HttpException) throwable).message());
         } else if (throwable instanceof IOException) {

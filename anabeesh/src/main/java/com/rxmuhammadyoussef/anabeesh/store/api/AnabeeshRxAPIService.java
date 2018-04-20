@@ -8,7 +8,9 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface AnabeeshRxAPIService {
@@ -30,4 +32,14 @@ public interface AnabeeshRxAPIService {
 
     @GET("api/search/question/{question}")
     Observable<List<QuestionApiResponse>> searchQuestions(@Path("question") String keyword);
+
+    @POST("api/Follow/FollowCategory/{userId}/{categoryId}")
+    Single<ResponseBody> followCategory(
+            @Path("userId") String userId,
+            @Path("categoryId") String categoryId);
+
+    @POST("api/Follow/UnfollowCategory/{userId}/{categoryId}")
+    Single<ResponseBody> unFollowCategory(
+            @Path("userId") String userId,
+            @Path("categoryId") String categoryId);
 }

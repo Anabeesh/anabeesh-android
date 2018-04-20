@@ -20,6 +20,13 @@ public class CategoryEntity extends RealmObject {
         this.following = following;
     }
 
+    public Builder builder() {
+        return new Builder()
+                .id(this.id)
+                .name(this.name)
+                .isFollowing(this.following);
+    }
+
     String getId() {
         return id;
     }
@@ -30,5 +37,30 @@ public class CategoryEntity extends RealmObject {
 
     boolean isFollowing() {
         return following;
+    }
+
+    public static class Builder {
+        private String id;
+        private String name;
+        private boolean following;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder isFollowing(boolean following) {
+            this.following = following;
+            return this;
+        }
+
+        public CategoryEntity build() {
+            return new CategoryEntity(id, name, following);
+        }
     }
 }

@@ -48,4 +48,27 @@ public class CategoryMapper {
         }
         return viewModels;
     }
+
+    public CategoryViewModel changeFollowingstate(CategoryViewModel categoryViewModel) {
+        return new CategoryViewModel(
+                categoryViewModel.getId(),
+                categoryViewModel.getName(),
+                !categoryViewModel.isFollowing(),
+                "https://source.unsplash.com/collection/400620/480x480");
+    }
+
+    public CategoryModel toModel(CategoryEntity entity) {
+        return new CategoryModel(
+                entity.getId(),
+                entity.getName(),
+                entity.isFollowing());
+    }
+
+    public CategoryViewModel toViewModel(CategoryModel model) {
+        return new CategoryViewModel(
+                model.getId(),
+                model.getName(),
+                model.isFollowing(),
+                "https://source.unsplash.com/collection/400620/480x480");
+    }
 }
