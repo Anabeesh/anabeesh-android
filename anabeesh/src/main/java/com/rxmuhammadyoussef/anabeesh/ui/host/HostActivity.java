@@ -5,7 +5,9 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -28,6 +30,8 @@ import com.rxmuhammadyoussef.anabeesh.ui.home.HomeFragment;
 import com.rxmuhammadyoussef.anabeesh.ui.settings.SettingsFragment;
 import com.rxmuhammadyoussef.core.component.activity.BaseActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
+import com.rxmuhammadyoussef.core.util.animation.ViewAnimationUtil;
+import com.rxmuhammadyoussef.core.widget.rxedittext.RxEditText;
 
 import java.util.Stack;
 
@@ -47,6 +51,8 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
     Toolbar toolbar;
     @BindView(R.id.tv_title)
     TextView titleTextView;
+    @BindView(R.id.et_search)
+    RxEditText searchEditText;
 
     @Inject
     HostActivityPresenter hostPresenter;
@@ -71,17 +77,46 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_search) {
+            setupSearch();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void setupSearch() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (!(fragment instanceof HomeFragment)) {
+            setFragment(HomeFragment.newInstance(), HomeFragment.class.getSimpleName());
+        }
+        ViewAnimationUtil.circularReveal(searchEditText,
+                170,
+                toolbar.getHeight() / 2,
+                ViewAnimationUtil.DEFAULT_RADIUS);
+        searchEditText.requestFocus();
+        getUiUtil().showKeyboard(searchEditText);
+    }
+
+    @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
+        } else if (searchEditText.getVisibility() == View.VISIBLE) {
+            ViewAnimationUtil.circularHide(searchEditText,
+                    170,
+                    toolbar.getHeight() / 2,
+                    ViewAnimationUtil.DEFAULT_RADIUS);
+            searchEditText.setText("");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, HomeFragment.newInstance()).commit();
+        } else if (backStack.empty() || backStack.get(backStack.size() - 1).contentEquals(HomeFragment.class.getSimpleName())) {
+            finish();
         } else {
-            if (backStack.empty() || backStack.get(backStack.size() - 1).contentEquals(HomeFragment.class.getSimpleName())) {
-                finish();
-            } else {
-                backStack.pop();
-                super.onBackPressed();
-            }
+            backStack.pop();
+            super.onBackPressed();
         }
+        getUiUtil().hideKeyboard(searchEditText);
     }
 
     @Override
@@ -137,6 +172,11 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(tag)
                 .commit();
+    }
+
+    @Override
+    public EditText getSearchEditText() {
+        return searchEditText;
     }
 
     private AccountHeader createHeader(UserViewModel userViewModel) {

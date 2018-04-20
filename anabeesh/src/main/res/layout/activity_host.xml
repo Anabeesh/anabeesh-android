@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context="com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity">
 
+    <com.rxmuhammadyoussef.core.widget.rxedittext.RxEditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="7dp"
+        android:hint="@string/search_here"
+        android:padding="@dimen/padding"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textColorHint="@color/colorTextSecondaryDark"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:visibility="visible" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_host"
         style="@style/HostToolbarStyle"

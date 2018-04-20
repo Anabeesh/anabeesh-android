@@ -48,6 +48,24 @@ public class QuestionMapper {
         return entities;
     }
 
+    public List<QuestionEntity> toEntities(List<QuestionApiResponse> questionApiResponseList) {
+        List<QuestionEntity> entities = new ArrayList<>();
+        for (QuestionApiResponse questionApiResponse : questionApiResponseList) {
+            entities.add(new QuestionEntity(
+                    questionApiResponse.getId(),
+                    questionApiResponse.getUserId(),
+                    questionApiResponse.getHeadline(),
+                    questionApiResponse.getDescription(),
+                    questionApiResponse.getCategoryId(),
+                    questionApiResponse.getNumberOfAnswers(),
+                    questionApiResponse.getUpVotes(),
+                    questionApiResponse.getDownVotes(),
+                    true,
+                    false));
+        }
+        return entities;
+    }
+
     public List<QuestionModel> toModels(List<QuestionEntity> questionEntities) {
         List<QuestionModel> models = new ArrayList<>();
         for (QuestionEntity questionEntity : questionEntities) {
