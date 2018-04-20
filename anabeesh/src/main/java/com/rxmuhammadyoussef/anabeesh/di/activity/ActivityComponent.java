@@ -2,6 +2,7 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentComponent;
 import com.rxmuhammadyoussef.anabeesh.di.fragment.FragmentModule;
+import com.rxmuhammadyoussef.anabeesh.ui.addquestion.AddQuestionActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
@@ -37,4 +38,6 @@ public interface ActivityComponent {
     void inject(ArticleDetailsActivity articleDetailsActivity);
 
     void inject(QuestionDetailsActivity questionDetailsActivity);
+
+    void inject(AddQuestionActivity addQuestionActivity);
 }

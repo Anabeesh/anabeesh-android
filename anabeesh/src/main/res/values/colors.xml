@@ -13,7 +13,7 @@
 
     <!--Text-->
     <color name="colorTextPrimaryDark">#212121</color>
-    <color name="colorTextPrimaryLight">#aaffffff</color>
+    <color name="colorTextPrimaryLight">#ffffff</color>
     <color name="colorTextSecondaryDark">#707070</color>
     <color name="colorTextSecondaryLight">#9e9e9e</color>
     <color name="colorTextClickable">#029e74</color>

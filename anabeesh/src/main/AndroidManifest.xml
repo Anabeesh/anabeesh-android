@@ -24,35 +24,48 @@
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.registration.RegistrationActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/RegistrationTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.host.HostActivity"
             android:label=""
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/HostTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.article.ArticleActivity"
             android:label=""
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/HostTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.articledetails.ArticleDetailsActivity"
             android:label=""
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/HostTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.questiondetails.QuestionDetailsActivity"
             android:label=""
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/HostTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.addquestion.AddQuestionActivity"
+            android:label=""
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/HostTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />

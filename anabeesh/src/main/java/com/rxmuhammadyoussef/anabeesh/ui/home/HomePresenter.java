@@ -3,6 +3,7 @@ package com.rxmuhammadyoussef.anabeesh.ui.home;
 import android.support.v7.util.DiffUtil;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
@@ -153,7 +154,10 @@ class HomePresenter {
     private void processArticleResult(List<ArticleModel> articleModels) {
         disposable.add(Single.just(articleModels)
                 .map(articleMapper::toViewModels)
-                .doAfterSuccess(articleRelay::accept)
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "raw"+String.valueOf(ignored.size())))
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay before"+String.valueOf(articleRelay.getValue().size())))
+                .doOnSuccess(articleRelay::accept)
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay after"+String.valueOf(articleRelay.getValue().size())))
                 .map(articleViewModels -> timeLineItemMapper.toTimelineItems(articleRelay.getValue(), questionRelay.getValue()))
                 .map(newTimelineItems -> new Pair<>(timelineItemRelay.getValue(), newTimelineItems))
                 .map(TimelineDiffCallback::new)
@@ -168,7 +172,7 @@ class HomePresenter {
     private void processQuestionResult(List<QuestionModel> questionModels) {
         disposable.add(Single.just(questionModels)
                 .map(questionMapper::toViewModels)
-                .doAfterSuccess(questionRelay::accept)
+                .doOnSuccess(questionRelay::accept)
                 .map(articleViewModels -> timeLineItemMapper.toTimelineItems(articleRelay.getValue(), questionRelay.getValue()))
                 .map(newTimelineItems -> new Pair<>(timelineItemRelay.getValue(), newTimelineItems))
                 .map(TimelineDiffCallback::new)
@@ -181,8 +185,10 @@ class HomePresenter {
     }
 
     private void processError(Throwable throwable) {
+        Timber.e(throwable);
         if (throwable instanceof HttpException) {
             homeScreen.showErrorMessage(((HttpException) throwable).message());
+            Timber.tag("MuhammadDebug").d(((HttpException) throwable).response().toString());
         } else if (throwable instanceof IOException) {
             homeScreen.showErrorMessage(resourcesUtil.getString(R.string.error_network));
         } else {

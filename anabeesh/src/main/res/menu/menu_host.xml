@@ -8,11 +8,4 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_notification"
-        android:actionLayout="@layout/activity_host"
-        android:icon="@drawable/ic_notifications"
-        android:title="@string/notifications"
-        app:showAsAction="ifRoom" />
 </menu>

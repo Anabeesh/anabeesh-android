@@ -10,6 +10,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserApiResponse;
 import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
@@ -33,7 +34,7 @@ class WebServiceStore {
 
     private static final String KEY_LAST_SAVED_PAGE_NUMBER = "lastSavedPageNumberKey";
     private static final String HEADER = "application/json";
-    private static final int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 50;
 
     private final PreferencesUtil preferencesUtil;
     private final APIsUtil apisUtil;
@@ -112,6 +113,11 @@ class WebServiceStore {
                 .unFollowCategory(userId, categoryId);
     }
 
+    Single<ResponseBody> addQuestion(QuestionRequestBody requestBody) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .addQuestion(HEADER, requestBody);
+    }
+
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {
         Log.d("MuhammadDebug", response.toString());
         switch (response.code()) {
@@ -146,7 +152,7 @@ class WebServiceStore {
     }
 
     private int getPageNumber() {
-        return preferencesUtil.getInt(KEY_LAST_SAVED_PAGE_NUMBER) + 1;
+        return 0;
     }
 
     private void incrementPageNumberAndSave() {

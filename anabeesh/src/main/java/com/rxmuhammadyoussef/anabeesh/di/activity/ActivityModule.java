@@ -3,6 +3,7 @@ package com.rxmuhammadyoussef.anabeesh.di.activity;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 
+import com.rxmuhammadyoussef.anabeesh.ui.addquestion.AddQuestionScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.articledetails.ArticleDetailsScreen;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivityScreen;
@@ -96,5 +97,11 @@ public class ActivityModule {
     @Provides
     QuestionDetailsScreen providesQuestionDetailsScreen() {
         return (QuestionDetailsScreen) activity;
+    }
+
+    @ActivityScope
+    @Provides
+    AddQuestionScreen providesAddQuestionScreen() {
+        return (AddQuestionScreen) activity;
     }
 }

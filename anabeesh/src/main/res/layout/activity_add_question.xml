@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevationHostToolbar"
+        app:layout_constraintBottom_toTopOf="@id/et_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/padding"
+                    android:paddingLeft="@dimen/padding"
+                    android:paddingTop="@dimen/padding"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintLeft_toRightOf="@id/tv_post"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding"
+                    android:text="@string/post"
+                    android:textColor="@drawable/selector_text_accent"
+                    android:textSize="@dimen/textSizeHeading2"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_close"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/iv_close"
+                    app:layout_constraintTop_toTopOf="@id/iv_close" />
+
+                <ProgressBar
+                    android:id="@+id/pb_post"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_post"
+                    app:layout_constraintEnd_toEndOf="@id/tv_post"
+                    app:layout_constraintStart_toStartOf="@id/tv_post"
+                    app:layout_constraintTop_toTopOf="@id/tv_post"
+                    tools:visibility="visible" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.rxmuhammadyoussef.core.widget.rxedittext.RxEditText
+        android:id="@+id/et_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:hint="@string/question_headline"
+        android:lineSpacingExtra="@dimen/margin_nano"
+        android:padding="@dimen/padding"
+        android:singleLine="true"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textColorHint="@color/colorTextSecondaryDark"
+        android:textSize="@dimen/textSizeHomeText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/et_post"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar" />
+
+    <com.rxmuhammadyoussef.core.widget.rxedittext.RxEditText
+        android:id="@+id/et_post"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="start"
+        android:hint="@string/what_s_on_your_mind"
+        android:lineSpacingExtra="@dimen/margin_nano"
+        android:padding="@dimen/padding"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textColorHint="@color/colorTextSecondaryDark"
+        android:textSize="@dimen/textSizeHomeText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_title" />
+</android.support.constraint.ConstraintLayout>

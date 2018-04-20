@@ -1,5 +1,6 @@
 package com.rxmuhammadyoussef.anabeesh.store;
 
+import android.util.Log;
 import android.util.Pair;
 
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
@@ -7,6 +8,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionModel;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
 import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
@@ -17,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
@@ -51,6 +54,7 @@ public class TimelineRepo {
 
         disposable.add(realmStore.fetchArticles()
                 .map(articleMapper::toModels)
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "local" + String.valueOf(ignored.size())))
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
                 .subscribe(operationListener::onSuccess, operationListener::onError));
@@ -58,6 +62,7 @@ public class TimelineRepo {
         disposable.add(webServiceStore.fetchArticles(Preconditions.requireStringNotEmpty(userId))
                 .map(articleMapper::toEntities)
                 .flatMap(realmStore::saveArticlesAndReturnAll)
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "cloud" + String.valueOf(ignored.size())))
                 .map(articleMapper::toModels)
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
@@ -83,6 +88,12 @@ public class TimelineRepo {
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
                 .subscribe(operationListener::onSuccess, operationListener::onError));
+    }
+
+    public Completable addQuestion(QuestionRequestBody requestBody) {
+        Preconditions.checkNonNull(requestBody, "RequestBody required non null");
+        return webServiceStore.addQuestion(requestBody)
+                .toCompletable();
     }
 
     public Observable<List<QuestionModel>> searchQuestions(String keyword) {

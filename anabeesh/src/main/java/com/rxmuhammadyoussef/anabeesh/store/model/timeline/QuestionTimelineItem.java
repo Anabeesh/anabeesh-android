@@ -1,5 +1,6 @@
 package com.rxmuhammadyoussef.anabeesh.store.model.timeline;
 
+import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
 
 /**

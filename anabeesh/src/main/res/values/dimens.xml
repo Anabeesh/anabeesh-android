@@ -13,7 +13,8 @@
     <dimen name="padding_ultra">32dp</dimen>
 
     <!--Text-->
-    <dimen name="textSizeHeading">24dp</dimen>
+    <dimen name="textSizeHeading1">24sp</dimen>
+    <dimen name="textSizeHeading2">18sp</dimen>
 
     <!--Elevation-->
     <dimen name="elevationCard">3dp</dimen>

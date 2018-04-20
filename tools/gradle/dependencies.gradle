@@ -87,6 +87,7 @@ def view = [
         circleimageview : "de.hdodenhof:circleimageview:2.2.0",
         materialdrawer  : "com.mikepenz:materialdrawer:5.9.5@aar",
         roundedImageView: "com.makeramen:roundedimageview:2.3.0",
+        filterView      : "com.github.Yalantis:SearchFilter:v1.0.4",
 ]
 
 def social = [
