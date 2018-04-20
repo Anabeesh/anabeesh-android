@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.signature.ObjectKey;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.rxmuhammadyoussef.anabeesh.R;
+import com.rxmuhammadyoussef.anabeesh.events.operation.OperationAnimationListener;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryViewModel;
 import com.rxmuhammadyoussef.anabeesh.util.GlideApp;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @FragmentScope
 class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CategoryViewHolder> {
@@ -60,6 +63,8 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CategoryViewH
         TextView followButton;
         @BindView(R.id.iv_category)
         RoundedImageView categoryImageView;
+        @BindView(R.id.pb_follow)
+        ProgressBar followProgressBar;
 
         CategoryViewHolder(View itemView) {
             super(itemView);
@@ -82,6 +87,23 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CategoryViewH
                 followButton.setText(context.getString(R.string.follow));
                 followButton.setActivated(true);
             }
+        }
+
+        @OnClick(R.id.btn_follow)
+        void onFollowClicked() {
+            presenter.followOrUnFollowCategory(getAdapterPosition(), categoryViewModel, new OperationAnimationListener<CategoryViewModel>() {
+                @Override
+                public void onPreExecute() {
+                    followProgressBar.setVisibility(View.VISIBLE);
+                    followButton.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onPostExecute() {
+                    followProgressBar.setVisibility(View.GONE);
+                    followButton.setVisibility(View.VISIBLE);
+                }
+            });
         }
     }
 }

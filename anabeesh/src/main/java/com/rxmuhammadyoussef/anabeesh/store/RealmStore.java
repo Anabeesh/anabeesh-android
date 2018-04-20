@@ -78,6 +78,26 @@ class RealmStore {
         });
     }
 
+    Single<CategoryEntity> getCategoryById(String id) {
+        return Single.create(emitter -> {
+            Realm instance = Realm.getDefaultInstance();
+            CategoryEntity categoryEntity = instance.copyFromRealm(instance.where(CategoryEntity.class)
+                    .equalTo("id", id)
+                    .findFirst());
+            instance.close();
+            emitter.onSuccess(categoryEntity);
+        });
+    }
+
+    Single<CategoryEntity> updateCategory(CategoryEntity entity) {
+        return Single.create(emitter -> {
+            Realm instance = Realm.getDefaultInstance();
+            instance.executeTransaction(realm -> realm.insertOrUpdate(entity));
+            instance.close();
+            emitter.onSuccess(entity);
+        });
+    }
+
     Completable clearDatabase() {
         return Completable.create(emitter -> {
             Realm.deleteRealm(Realm.getDefaultConfiguration());
