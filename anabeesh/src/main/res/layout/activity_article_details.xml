@@ -88,6 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin"
                 android:gravity="right"
+                android:autoLink="all"
+                android:textIsSelectable="true"
                 app:layout_constraintBottom_toTopOf="@id/iv_user"
                 app:layout_constraintEnd_toEndOf="@id/tv_header"
                 app:layout_constraintStart_toStartOf="@id/tv_header"

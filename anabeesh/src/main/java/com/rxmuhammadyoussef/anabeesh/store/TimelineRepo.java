@@ -90,17 +90,4 @@ public class TimelineRepo {
                 .observeOn(threadSchedulers.mainThread())
                 .subscribe(operationListener::onSuccess, operationListener::onError));
     }
-
-    public Completable addQuestion(QuestionRequestBody requestBody) {
-        Preconditions.checkNonNull(requestBody, "RequestBody required non null");
-        return webServiceStore.addQuestion(requestBody)
-                .toCompletable();
-    }
-
-    public Observable<List<QuestionModel>> searchQuestions(SearchRequestBody requestBody) {
-        return webServiceStore.searchQuestions(
-                Preconditions.requireNonNull(requestBody, "you should use non empty string for"))
-                .map(questionMapper::toEntities)
-                .map(questionMapper::toModels);
-    }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_micro"
+    android:background="@drawable/card"
+    android:paddingTop="@dimen/padding">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="@dimen/margin"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toLeftOf="@id/tv_answer"
+        app:layout_constraintRight_toRightOf="@id/tv_answer"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_ultra"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:background="@drawable/answer"
+        android:autoLink="all"
+        android:textIsSelectable="true"
+        android:lineSpacingExtra="@dimen/margin_nano"
+        android:paddingBottom="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:paddingTop="@dimen/padding_ultra"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textSize="@dimen/textSizeHomeText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="سطبكنكمسيبتكسيب" />
+</android.support.constraint.ConstraintLayout>

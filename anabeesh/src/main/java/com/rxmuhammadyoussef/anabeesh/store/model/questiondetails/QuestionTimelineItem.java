@@ -1,13 +1,8 @@
-package com.rxmuhammadyoussef.anabeesh.store.model.timeline;
+package com.rxmuhammadyoussef.anabeesh.store.model.questiondetails;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.TimeLineItemType;
 import com.rxmuhammadyoussef.anabeesh.store.model.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
-
-/**
- This class represents a vertical scrolling list of matches,typically all the matched except fot today's and tomorrows's matches
- it's immutable and can only be instantiated/accessed within this package scope
- */
 
 public class QuestionTimelineItem extends TimelineItem {
 

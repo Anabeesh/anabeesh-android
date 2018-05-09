@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.rxmuhammadyoussef.anabeesh.events.error.NetworkConnectionError;
 import com.rxmuhammadyoussef.anabeesh.events.error.WebServiceError;
 import com.rxmuhammadyoussef.anabeesh.store.api.APIsUtil;
+import com.rxmuhammadyoussef.anabeesh.store.model.answer.AnswerApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
@@ -117,6 +118,16 @@ class WebServiceStore {
     Single<ResponseBody> addQuestion(QuestionRequestBody requestBody) {
         return apisUtil.getAnabeeshRxAPIService()
                 .addQuestion(HEADER, requestBody);
+    }
+
+    Single<List<AnswerApiResponse>> fetchAnswers(String questionId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .fetchAnswers(questionId);
+    }
+
+    Single<QuestionApiResponse> fetchQuestion(String questionId) {
+        return apisUtil.getAnabeeshRxAPIService()
+                .fetchQuestion(questionId);
     }
 
     private void processUserResponse(SingleEmitter<UserApiResponse.DataResponse> emitter, Response<UserApiResponse.DataResponse> response) {

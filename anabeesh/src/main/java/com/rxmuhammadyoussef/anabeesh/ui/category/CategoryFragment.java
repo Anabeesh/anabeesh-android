@@ -21,6 +21,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.DrawerItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryViewModel;
 import com.rxmuhammadyoussef.anabeesh.ui.TitledView;
 import com.rxmuhammadyoussef.anabeesh.ui.host.HostActivity;
+import com.rxmuhammadyoussef.anabeesh.widget.LinearLayoutManagerWrapper;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
 import com.rxmuhammadyoussef.core.util.UiUtil;
@@ -102,7 +103,7 @@ public class CategoryFragment extends Fragment implements CategoryScreen, Titled
     @Override
     public void setupRecyclerView() {
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManagerWrapper(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
     }
 

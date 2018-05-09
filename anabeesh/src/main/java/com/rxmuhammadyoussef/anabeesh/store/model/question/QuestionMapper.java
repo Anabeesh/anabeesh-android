@@ -66,6 +66,34 @@ public class QuestionMapper {
         return entities;
     }
 
+    public QuestionEntity toEntity(QuestionApiResponse questionApiResponse) {
+        return new QuestionEntity(
+                questionApiResponse.getId(),
+                questionApiResponse.getUserId(),
+                questionApiResponse.getHeadline(),
+                questionApiResponse.getDescription(),
+                questionApiResponse.getCategoryId(),
+                questionApiResponse.getNumberOfAnswers(),
+                questionApiResponse.getUpVotes(),
+                questionApiResponse.getDownVotes(),
+                false,
+                false);
+    }
+
+    public QuestionModel toModel(QuestionEntity questionEntity) {
+        return new QuestionModel(
+                questionEntity.getId(),
+                questionEntity.getUserId(),
+                questionEntity.getHeadline(),
+                questionEntity.getDescription(),
+                questionEntity.getCategoryId(),
+                questionEntity.getNumberOfAnswers(),
+                questionEntity.getUpVotes(),
+                questionEntity.getDownVotes(),
+                false,
+                false);
+    }
+
     public List<QuestionModel> toModels(List<QuestionEntity> questionEntities) {
         List<QuestionModel> models = new ArrayList<>();
         for (QuestionEntity questionEntity : questionEntities) {
@@ -101,5 +129,20 @@ public class QuestionMapper {
                     questionModel.isNewFeed()));
         }
         return viewModels;
+    }
+
+    public QuestionViewModel toViewModel(QuestionModel questionModel) {
+        return new QuestionViewModel(
+                questionModel.getId(),
+                questionModel.getUserId(),
+                questionModel.getHeadline(),
+                questionModel.getDescription(),
+                questionModel.getCategoryId(),
+                questionModel.getNumberOfAnswers(),
+                questionModel.getUpVotes(),
+                questionModel.getDownVotes(),
+                "https://source.unsplash.com/collection/400620/480x480",
+                questionModel.isTopRated(),
+                questionModel.isNewFeed());
     }
 }

@@ -5,7 +5,7 @@ import android.util.Pair;
 
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.ArticleListTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.QuestionTimelineItem;
-import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimelineItem;
+import com.rxmuhammadyoussef.anabeesh.store.model.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TitleTimelineItem;
 
 import java.util.Collections;

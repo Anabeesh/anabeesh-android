@@ -1,5 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.store.model.timeline;
 
+import com.rxmuhammadyoussef.anabeesh.store.model.TimeLineItemType;
+import com.rxmuhammadyoussef.anabeesh.store.model.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 
 import java.util.List;

@@ -15,7 +15,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.QuestionTimelineItem;
-import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemType;
+import com.rxmuhammadyoussef.anabeesh.store.model.TimeLineItemType;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TitleTimelineItem;
 import com.rxmuhammadyoussef.anabeesh.ui.article.ArticleActivity;
 import com.rxmuhammadyoussef.anabeesh.ui.questiondetails.QuestionDetailsActivityArgs;

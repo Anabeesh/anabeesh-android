@@ -1,6 +1,7 @@
 package com.rxmuhammadyoussef.anabeesh.store.model.timeline;
 
 import com.rxmuhammadyoussef.anabeesh.R;
+import com.rxmuhammadyoussef.anabeesh.store.model.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
 import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
