@@ -9,7 +9,7 @@
     <color name="colorReadingLayoutBackground">#ffffff</color>
     <color name="colorNavDrawerHeaderBackground">#ffffff</color>
     <color name="colorNavDrawerContentBackground">#f7f7f7</color>
-    <color name="colorDivider">#9e9e9e</color>
+    <color name="colorDivider">#229e9e9e</color>
 
     <!--Text-->
     <color name="colorTextPrimaryDark">#212121</color>

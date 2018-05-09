@@ -35,7 +35,7 @@ public class QuestionEntity extends RealmObject {
         this.newFeed = newFeed;
     }
 
-    String getId() {
+    public String getId() {
         return id;
     }
 

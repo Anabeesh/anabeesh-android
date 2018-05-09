@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_micro"
+    android:layout_marginBottom="@dimen/margin_micro"
+    tools:showIn="@layout/item_question_details">
+
+    <TextView
+        android:id="@+id/tv_comment_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/padding_micro"
+        android:drawableStart="@drawable/ic_comment"
+        android:gravity="start|clip_vertical"
+        android:padding="@dimen/padding"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textSize="@dimen/textSizeHomeText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_upvote_counter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="14" />
+
+    <TextView
+        android:id="@+id/tv_upvote_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/padding_micro"
+        android:drawableStart="@drawable/ic_thumbs_up_down"
+        android:gravity="start|clip_vertical"
+        android:padding="@dimen/padding"
+        android:textColor="@color/colorTextPrimaryDark"
+        android:textSize="@dimen/textSizeHomeText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_comment_counter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_comment_counter"
+        app:layout_constraintTop_toTopOf="@id/tv_comment_counter"
+        tools:text="90%" />
+</android.support.constraint.ConstraintLayout>

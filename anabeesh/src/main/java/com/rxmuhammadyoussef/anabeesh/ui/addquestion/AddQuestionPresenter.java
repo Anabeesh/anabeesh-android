@@ -5,6 +5,7 @@ import android.util.Pair;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
+import com.rxmuhammadyoussef.anabeesh.store.QuestionRepo;
 import com.rxmuhammadyoussef.anabeesh.store.TimelineRepo;
 import com.rxmuhammadyoussef.anabeesh.store.UserSessionManager;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
@@ -31,20 +32,20 @@ class AddQuestionPresenter extends BaseActivityPresenter {
     private final UserSessionManager userSessionManager;
     private final ThreadSchedulers threadSchedulers;
     private final CompositeDisposable disposable;
-    private final TimelineRepo timelineRepo;
+    private final QuestionRepo questionRepo;
     private final AddQuestionScreen screen;
 
     @Inject
     AddQuestionPresenter(UserSessionManager userSessionManager, @ComputationalThread ThreadSchedulers threadSchedulers,
                          @ForActivity CompositeDisposable disposable,
-                         TimelineRepo timelineRepo,
+                         QuestionRepo questionRepo,
                          AddQuestionScreen screen) {
         super(screen);
+        this.questionRepo = questionRepo;
         this.titleValidityRelay = BehaviorRelay.createDefault(false);
         this.bodyValidityRelay = BehaviorRelay.createDefault(false);
         this.userSessionManager = userSessionManager;
         this.threadSchedulers = threadSchedulers;
-        this.timelineRepo = timelineRepo;
         this.disposable = disposable;
         this.screen = screen;
     }
@@ -72,7 +73,7 @@ class AddQuestionPresenter extends BaseActivityPresenter {
 
     void postQuestion(String title, String body) {
         QuestionRequestBody requestBody = new QuestionRequestBody(title, body, userSessionManager.getCurrentUser().getUserId(), "1");
-        disposable.add(timelineRepo.addQuestion(requestBody)
+        disposable.add(questionRepo.addQuestion(requestBody)
                 .subscribeOn(threadSchedulers.workerThread())
                 .observeOn(threadSchedulers.mainThread())
                 .doOnSubscribe(ignored -> screen.showLoadingAnimation())

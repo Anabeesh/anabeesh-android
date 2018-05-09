@@ -113,4 +113,6 @@
     <dimen name="textSizeCategorySubText">12sp</dimen>
     <!--Radius-->
     <dimen name="radiusButton">2dp</dimen>
+    <dimen name="heightDivider">8dp</dimen>
+    <dimen name="padding_ultimate">48dp</dimen>
 </resources>

@@ -12,8 +12,10 @@ import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.rxmuhammadyoussef.anabeesh.R;
 import com.rxmuhammadyoussef.anabeesh.events.operation.OperationListener;
+import com.rxmuhammadyoussef.anabeesh.store.QuestionRepo;
 import com.rxmuhammadyoussef.anabeesh.store.TimelineRepo;
 import com.rxmuhammadyoussef.anabeesh.store.UserSessionManager;
+import com.rxmuhammadyoussef.anabeesh.store.model.answer.AnswerViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
@@ -22,7 +24,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.SearchRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemMapper;
-import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimelineItem;
+import com.rxmuhammadyoussef.anabeesh.store.model.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.util.diffutil.TimelineDiffCallback;
 import com.rxmuhammadyoussef.core.di.qualifier.ForFragment;
 import com.rxmuhammadyoussef.core.di.scope.FragmentScope;
@@ -46,6 +48,7 @@ class HomePresenter {
 
     private final HomeScreen homeScreen;
     private final TimelineRepo timelineRepo;
+    private final QuestionRepo questionRepo;
     private final ArticleMapper articleMapper;
     private final ResourcesUtil resourcesUtil;
     private final QuestionMapper questionMapper;
@@ -66,7 +69,7 @@ class HomePresenter {
                   ResourcesUtil resourcesUtil,
                   ArticleMapper articleMapper,
                   TimelineRepo timelineRepo,
-                  HomeScreen homeScreen) {
+                  HomeScreen homeScreen, QuestionRepo questionRepo) {
         this.threadSchedulers = threadSchedulers;
         this.homeScreen = homeScreen;
         this.timelineRepo = timelineRepo;
@@ -76,6 +79,7 @@ class HomePresenter {
         this.disposable = disposable;
         this.resourcesUtil = resourcesUtil;
         this.questionMapper = questionMapper;
+        this.questionRepo = questionRepo;
         this.timelineItemRelay = BehaviorRelay.createDefault(Collections.emptyList());
         this.articleRelay = BehaviorRelay.createDefault(Collections.emptyList());
         this.questionRelay = BehaviorRelay.createDefault(Collections.emptyList());
@@ -131,7 +135,7 @@ class HomePresenter {
                 .distinctUntilChanged()
                 .skip(1)
                 .map(SearchRequestBody::new)
-                .flatMap(timelineRepo::searchQuestions)
+                .flatMap(questionRepo::searchQuestions)
                 .map(questionMapper::toViewModels)
                 .map(timeLineItemMapper::toTimelineItems)
                 .map(newTimelineItems -> new Pair<>(timelineItemRelay.getValue(), newTimelineItems))

@@ -81,6 +81,9 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         if (item.getItemId() == R.id.menu_search) {
             setupSearch();
             return true;
+        } else if (item.getItemId() == R.id.menu_notification) {
+            //TODO navigate to notification
+            return super.onOptionsItemSelected(item);
         } else {
             return super.onOptionsItemSelected(item);
         }
@@ -91,7 +94,7 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         if (!(fragment instanceof HomeFragment)) {
             setFragment(HomeFragment.newInstance(), HomeFragment.class.getSimpleName());
         }
-       showSearchBar();
+        showSearchBar();
     }
 
     @Override
@@ -99,7 +102,7 @@ public class HostActivity extends BaseActivity implements HostActivityScreen, Dr
         if (drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else if (searchEditText.getVisibility() == View.VISIBLE) {
-           hideSearchBar();
+            hideSearchBar();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, HomeFragment.newInstance()).commit();
         } else if (backStack.empty() || backStack.get(backStack.size() - 1).contentEquals(HomeFragment.class.getSimpleName())) {
             finish();

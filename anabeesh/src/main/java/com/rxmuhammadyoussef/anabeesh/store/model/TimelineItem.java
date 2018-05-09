@@ -1,4 +1,4 @@
-package com.rxmuhammadyoussef.anabeesh.store.model.timeline;
+package com.rxmuhammadyoussef.anabeesh.store.model;
 
 /**
  This class represents an abstract form of a timeline item. It can be any thing, title, list, etc...

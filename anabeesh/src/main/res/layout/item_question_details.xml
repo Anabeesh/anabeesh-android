@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card"
+    android:layout_marginBottom="@dimen/margin"
+    android:elevation="2dp"
+    android:orientation="vertical">
+
+    <include layout="@layout/content_question_details_header" />
+
+    <include layout="@layout/content_question_details_divider" />
+</LinearLayout>

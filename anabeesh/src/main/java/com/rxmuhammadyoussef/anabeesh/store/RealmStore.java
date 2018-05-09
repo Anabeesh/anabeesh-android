@@ -51,6 +51,15 @@ class RealmStore {
         });
     }
 
+    Single<QuestionEntity> saveQuestionAndReturn(QuestionEntity entity) {
+        return Single.create(emitter -> {
+            Realm instance = Realm.getDefaultInstance();
+            instance.executeTransaction(realm -> realm.insertOrUpdate(entity));
+            instance.close();
+            emitter.onSuccess(entity);
+        });
+    }
+
     Single<List<ArticleEntity>> fetchArticles() {
         return Single.create(emitter -> {
             Realm instance = Realm.getDefaultInstance();

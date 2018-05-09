@@ -2,17 +2,15 @@
 <android.support.constraint.ConstraintLayout android:id="@+id/item_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorReadingLayoutBackground">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_details"
         style="@style/HostToolbarStyle"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        app:layout_constraintBottom_toTopOf="@+id/sv_container"
+        app:layout_constraintBottom_toTopOf="@+id/rv_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,69 +25,12 @@
             android:text="@string/articles" />
     </android.support.v7.widget.Toolbar>
 
-    <ScrollView
-        android:id="@+id/sv_container"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_details">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin"
-            android:minHeight="160dp">
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/iv_cover"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginBottom="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:transitionName="cover_activity_transition"
-                app:layout_constraintBottom_toTopOf="@id/tv_header"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:riv_corner_radius="0dp"
-                app:riv_mutate_background="true"
-                app:riv_oval="false"
-                tools:scaleType="centerCrop"
-                tools:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:id="@+id/tv_header"
-                style="@style/HomeTextViewTitleStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin"
-                android:layout_marginEnd="@dimen/margin"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:gravity="right"
-                app:layout_constraintBottom_toTopOf="@id/tv_body"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_cover"
-                app:layout_constraintVertical_chainStyle="spread_inside"
-                tools:text="Article title goes here" />
-
-            <TextView
-                android:id="@+id/tv_body"
-                style="@style/HomeTextViewTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin"
-                android:gravity="right"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_header"
-                app:layout_constraintStart_toStartOf="@id/tv_header"
-                app:layout_constraintTop_toBottomOf="@id/tv_header"
-                tools:text="Article body goes here and it looks like this when there is multiple lines, the max lines should be 3 lines and the article should have internal design to see the full article content." />
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/tb_details" />
 </android.support.constraint.ConstraintLayout>

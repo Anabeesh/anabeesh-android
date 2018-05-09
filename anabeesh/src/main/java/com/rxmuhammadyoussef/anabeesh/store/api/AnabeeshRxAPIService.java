@@ -1,5 +1,6 @@
 package com.rxmuhammadyoussef.anabeesh.store.api;
 
+import com.rxmuhammadyoussef.anabeesh.store.model.answer.AnswerApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
@@ -51,4 +52,10 @@ public interface AnabeeshRxAPIService {
     Single<ResponseBody> addQuestion(
             @Header("content-type") String header,
             @Body QuestionRequestBody requestBody);
+
+    @GET("/api/answers/GetByQuestionId/{id}")
+    Single<List<AnswerApiResponse>> fetchAnswers(@Path("id") String questionId);
+
+    @GET("/api/questions/{id}")
+    Single<QuestionApiResponse> fetchQuestion(@Path("id") String questionId);
 }
