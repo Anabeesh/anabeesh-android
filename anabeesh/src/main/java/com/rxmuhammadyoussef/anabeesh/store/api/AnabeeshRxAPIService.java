@@ -4,6 +4,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.category.CategoryApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.SearchRequestBody;
 
 import java.util.List;
 
@@ -33,8 +34,8 @@ public interface AnabeeshRxAPIService {
     @GET("api/homepage/newest/{userId}")
     Single<List<QuestionApiResponse>> fetchNewestQuestions(@Path("userId") String userId);
 
-    @GET("api/search/question/{question}")
-    Observable<List<QuestionApiResponse>> searchQuestions(@Path("question") String keyword);
+    @POST("api/search/question")
+    Observable<List<QuestionApiResponse>> searchQuestions(@Body SearchRequestBody requestBody);
 
     @GET("api/Follow/FollowCategory/{userId}/{categoryId}")
     Single<ResponseBody> followCategory(

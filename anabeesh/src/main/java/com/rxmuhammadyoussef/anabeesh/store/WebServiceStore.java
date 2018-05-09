@@ -12,6 +12,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionApiResponse;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.LoginRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.RegisterRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.SearchRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.user.UserApiResponse;
 import com.rxmuhammadyoussef.core.di.scope.ApplicationScope;
 import com.rxmuhammadyoussef.core.util.PreferencesUtil;
@@ -98,9 +99,9 @@ class WebServiceStore {
                 .fetchNewestQuestions(userId);
     }
 
-    Observable<List<QuestionApiResponse>> searchQuestions(String keyword) {
+    Observable<List<QuestionApiResponse>> searchQuestions(SearchRequestBody requestBody) {
         return apisUtil.getAnabeeshRxAPIService()
-                .searchQuestions(keyword);
+                .searchQuestions(requestBody);
     }
 
     Single<ResponseBody> followCategory(String userId, String categoryId) {
