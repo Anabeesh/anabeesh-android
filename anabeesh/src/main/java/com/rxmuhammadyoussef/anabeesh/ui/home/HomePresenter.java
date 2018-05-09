@@ -20,6 +20,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleViewModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionViewModel;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.SearchRequestBody;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimeLineItemMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.timeline.TimelineItem;
 import com.rxmuhammadyoussef.anabeesh.util.diffutil.TimelineDiffCallback;
@@ -129,6 +130,7 @@ class HomePresenter {
                 .debounce(300, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .skip(1)
+                .map(SearchRequestBody::new)
                 .flatMap(timelineRepo::searchQuestions)
                 .map(questionMapper::toViewModels)
                 .map(timeLineItemMapper::toTimelineItems)
@@ -154,10 +156,10 @@ class HomePresenter {
     private void processArticleResult(List<ArticleModel> articleModels) {
         disposable.add(Single.just(articleModels)
                 .map(articleMapper::toViewModels)
-                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "raw"+String.valueOf(ignored.size())))
-                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay before"+String.valueOf(articleRelay.getValue().size())))
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "raw" + String.valueOf(ignored.size())))
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay before" + String.valueOf(articleRelay.getValue().size())))
                 .doOnSuccess(articleRelay::accept)
-                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay after"+String.valueOf(articleRelay.getValue().size())))
+                .doOnSuccess(ignored -> Log.d("MuhammadDebug", "relay after" + String.valueOf(articleRelay.getValue().size())))
                 .map(articleViewModels -> timeLineItemMapper.toTimelineItems(articleRelay.getValue(), questionRelay.getValue()))
                 .map(newTimelineItems -> new Pair<>(timelineItemRelay.getValue(), newTimelineItems))
                 .map(TimelineDiffCallback::new)

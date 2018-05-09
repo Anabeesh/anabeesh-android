@@ -9,6 +9,7 @@ import com.rxmuhammadyoussef.anabeesh.store.model.article.ArticleModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionMapper;
 import com.rxmuhammadyoussef.anabeesh.store.model.question.QuestionModel;
 import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.QuestionRequestBody;
+import com.rxmuhammadyoussef.anabeesh.store.model.requestbody.SearchRequestBody;
 import com.rxmuhammadyoussef.core.di.qualifier.ForActivity;
 import com.rxmuhammadyoussef.core.di.scope.ActivityScope;
 import com.rxmuhammadyoussef.core.schedulers.ThreadSchedulers;
@@ -96,9 +97,9 @@ public class TimelineRepo {
                 .toCompletable();
     }
 
-    public Observable<List<QuestionModel>> searchQuestions(String keyword) {
+    public Observable<List<QuestionModel>> searchQuestions(SearchRequestBody requestBody) {
         return webServiceStore.searchQuestions(
-                Preconditions.requireStringNotEmpty(keyword, "you should use non empty string for"))
+                Preconditions.requireNonNull(requestBody, "you should use non empty string for"))
                 .map(questionMapper::toEntities)
                 .map(questionMapper::toModels);
     }
